@@ -1,220 +1,259 @@
 <template>
-  <nav class="nav">
-    <div
-      class="dropdown"
-      ref="dropdownRef"
-      @mouseenter="openDropdown"
-      @mouseleave="closeDropdown"
-    >
-      <button class="dropdown-toggle" type="button">
-        <span class="dropdown-label">ຜະລິດຕະພັນ ແລະ ການບໍລິການ</span>
-        <span class="dropdown-arrow">
-          <!-- 箭头图标 -->
-          <svg
-            ref="arrowRef"
-            viewBox="0 0 12 12"
-            width="12"
-            height="12"
-            aria-hidden="true"
-          >
-            <path
-              d="M3 4.5L6 7.5L9 4.5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-      </button>
+  <div
+    class="dropdown-wrapper"
+    :class="{ open: isOpen }"
+    ref="dropdown"
+    @mouseenter="handleEnter"
+    @mouseleave="handleLeave"
+  >
+    <!-- Trigger -->
+    <div class="dropdown-trigger">
+      <span class="label" id="mainmenudropdown">ຜະລິດຕະພັນ ແລະ ການບໍລິການ</span>
+      <span class="chevron">⌄</span>
+    </div>
 
-      <div class="dropdown-menu" ref="menuRef">
-        <div class="dropdown-item">ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</div>
-        <div class="dropdown-item">ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM</div>
-        <div class="dropdown-item">ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</div>
-        <div class="dropdown-item">ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</div>
-        <div class="dropdown-item">ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR</div>
-        <div class="dropdown-item">ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE <br>ລະຫວ່າງປະເທດ
+    <!-- Dropdown Panel (container for items) -->
+    <div class="dropdown-panel" ref="panel">
+      <div class="dropdown-container">
+        <div class="dropdown-item">
+          <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
+       
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <span>ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
+         
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <span>ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
+        
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <div class="dropdown-item">
+          <span>ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</span>
+
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <div class="dropdown-item">
+          <span>ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR</span>
+
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <div class="dropdown-item">
+          <span>ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ</span>
+
         </div>
       </div>
     </div>
-
- 
-  </nav>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import gsap from "gsap";
+import { ref } from "vue";
+import { gsap } from "gsap";
 
-const dropdownRef = ref(null);
-const menuRef = ref(null);
-const arrowRef = ref(null);
-
+const dropdown = ref(null);
+const panel = ref(null);
 const isOpen = ref(false);
-const tl = ref(null);
-
-onMounted(() => {
-  if (!menuRef.value || !arrowRef.value) return;
-
-  // 初始状态：隐藏 + 上移一点
-  gsap.set(menuRef.value, {
-    opacity: 0,
-    y: -6,
-    pointerEvents: "none",
-  });
-
-  tl.value = gsap
-    .timeline({ paused: true })
-    // 下拉内容
-    .to(
-      menuRef.value,
-      {
-        duration: 0.26,
-        opacity: 1,
-        y: 0,
-        ease: "power2.out",
-        onStart: () => {
-          menuRef.value.style.pointerEvents = "auto";
-        },
-      },
-      0
-    )
-    // 箭头旋转
-    .to(
-      arrowRef.value,
-      {
-        duration: 0.22,
-        rotation: 90,
-        ease: "power2.out",
-        transformOrigin: "50% 50%",
-      },
-      0
-    );
-});
-
-onBeforeUnmount(() => {
-  if (tl.value) {
-    tl.value.kill();
-    tl.value = null;
-  }
-});
+let hideTimeout = null;
 
 const openDropdown = () => {
-  if (!tl.value || isOpen.value) return;
+  if (isOpen.value) return;
   isOpen.value = true;
-  tl.value.play();
+
+  const panelEl = panel.value;
+  if (!panelEl) return;
+
+  const items = panelEl.querySelectorAll(".dropdown-item");
+
+  clearTimeout(hideTimeout);
+  gsap.killTweensOf(panelEl);
+  gsap.killTweensOf(items);
+
+  gsap.fromTo(
+    panelEl,
+    { opacity: 0, y: -6 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.25,
+      ease: "power2.out",
+      onStart: () => {
+        panelEl.style.pointerEvents = "auto";
+      }
+    }
+  );
+
+  gsap.fromTo(
+    items,
+    { opacity: 0, y: 6 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.25,
+      ease: "power2.out",
+      stagger: 0.04
+    }
+  );
 };
 
 const closeDropdown = () => {
-  if (!tl.value || !isOpen.value) return;
+  if (!isOpen.value) return;
   isOpen.value = false;
 
-  tl.value.reverse();
-  tl.value.eventCallback("onReverseComplete", () => {
-    if (menuRef.value) {
-      menuRef.value.style.pointerEvents = "none";
+  const panelEl = panel.value;
+  if (!panelEl) return;
+
+  const items = panelEl.querySelectorAll(".dropdown-item");
+
+  gsap.killTweensOf(panelEl);
+  gsap.killTweensOf(items);
+
+  gsap.to(panelEl, {
+    opacity: 0,
+    y: -6,
+    duration: 0.2,
+    ease: "power2.in",
+    onComplete: () => {
+      panelEl.style.pointerEvents = "none";
     }
-    tl.value.eventCallback("onReverseComplete", null);
   });
+
+  gsap.to(items, {
+    opacity: 0,
+    y: 4,
+    duration: 0.18,
+    ease: "power2.in"
+  });
+};
+
+const handleEnter = () => {
+  clearTimeout(hideTimeout);
+  openDropdown();
+};
+
+const handleLeave = () => {
+  hideTimeout = setTimeout(closeDropdown, 120);
 };
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    sans-serif;
 }
 
-.nav {
-  display: flex;
-  gap: 32px;
+/* Trigger */
+.dropdown-trigger {
+  padding: 12px 20px;
+  border-radius: 999px;
+
+
+  cursor: pointer;
   font-size: 15px;
   letter-spacing: 0.03em;
-  text-transform: uppercase;
-       font-family: "Noto Sans Lao", sans-serif;
-}
-
-/* 外层容器 */
-.dropdown {
-  position: relative;
-}
-
-/* 触发器：只有文字 + 箭头，没有背景 */
-.dropdown-toggle {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  padding: 6px 2px;
-  border: none;
-  outline: none;
-  background: transparent; /* 无背景 */
-  font: inherit;
-  color: #111827;
-  border-bottom: 1px solid transparent;
-  transition:
-    border-color 0.18s ease,
-    transform 0.18s ease,
-    color 0.18s ease;
+  gap: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    transform 0.15s ease;
+  color: #e5e7eb;
 }
 
-.dropdown-toggle:hover {
-  border-bottom-color: #f6f6f6;
+.dropdown-trigger:hover {
+
   transform: translateY(-1px);
 }
 
-.dropdown-label {
+.dropdown-trigger span.label {
+
   font-weight: 500;
- font-size: 1.2rem;
-  color: #fff;
+  font-size: 1.2rem;
+     font-family: "Noto Sans Lao", sans-serif;
 }
 
-.dropdown-arrow {
-  width: 12px;
-  height: 12px;
-  display: inline-flex;
-  align-items: center;
-  color: #fff;
-  justify-content: center;
+.dropdown-trigger span.chevron {
+  font-size: 14px;
+  transition: transform 0.25s ease;
+  display: inline-block;
 }
 
-/* 下拉菜单（同样无背景，只是文字列表） */
-.dropdown-menu {
+.dropdown-wrapper.open .dropdown-trigger span.chevron {
+  transform: rotate(180deg);
+}
+
+/* Panel */
+.dropdown-panel {
   position: absolute;
-  top: 120%;
+  top: 110%;
   left: 0;
+  min-width: 390px;
+  padding: 10px;
+  border-radius: 18px;
+  margin-top: 8px;
+
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.7),
+    0 0 0 1px rgba(15, 23, 42, 0.7);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+}
+
+.dropdown-container {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-top: 10px;
-  /* pointerEvents、opacity、transform 由 GSAP 控制 */
+  gap: 4px;
 }
 
 .dropdown-item {
-  border: 1px solid red;
+    font-family: "Noto Sans Lao", sans-serif;
+  padding: 10px 10px;
+  border-radius: 12px;
   font-size: 1.2rem;
-  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
-  padding: 2px 0;
-  white-space: nowrap;
-  border-bottom: 1px solid transparent;
-  transition:
-    color 0.18s ease,
-    border-color 0.18s ease,
-    transform 0.18s ease;
+  color: #e5e7eb;
+  transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item span.secondary {
+  font-size: 12px;
+  opacity: 0.65;
 }
 
 .dropdown-item:hover {
-  
-  border-bottom-color: #f6f6f6;
+  background: rgba(55, 65, 81, 0.8);
   transform: translateY(-1px);
+  color: #f9fafb;
 }
-@media (max-width : 1350px)  {
-    .dropdown-label{
-        font-size: 1rem;
+
+.dropdown-divider {
+  margin: 6px 4px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(148, 163, 184, 0),
+    rgba(148, 163, 184, 0.7),
+    rgba(148, 163, 184, 0)
+  );
+}
+@media (max-width : 1350px) {
+    #mainmenudropdown{
+      font-size: 1rem;
     }
-    
 }
 
 </style>
