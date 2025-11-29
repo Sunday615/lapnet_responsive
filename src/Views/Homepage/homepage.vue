@@ -127,9 +127,14 @@ const openSidebarFromNavbar = () => {
         <homepagecrossbordervideo :src="heroVideo" poster="/images/tech-poster.jpg">
             <div class="crossborderhomepage">
                 <div class="titlecrossborder">
-                    <h1>ການຊຳລະເງິນຂ້າມແດນ<br>ໃນຮູບ QR CODE <br>ລະຫວ່າງປະເທດ</h1>
-                   <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" style="margin-top: 100px;" />
+                    <div class="titlecrossborderproduct">
+                        <h1>ການຊຳລະເງິນຂ້າມແດນ<br>ໃນຮູບ QR CODE <br>ລະຫວ່າງປະເທດ</h1>
+                    </div>
+                    <div class="buttoncrossborder">
+                        <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
+                    </div>
                 </div>
+
                 <div class="imagecrossborder">
                     <TechPhoneMockup image-src="/mobilemockup/homepagecrossborder/crossborder.png" />
                 </div>
@@ -140,11 +145,23 @@ const openSidebarFromNavbar = () => {
 
 
 <style scoped>
-.titlecrossborder h1{
+.buttoncrossborder{
+    width: 100%;
+    height: auto;
+
+}
+.titlecrossborderproduct {
+    width: 100%;
+    height: 65%;
+  
+}
+
+.titlecrossborder h1 {
     font-size: 5.5rem;
     color: #fff;
     line-height: 1.3;
 }
+
 .imagecrossborder {
     width: 40%;
     height: 100%;
