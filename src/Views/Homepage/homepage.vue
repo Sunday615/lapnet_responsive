@@ -8,9 +8,13 @@ import productDropdown from '../../components/dropdown-homepage/product-dropdown
 import search from '../../components/search/search.vue';
 import homepagebutton from '../../components/button/homepagebutton.vue';
 import sidebar from '../../components/sidebar/sidebar.vue';
+import homepagecrossbordervideo from '../../components/videobackground/homepage/homepagecrossbordervideo.vue'
+import TechPhoneMockup from '../../components/mobile/homepage_crossborder_mobilemockup.vue';
 
-// ✅ create a ref to access sidebar methods
+const heroVideo = '/videos/homepagecrossborder.mp4'
 const sidebarRef = ref(null)
+
+const mockupPath = ref('/mobilemockup/homepagecrossborder/crossborder.png')
 
 const openSidebarFromNavbar = () => {
     if (sidebarRef.value && sidebarRef.value.openSidebar) {
@@ -28,7 +32,7 @@ const openSidebarFromNavbar = () => {
                 <div class="homepagelogolapnet" style="border: 1px solid red;">
                     <img src="/logolapnet/logolapnet.PNG" alt="">
                 </div>
-                <sidebar ref="sidebarRef" />
+                <sidebar class="sidebar-lapnet" ref="sidebarRef" />
 
 
                 <navbar class="navbar-list" style="border: 1px solid red;">
@@ -42,7 +46,7 @@ const openSidebarFromNavbar = () => {
                         <li>
                             <memberdropdown />
                         </li>
-                        <li>ຂ່າວ ແລະ ກີດຈະກຳ</li>
+                        <li style="padding-right: 20px;">ຂ່າວ ແລະ ກີດຈະກຳ</li>
                         <li>ຮ່ວມງານກັບເຮົາ</li>
                         <li>
                             <aboutusdropdown />
@@ -93,9 +97,10 @@ const openSidebarFromNavbar = () => {
                         <h2>01</h2>
                     </div>
                     <div class="description-vision">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta minus enim debitis nihil, qui
-                            placeat aliquam incidunt repudiandae corrupti nostrum similique perspiciatis eveniet
-                            voluptas inventore, quis rerum adipisci cumque quia!</p>
+                        <p>ພັດທະນາລະບົບການຊໍາລະທຸລະກຳຍ່ອຍໃຫ້ເປັນສູນກາງການຊໍາລະຂອງບັນດາຜູ້ໃຫ້ບໍລິການ
+                            ຊໍາລະ ທັງພາຍໃນ ແລະ ສາກົນ, ແນໃສ່ໃຫ້ປະຊາຊົນລາງໄດ້ໃຊ້ບໍລິການຊໍາລະທີ່ສະດວກວ່ອງໄວ,
+                            ທັນສະໄໝ, ປອດໄພ, ຕົ້ນທືນຕໍາ ແລະ ເພື່ອໃຫ້ບໍລິສັດການເປັນໂຄງຮ່າງພື້ນຖານໃຫ້ແກ່ການ
+                            ຊໍາລະໃນ ສປປ ລາວ.</p>
                     </div>
                 </div>
                 <div class="visioncontentbox2">
@@ -103,11 +108,14 @@ const openSidebarFromNavbar = () => {
                         <h2>02</h2>
                     </div>
                     <div class="description-vision">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima cumque, quod atque
-                            repudiandae quos voluptate, ullam assumenda labore, amet tenetur quam. Ratione, sint. Quia
-                            veniam, alias magni doloremque molestiae aperiam? Eaque, repellendus sit! Temporibus
-                            similique quisquam voluptates, voluptas, dolorem nemo eos non corporis fugit quo tempora
-                            cupiditate ipsa. Animi, quos.</p>
+                        <p>ພັດທະນາລະບົບການຊໍາລະໃຫ້ມີຄວາມຫຼາກຫຼາຍ, ທັນສະໄໝ, ຕອບຮັບໄດ້ທຸກຊ່ອງທາງ
+                            ການຊໍາລະທີ່ເກີດຂື້ນ, ເຕົ້າໂຮມເອົາບັນດາທະນາຄານທຸລະກິດ, ສະຖາບັນການເງິນ ແລະ ບໍລິສັດ
+                            Fintech ທີ່ເປັນຜູ້ໃຫ້ບໍລິການຊໍາລະ ໃຫ້ເຂົ້າມາເປັນສະມາຊີກຂອງບໍລິສັດ ເພື່ອພ້ອມກັນໃຫ້
+                            ບໍລິການລະບົບການຊໍາລະແກ່ສັງຄົມ, ຫັນເອົາການເຊື່ອມຕໍ່ສາກົນທີ່ມີລັກສະນະກະແຈກກະຈາຍ
+                            ລວມສູນເຂົ້າມາເຊື່ອມຕໍ່ເປັນຮູບແບບລະບົບປະຕູດຽວເພື່ອຫຼຸດຜ່ອນຕົ້ນທືນລວມຂອງທົ່ວ
+                            ລະບົບ, ເສີມຂະຫຍາຍຄວາມຮູ້-ເຂົ້າໃຈໃຫ້ແກ່ມວນຊົນໄດ້ຮັບຮູ້ເຖິງຄວາມສຳຄັນ ແລະ ປະໂຫຍກ
+                            ຂອງການນຳໃຊ້ລະບົບການຊໍາລະເອເລັກໂຕຣນິກຢ່າງຖ່ອງແທ້ ເພື່ອເຮັດໃຫ້ມວນຊົນໄດ້ນຳໃຊ້ລະ
+                            ບົບການຊໍາລະຢ່າງຖືກຕ້ອງ ແລະ ປອດໄພ ເປັນການເສີມສ້າງຄວາມໝັ້ນໃຈໃຫ້ແກ່ມວນຊົນ.</p>
                     </div>
                 </div>
             </div>
@@ -115,13 +123,67 @@ const openSidebarFromNavbar = () => {
 
     </div>
 
+    <div class="videocrossborder">
+        <homepagecrossbordervideo :src="heroVideo" poster="/images/tech-poster.jpg">
+            <div class="crossborderhomepage">
+                <div class="titlecrossborder">
+                    <h1>ການຊຳລະເງິນຂ້າມແດນ<br>ໃນຮູບ QR CODE <br>ລະຫວ່າງປະເທດ</h1>
+                   <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" style="margin-top: 100px;" />
+                </div>
+                <div class="imagecrossborder">
+                    <TechPhoneMockup image-src="/mobilemockup/homepagecrossborder/crossborder.png" />
+                </div>
+            </div>
+        </homepagecrossbordervideo>
+    </div>
 </template>
 
 
 <style scoped>
+.titlecrossborder h1{
+    font-size: 5.5rem;
+    color: #fff;
+    line-height: 1.3;
+}
+.imagecrossborder {
+    width: 40%;
+    height: 100%;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titlecrossborder {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid salmon;
+}
+
+.crossborderhomepage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid red;
+
+}
+
+.videocrossborder {
+    width: 100%;
+    height: 80vh;
+    border: 1px solid red;
+}
+
 .hamberger i {
     font-size: 3.5rem;
     color: #fff;
+}
+
+.description-vision p {
+    font-size: 1rem;
 }
 
 .description-vision {
@@ -355,6 +417,10 @@ const openSidebarFromNavbar = () => {
     .hamberger i {
         display: none;
     }
+
+    .sidebar-lapnet {
+        display: none;
+    }
 }
 
 @media (min-width:200px) {
@@ -362,11 +428,13 @@ const openSidebarFromNavbar = () => {
         display: none;
     }
 }
+
 @media (max-width : 1750px) {
-   .navbar{
-    grid-template-columns: 90px 8fr 1fr;
-   }
+    .navbar {
+        grid-template-columns: 90px 8fr 1fr;
+    }
 }
+
 @media (max-width : 1350px) {
     .navbar-list ul li {
         font-size: 1rem;
@@ -385,23 +453,55 @@ const openSidebarFromNavbar = () => {
 
 
 @media (max-width : 1579px) {
-    .search a{
+    .search a {
         display: none;
     }
 
 }
+
 @media (max-width : 1130px) {
     .titleproduct5 h1 {
         font-size: 4.5rem;
     }
-  
-    .contentvision {
-        flex-direction: column;
-    }
-    .titleproduct5{
+
+
+    .titleproduct5 {
         align-items: end;
     }
 
+}
+
+@media (max-width: 1025px) {
+    .itemvision-title h1 {
+        font-size: 3.1rem;
+    }
+
+}
+
+@media (max-width: 897px) {
+    .description-vision p {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 778px) {
+
+    .itemvisionimg {
+        display: none;
+    }
+
+    .description-vision p {
+        font-size: 1rem;
+    }
+
+    .itemvision-title {
+        width: 100%;
+    }
+
+    .itemvision-title h1 {
+        font-size: 3.5rem;
+    }
 }
 
 @media (max-width : 1100px) {
@@ -410,12 +510,13 @@ const openSidebarFromNavbar = () => {
         display: none;
 
     }
-    
+
     .navbar-list {
         display: flex;
         justify-content: end;
     }
-    .search a{
+
+    .search a {
         display: none;
     }
 
@@ -444,8 +545,9 @@ const openSidebarFromNavbar = () => {
 
 @media (max-width : 760px) {
 
-
-
+    .homecontainer {
+        align-items: start;
+    }
 
     .titleproduct5 h1 {
         font-size: 3.5rem;
@@ -453,9 +555,10 @@ const openSidebarFromNavbar = () => {
 
     .homepage-laddingpagecontainer {
         background-image: url(/homepage/mobileside.webp);
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: left;
-        background-size: cover;
+
 
 
     }
@@ -473,7 +576,7 @@ const openSidebarFromNavbar = () => {
 @media (max-width : 664px) {
     .titleproduct5 h1 {
         font-size: 3rem;
-        text-align: center;
+        text-align: start;
     }
 
 }

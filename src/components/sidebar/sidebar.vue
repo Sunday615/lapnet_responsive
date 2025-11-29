@@ -97,7 +97,7 @@
       v-if="openKey === 'contact'"
       class="sidebar-subnav"
     >
-      <li class="sidebar-subitem" @click.stop >ວິໄສທັດ ແລະ ພາລະກິດ</li>
+      <li class="sidebar-subitem" @click.stop @click="">ວິໄສທັດ ແລະ ພາລະກິດ</li>
       <li class="sidebar-subitem" @click.stop>ພາລະບົດບາດ</li>
       <li class="sidebar-subitem" @click.stop>ຄວາມເປັນມາ</li>
       <li class="sidebar-subitem" @click.stop>ສະພາຜູ້ບໍລິຫານ</li>
@@ -335,7 +335,7 @@ defineExpose({
     radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
     radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.4), rgba(15, 23, 42, 1));
   border-left: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow: -24px 0 60px rgba(15, 23, 42, 0.9);
+  box-shadow: -5px 0 60px rgba(15, 23, 42, 0.9);
   padding: 18px 18px 22px;
   display: flex;
   flex-direction: column;
