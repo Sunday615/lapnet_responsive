@@ -196,7 +196,7 @@ const handleClick = () => {
   border-radius: 10px;
   border: 1px solid rgba(125, 211, 252, 0.45);
   background:
-    radial-gradient(circle at 0% 0%, #00123D 0, transparent 38%),
+    radial-gradient(circle at 0% 0%, #0088FF 0, transparent 38%),
     radial-gradient(circle at 100% 100%, #0033AB 0, #0088FF 55%);
   color: #e5f2ff;
   font-size: 1.2rem;

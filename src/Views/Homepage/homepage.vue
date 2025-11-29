@@ -1,10 +1,22 @@
 <script setup>
+import { ref } from 'vue'  // ✅ add this
+
 import topnavbar from '../../components/topnavbar/topnavbar.vue';
 import aboutusdropdown from '../../components/dropdown-homepage/aboutusdropdown.vue';
 import memberdropdown from '../../components/dropdown-homepage/memberdropdown.vue';
 import productDropdown from '../../components/dropdown-homepage/product-dropdown.vue';
 import search from '../../components/search/search.vue';
 import homepagebutton from '../../components/button/homepagebutton.vue';
+import sidebar from '../../components/sidebar/sidebar.vue';
+
+// ✅ create a ref to access sidebar methods
+const sidebarRef = ref(null)
+
+const openSidebarFromNavbar = () => {
+    if (sidebarRef.value && sidebarRef.value.openSidebar) {
+        sidebarRef.value.openSidebar()
+    }
+}
 </script>
 
 <template>
@@ -16,7 +28,13 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
                 <div class="homepagelogolapnet" style="border: 1px solid red;">
                     <img src="/logolapnet/logolapnet.PNG" alt="">
                 </div>
+                <sidebar ref="sidebarRef" />
+
+
                 <navbar class="navbar-list" style="border: 1px solid red;">
+                    <div class="hamberger" @click="openSidebarFromNavbar">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
                     <ul>
                         <li>
                             <productDropdown />
@@ -30,15 +48,14 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
                             <aboutusdropdown />
                         </li>
                         <li>ຕິດຕໍ່ພວກເຮົາ</li>
-
-
                     </ul>
                 </navbar>
+
                 <div class="search" style="border: 1px solid red; ">
                     <a href="#">EN /</a>
 
                     <a href="#" style="margin-right: 20px;"> LA </a>
-                    <search />
+                    <search class="searchbtn" />
                 </div>
 
             </div>
@@ -72,56 +89,72 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
                     ວິໄສທັດຂອງພວກເຮົາ
                 </h1>
                 <div class="visioncontentbox1">
-                        <div class="number"><h2>01</h2></div>
-                        <div class="description-vision"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta minus enim debitis nihil, qui placeat aliquam incidunt repudiandae corrupti nostrum similique perspiciatis eveniet voluptas inventore, quis rerum adipisci cumque quia!</p></div>
+                    <div class="number">
+                        <h2>01</h2>
+                    </div>
+                    <div class="description-vision">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta minus enim debitis nihil, qui
+                            placeat aliquam incidunt repudiandae corrupti nostrum similique perspiciatis eveniet
+                            voluptas inventore, quis rerum adipisci cumque quia!</p>
+                    </div>
                 </div>
                 <div class="visioncontentbox2">
-                         <div class="number"><h2>02</h2></div>
-                        <div class="description-vision"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima cumque, quod atque repudiandae quos voluptate, ullam assumenda labore, amet tenetur quam. Ratione, sint. Quia veniam, alias magni doloremque molestiae aperiam? Eaque, repellendus sit! Temporibus similique quisquam voluptates, voluptas, dolorem nemo eos non corporis fugit quo tempora cupiditate ipsa. Animi, quos.</p></div>
+                    <div class="number">
+                        <h2>02</h2>
+                    </div>
+                    <div class="description-vision">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima cumque, quod atque
+                            repudiandae quos voluptate, ullam assumenda labore, amet tenetur quam. Ratione, sint. Quia
+                            veniam, alias magni doloremque molestiae aperiam? Eaque, repellendus sit! Temporibus
+                            similique quisquam voluptates, voluptas, dolorem nemo eos non corporis fugit quo tempora
+                            cupiditate ipsa. Animi, quos.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="videohomepagecrossborder">
 
-    </div>
 </template>
 
 
 <style scoped>
-.videohomepagecrossborder{
-    width: 100%;
-    height: 100vh;
-    border: 1px solid blue;
+.hamberger i {
+    font-size: 3.5rem;
+    color: #fff;
 }
-.description-vision{
+
+.description-vision {
     width: 83%;
     height: 100%;
     border: 1px solid red;
 }
-.number h2{
+
+.number h2 {
     text-align: center;
-   
+
     padding: 25px 0px;
     font-size: 2rem;
     color: #fff;
     background: #000080;
-    background: linear-gradient(0deg,rgba(0, 0, 128, 1) 0%, rgba(0, 15, 219, 1) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 128, 1) 0%, rgba(0, 15, 219, 1) 100%);
 }
-.number{
+
+.number {
     width: 13%;
     height: 100%;
     border: 1px solid red;
 }
-.visioncontentbox2{
+
+.visioncontentbox2 {
     width: 100%;
     display: flex;
-        justify-content: space-between;
+    justify-content: space-between;
     height: 40%;
     border: 1px solid salmon;
 }
-.visioncontentbox1{
+
+.visioncontentbox1 {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -129,6 +162,7 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
     border: 1px solid salmon;
 
 }
+
 .itemvision-title h1 {
     font-size: 4rem;
     color: #0D02D4;
@@ -214,6 +248,8 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
 .titleproduct5 {
     width: 100%;
     height: 40%;
+    display: flex;
+    align-items: center;
     line-height: 1.3;
     border: 1px solid red;
 
@@ -268,6 +304,7 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
     font-family: "Noto Sans Lao", sans-serif;
     display: flex;
     color: #fff;
+    width: 95%;
     align-items: center;
     justify-content: space-between;
 
@@ -275,8 +312,8 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
 }
 
 .homepagelogolapnet img {
-    width: 10vh;
-    height: 10vh;
+    width: 100%;
+    height: auto;
 }
 
 .mainhomepagecontainer {
@@ -313,6 +350,23 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
 
 }
 
+@media (min-width:1100px) {
+
+    .hamberger i {
+        display: none;
+    }
+}
+
+@media (min-width:200px) {
+    .sidebar {
+        display: none;
+    }
+}
+@media (max-width : 1750px) {
+   .navbar{
+    grid-template-columns: 90px 8fr 1fr;
+   }
+}
 @media (max-width : 1350px) {
     .navbar-list ul li {
         font-size: 1rem;
@@ -329,13 +383,50 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
     }
 }
 
+
+@media (max-width : 1579px) {
+    .search a{
+        display: none;
+    }
+
+}
 @media (max-width : 1130px) {
     .titleproduct5 h1 {
         font-size: 4.5rem;
     }
-    .contentvision{
+  
+    .contentvision {
         flex-direction: column;
     }
+    .titleproduct5{
+        align-items: end;
+    }
+
+}
+
+@media (max-width : 1100px) {
+
+    .navbar-list ul {
+        display: none;
+
+    }
+    
+    .navbar-list {
+        display: flex;
+        justify-content: end;
+    }
+    .search a{
+        display: none;
+    }
+
+}
+
+@media (max-width : 1010px) {
+
+    .navbar-list ul {
+        display: none;
+    }
+
 
 }
 
@@ -345,15 +436,16 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
     }
 }
 
+@media (max-width : 990px) {
+    .search a {
+        display: none;
+    }
+}
+
 @media (max-width : 760px) {
 
-    .navbar-list {
-        display: none;
-    }
 
-    .search {
-        display: none;
-    }
+
 
     .titleproduct5 h1 {
         font-size: 3.5rem;

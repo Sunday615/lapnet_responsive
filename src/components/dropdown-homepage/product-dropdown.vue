@@ -254,6 +254,13 @@ const handleLeave = () => {
     #mainmenudropdown{
       font-size: 1rem;
     }
+    .dropdown-panel{
+      min-width: 250px;
+
+    }
+    .dropdown-item{
+      font-size: 1rem;
+    }
 }
 
 </style>
