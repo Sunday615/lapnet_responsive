@@ -8,10 +8,12 @@ import productDropdown from '../../components/dropdown-homepage/product-dropdown
 import search from '../../components/search/search.vue';
 import homepagebutton from '../../components/button/homepagebutton.vue';
 import sidebar from '../../components/sidebar/sidebar.vue';
-import homepagecrossbordervideo from '../../components/videobackground/homepagecrossbordervideo.vue'
+import videobackgroundhomepage from '../../components/videobackground/homepagecrossbordervideo.vue'
 import TechPhoneMockup from '../../components/mobile/homepage_crossborder_mobilemockup.vue';
-
+import allproductswiper from '../../components/swiper/homepageswiper/allproductswiper.vue';
+import homepage_mobiletransfer_cardview from '../../components/mobile/homepage_mobiletransfer_cardview.vue';
 const heroVideo = '/videos/homepagecrossborder.mp4'
+const mobile_transfer = '/videos/mobiletransfer.mp4'
 const sidebarRef = ref(null)
 
 const mockupPath = ref('/mobilemockup/homepagecrossborder/crossborder.png')
@@ -124,7 +126,7 @@ const openSidebarFromNavbar = () => {
     </div>
 
     <div class="videocrossborder">
-        <homepagecrossbordervideo :src="heroVideo" poster="/images/tech-poster.jpg">
+        <videobackgroundhomepage :src="heroVideo" poster="/images/tech-poster.jpg">
             <div class="crossborderhomepage">
                 <div class="titlecrossborder">
                     <div class="titlecrossborderproduct">
@@ -139,30 +141,110 @@ const openSidebarFromNavbar = () => {
                     <TechPhoneMockup image-src="/mobilemockup/homepagecrossborder/crossborder.png" />
                 </div>
             </div>
-        </homepagecrossbordervideo>
+        </videobackgroundhomepage>
     </div>
     <div class="allproductswiper">
+        <allproductswiper />
+    </div>
+    <div class="mobile_transfer_homepage">
+        <videobackgroundhomepage :src="mobile_transfer" poster="/images/tech-poster.jpg">
+            <div class="mobiletransfercontainer">
+                <div class="mobile_transfer_mockup">
+                    <homepage_mobiletransfer_cardview image-src="/mobilemockup/homepagemobiletransfer/mobile_tranafer.jpeg"  />
+                </div>
+                <div class="mobiletransfer_title">
+                    <div class="subtitle" style="border: 1px solid red">
+                        <h1>ໂອນເງິນຂ້າມທະນາຄານ<br>ເທິງມືຖືຜ່ານແອັບ</h1>
+                    </div>
+                    <div class="subtext" style="border: 1px solid red">
+                        <p>ການໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື (Fund Transfer via Mobile Application) ໂດຍນຳໃຊ້ລະບົບ LMPS
+                            ໃນການເຊື່ອມໂຍງຜ່ານ
+                            Applications ຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກຂອງບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ
+                            ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການດຳເນີນທຸລະກຳໂອນເງິນຂ້າມທະນາຄານໄດ້.</p>
+                    </div>
+                    <div class="subbutton" style="border: 1px solid red">
+                        <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
+                    </div>
 
+                </div>
+            </div>
+
+
+        </videobackgroundhomepage>
     </div>
 </template>
 
 
 <style scoped>
-.allproductswiper{
+.subtext {
+    display: grid;
+    align-items: center;
+}
+
+.subtext p {
+    font-size: 1.2rem;
+    color: #fff
+}
+
+.subtitle h1 {
+    color: #fff;
+    line-height: 1.4;
+    font-size: 5rem;
+}
+
+.mobiletransfer_title {
+    display: grid;
+
+    grid-template-rows: auto 1fr 1fr;
+}
+
+.mobile_transfer_mockup img {
+    width: 100%;
+    height: auto;
+}
+
+.mobiletransfer_title {
+    width: 60%;
+    height: 100%;
+    border: 1px solid blue;
+}
+
+.mobile_transfer_mockup {
+    width: 50%;
+    height: 100%;
+    border: 1px solid salmon;
+}
+
+.mobiletransfercontainer {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    border: 1px solid red;
+}
+
+.mobile_transfer_homepage {
+    width: 100%;
+    height: 90vh;
+    background-color: red;
+}
+
+.allproductswiper {
     width: 100%;
     height: 85vh;
     border: 1px solid blue;
 }
-.buttoncrossborder{
+
+.buttoncrossborder {
     width: 100%;
     height: auto;
 
 }
+
 .titlecrossborderproduct {
     width: 100%;
     height: 65%;
     border: 1px solid red;
-  
+
 }
 
 .titlecrossborder h1 {
@@ -475,13 +557,15 @@ const openSidebarFromNavbar = () => {
     .titleproduct5 h1 {
         font-size: 5.5rem;
     }
-    .titlecrossborderproduct h1{
+
+    .titlecrossborderproduct h1 {
         font-size: 4.5rem;
     }
 }
+
 @media (max-width : 1065px) {
-  
-    .titlecrossborderproduct h1{
+
+    .titlecrossborderproduct h1 {
         font-size: 3.5rem;
     }
 }
@@ -498,12 +582,14 @@ const openSidebarFromNavbar = () => {
     .titleproduct5 h1 {
         font-size: 4.5rem;
     }
-     .titlecrossborder{
-       
+
+    .titlecrossborder {
+
         height: 90%;
 
-    }  
-       .crossborderhomepage{
+    }
+
+    .crossborderhomepage {
         align-items: center;
     }
 
@@ -525,22 +611,26 @@ const openSidebarFromNavbar = () => {
     .description-vision p {
         font-size: 0.9rem;
     }
-    .imagecrossborder{
+
+    .imagecrossborder {
         display: none;
     }
-    .titlecrossborder{
+
+    .titlecrossborder {
         width: 100%;
         height: 70%;
-    }  
-    .titlecrossborderproduct h1{
+    }
+
+    .titlecrossborderproduct h1 {
         font-size: 4rem;
     }
-    .crossborderhomepage{
+
+    .crossborderhomepage {
         align-items: center;
     }
-    
-   
-    
+
+
+
 
 }
 
