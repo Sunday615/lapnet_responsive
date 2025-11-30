@@ -8,7 +8,7 @@ import productDropdown from '../../components/dropdown-homepage/product-dropdown
 import search from '../../components/search/search.vue';
 import homepagebutton from '../../components/button/homepagebutton.vue';
 import sidebar from '../../components/sidebar/sidebar.vue';
-import homepagecrossbordervideo from '../../components/videobackground/homepage/homepagecrossbordervideo.vue'
+import homepagecrossbordervideo from '../../components/videobackground/homepagecrossbordervideo.vue'
 import TechPhoneMockup from '../../components/mobile/homepage_crossborder_mobilemockup.vue';
 
 const heroVideo = '/videos/homepagecrossborder.mp4'
@@ -141,10 +141,18 @@ const openSidebarFromNavbar = () => {
             </div>
         </homepagecrossbordervideo>
     </div>
+    <div class="allproductswiper">
+
+    </div>
 </template>
 
 
 <style scoped>
+.allproductswiper{
+    width: 100%;
+    height: 85vh;
+    border: 1px solid blue;
+}
 .buttoncrossborder{
     width: 100%;
     height: auto;
@@ -153,6 +161,7 @@ const openSidebarFromNavbar = () => {
 .titlecrossborderproduct {
     width: 100%;
     height: 65%;
+    border: 1px solid red;
   
 }
 
@@ -462,9 +471,18 @@ const openSidebarFromNavbar = () => {
     }
 }
 
-@media (max-width : 1275px) {
+@media (max-width : 1276px) {
     .titleproduct5 h1 {
         font-size: 5.5rem;
+    }
+    .titlecrossborderproduct h1{
+        font-size: 4.5rem;
+    }
+}
+@media (max-width : 1065px) {
+  
+    .titlecrossborderproduct h1{
+        font-size: 3.5rem;
     }
 }
 
@@ -479,6 +497,14 @@ const openSidebarFromNavbar = () => {
 @media (max-width : 1130px) {
     .titleproduct5 h1 {
         font-size: 4.5rem;
+    }
+     .titlecrossborder{
+       
+        height: 90%;
+
+    }  
+       .crossborderhomepage{
+        align-items: center;
     }
 
 
@@ -499,6 +525,22 @@ const openSidebarFromNavbar = () => {
     .description-vision p {
         font-size: 0.9rem;
     }
+    .imagecrossborder{
+        display: none;
+    }
+    .titlecrossborder{
+        width: 100%;
+        height: 70%;
+    }  
+    .titlecrossborderproduct h1{
+        font-size: 4rem;
+    }
+    .crossborderhomepage{
+        align-items: center;
+    }
+    
+   
+    
 
 }
 
