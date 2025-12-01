@@ -35,13 +35,13 @@ const openSidebarFromNavbar = () => {
     <div class="homepage-laddingpagecontainer">
         <div class="mainhomepagecontainer">
             <div class="item navbar">
-                <div class="homepagelogolapnet" style="border: 1px solid red;">
+                <div class="homepagelogolapnet" >
                     <img src="/logolapnet/logolapnet.PNG" alt="">
                 </div>
                 <sidebar class="sidebar-lapnet" ref="sidebarRef" />
 
 
-                <navbar class="navbar-list" style="border: 1px solid red;">
+                <navbar class="navbar-list" >
                     <div class="hamberger" @click="openSidebarFromNavbar">
                         <i class="fa-solid fa-bars"></i>
                     </div>
@@ -61,7 +61,7 @@ const openSidebarFromNavbar = () => {
                     </ul>
                 </navbar>
 
-                <div class="search" style="border: 1px solid red; ">
+                <div class="search" >
                     <a href="#">EN /</a>
 
                     <a href="#" style="margin-right: 20px;"> LA </a>
@@ -95,7 +95,7 @@ const openSidebarFromNavbar = () => {
                 <img src="/homepage/newmission-2.png" alt="">
             </div>
             <div class="itemvision-title">
-                <h1 style="border: 1px solid red;">
+                <h1 >
                     ວິໄສທັດຂອງພວກເຮົາ
                 </h1>
                 <div class="visioncontentbox1">
@@ -165,16 +165,16 @@ const openSidebarFromNavbar = () => {
                         image-src="/mobilemockup/homepagemobiletransfer/mobile_tranafer.jpeg" />
                 </div>
                 <div class="mobiletransfer_title">
-                    <div class="subtitle" style="border: 1px solid red">
+                    <div class="subtitle" >
                         <h1>ໂອນເງິນຂ້າມທະນາຄານ<br>ເທິງມືຖືຜ່ານແອັບ</h1>
                     </div>
-                    <div class="subtext" style="border: 1px solid red">
+                    <div class="subtext" >
                         <p>ການໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື (Fund Transfer via Mobile Application) ໂດຍນຳໃຊ້ລະບົບ LMPS
                             ໃນການເຊື່ອມໂຍງຜ່ານ
                             Applications ຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກຂອງບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ
                             ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການດຳເນີນທຸລະກຳໂອນເງິນຂ້າມທະນາຄານໄດ້.</p>
                     </div>
-                    <div class="subbutton" style="border: 1px solid red">
+                    <div class="subbutton" >
                         <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
                     </div>
 
@@ -202,21 +202,21 @@ const openSidebarFromNavbar = () => {
     height: 100vh;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    
 }
 .allmemberscrolling{
     width: 100%;
     height: 60vh;
    
-    border: 1px solid salmon;
+
 }
 .countrycrossborder {
     width: 100%;
-    height: 20vh;
+    height: 30vh;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border: 1px solid blue;
+
 }
 
 .subtext {
@@ -250,32 +250,32 @@ const openSidebarFromNavbar = () => {
 .mobiletransfer_title {
     width: 60%;
     height: 100%;
-    border: 1px solid blue;
+
 }
 
 .mobile_transfer_mockup {
     width: 50%;
     height: 100%;
-    border: 1px solid salmon;
+   
 }
 
 .mobiletransfercontainer {
     width: 90%;
     height: 90%;
     display: flex;
-    border: 1px solid red;
+    
 }
 
 .mobile_transfer_homepage {
     width: 100%;
     height: 90vh;
-    background-color: red;
+   
 }
 
 .allproductswiper {
     width: 100%;
     height: 85vh;
-    border: 1px solid blue;
+   
 }
 
 .buttoncrossborder {
@@ -287,7 +287,7 @@ const openSidebarFromNavbar = () => {
 .titlecrossborderproduct {
     width: 100%;
     height: 65%;
-    border: 1px solid red;
+   
 
 }
 
@@ -301,7 +301,7 @@ const openSidebarFromNavbar = () => {
 .imagecrossborder {
     width: 40%;
     height: 100%;
-    border: 1px solid blue;
+  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,21 +313,21 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid salmon;
+ 
 }
 
 .crossborderhomepage {
     width: 100%;
     height: 100%;
     display: flex;
-    border: 1px solid red;
+
 
 }
 
 .videocrossborder {
     width: 100%;
     height: 80vh;
-    border: 1px solid red;
+    
 }
 
 .hamberger i {
@@ -342,7 +342,7 @@ const openSidebarFromNavbar = () => {
 .description-vision {
     width: 83%;
     height: 100%;
-    border: 1px solid red;
+  
 }
 
 .number h2 {
@@ -358,7 +358,7 @@ const openSidebarFromNavbar = () => {
 .number {
     width: 13%;
     height: 100%;
-    border: 1px solid red;
+ 
 }
 
 .visioncontentbox2 {
@@ -366,7 +366,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: space-between;
     height: 40%;
-    border: 1px solid salmon;
+
 }
 
 .visioncontentbox1 {
@@ -374,7 +374,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: space-between;
     height: 30%;
-    border: 1px solid salmon;
+   
 
 }
 
@@ -396,7 +396,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border: 1px solid salmon;
+ 
 
 }
 
@@ -412,7 +412,7 @@ const openSidebarFromNavbar = () => {
     height: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+   
 }
 
 .contentvision {
@@ -420,7 +420,7 @@ const openSidebarFromNavbar = () => {
     width: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid blue;
+  
 
 }
 
@@ -430,7 +430,7 @@ const openSidebarFromNavbar = () => {
     align-items: center;
     margin: 0 auto;
     height: 90vh;
-    border: 1px solid red;
+
 }
 
 .buttonhomepage {
@@ -467,7 +467,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     align-items: center;
     line-height: 1.3;
-    border: 1px solid red;
+   
 
 
 }
@@ -479,7 +479,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 1px solid salmon;
+
 
 }
 
@@ -489,7 +489,7 @@ const openSidebarFromNavbar = () => {
     height: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+   
 
 
 }
@@ -519,8 +519,9 @@ const openSidebarFromNavbar = () => {
     list-style: none;
     font-family: "Noto Sans Lao", sans-serif;
     display: flex;
+    padding-left: 15px;
     color: #fff;
-    width: 95%;
+    width: 93%;
     align-items: center;
     justify-content: space-between;
 
@@ -561,10 +562,7 @@ const openSidebarFromNavbar = () => {
 
 }
 
-.item {
-    border: 1px solid red;
 
-}
 
 @media (min-width:1100px) {
 

@@ -1,6 +1,6 @@
 <script setup>
 import footerinfocomponent from './footerinfocomponent.vue';
-import buttonnavigator from './buttonnavigator.vue';
+import dropdown_menu from './dropdown_menu.vue';
 </script>
 
 
@@ -42,10 +42,10 @@ import buttonnavigator from './buttonnavigator.vue';
         <div class="maincontentfooter ">
             <div class="adjustcontainer">
                 <div class="mainfooterinfoitem box1desciption" style="grid-area: box1;">
-                    <div class="titlemainfooter" style="border: 1px solid red;">
+                    <div class="titlemainfooter" >
                         <h1>ກ່ຽວກັບບໍລິສັດ</h1>
                     </div>
-                    <div class="desciptioninfofooter" style="border: 1px solid red;">
+                    <div class="desciptioninfofooter" >
                         <p>ບ້ານໂພນສະອາດ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ</p>
                         <p>ເບີໂທ: 021 417915</p>
                         <p>ອີເມວ: info@lapnet.com.la</p>
@@ -53,38 +53,58 @@ import buttonnavigator from './buttonnavigator.vue';
                                 target="_blank"><i class="fa-brands fa-facebook"></i>Lao National Payment Network</a>
                         </div>
                     </div>
-                    <div class="facebookbtn" style="border: 1px solid red;">
+                    <div class="facebookbtn" >
 
                     </div>
                 </div>
                 <div class="mainfooterinfoitem box2desciption" style="grid-area: box2;">
-                    <div class="titlemainfooter" style="border: 1px solid red;">
+                    <div class="titlemainfooter product_title"  >
                         <h1>ຜະລິດຕະພັນ ແລະ ການບໍລີການ</h1>
                     </div>
                     <div class="navigatorfooterbox">
-                        <div class="itemproduct"><buttonnavigator title="ກວດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ຊຳລະຂ້າມແດນຜ່ານ QR" /></div>
+                        <div class="itemnavigatorlink"> <i class="fa-solid fa-chevron-right"></i>
+                            <p>ກວດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</p>
+                        </div>
+                        <div class="itemnavigatorlink">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p>ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM</p>
+                        </div>
+                        <div class="itemnavigatorlink">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p>ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</p>
+                        </div>
+                        <div class="itemnavigatorlink">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p>ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</p>
+                        </div>
+                        <div class="itemnavigatorlink">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p>ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR</p>
+                        </div>
+                        <div class="itemnavigatorlink" style="border: none;">
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p>ຊຳລະເງິນຂ້າມແດນຜ່ານ QR</p>
+                        </div>
                     </div>
                 </div>
                 <div class="mainfooterinfoitem" style="grid-area: box3;">
 
-                    <div class="titlemainfooter" style="border: 1px solid red; ">
+                    <div class="titlemainfooter" >
                         <h1>ເມນູ</h1>
                     </div>
                     <div class="navigatorfooterbox">
-                        <div class="itemproduct"><buttonnavigator title="ກວດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື" /></div>
-                        <div class="itemproduct"><buttonnavigator title="ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR" /></div>
-                       
+                        <dropdown_menu />
+
                     </div>
                 </div>
-                <div class="copyrright" style="grid-area: box4;"></div>
+                <div class="copyrright" style="grid-area: box4;">
+
+                    <div class="container_copyright">
+
+                        <p>Copright © 2020 LAPNet Co., Ltd.</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </footer>
@@ -93,22 +113,71 @@ import buttonnavigator from './buttonnavigator.vue';
 
 
 <style scoped>
-.itemproduct h1{
+.itemnavigatorlink:hover{
+     background: rgba(255, 255, 255, 0.08);
+     transition: 0.5s;
+     
+}
+.itemnavigatorlink p {
+    font-size: 1.2rem;
+    padding-left: 20px;
+}
+
+.itemnavigatorlink i {
+    font-size: 2.5rem;
+}
+
+
+.itemnavigatorlink {
+  
+     border-bottom: 1px solid rgba(221, 221, 221, 0.754);
+    width: 80%;
+    color: #fff;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+
+
+    display: flex;
+}
+
+.navigatorfooterbox {
+
+    display: grid;
+
+}
+
+.container_copyright p {
+    font-size: 1.1rem;
+    margin-top: 30px;
+    color: #fff;
+
+}
+
+.container_copyright {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+
+    border-top: 1px solid #ffffff43;
+}
+
+.itemproduct h1 {
     font-size: 2.5rem;
     color: #fff;
 }
-.navigatorfooterbox{
-     padding-top: 70px;
-    display: grid;
-    
-    grid-template-rows: repeat(6, 80px);
-    grid-row-gap: 1rem;
-}
-.itemproduct{
-    border: 1px solid red;
-  
 
+.navigatorfooterbox {
+    padding-top: 30px;
+    display: grid;
+
+    grid-template-rows: repeat(6, 90px);
+  
 }
+
+
 .buttonlink a i {
     font-size: 3rem;
 }
@@ -117,18 +186,19 @@ import buttonnavigator from './buttonnavigator.vue';
     display: flex;
     align-items: center;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     height: 90px;
-    border: 1px solid red;
+  
 }
 
 .desciptioninfofooter a {
     font-size: 1rem;
     display: flex;
     align-items: center;
-
+    width: 100%;
+    height: 65%;
     border: 1px solid #fff;
-    padding: 5px 5px;
+
     color: white;
 
     border-radius: 999px;
@@ -145,7 +215,8 @@ import buttonnavigator from './buttonnavigator.vue';
 }
 
 .titlemainfooter h1 {
-    font-size: 2.5rem;
+
+    font-size: clamp(30px, 10vw, 2rem);
     color: #fff;
     font-weight: bold;
 }
@@ -161,8 +232,8 @@ import buttonnavigator from './buttonnavigator.vue';
     height: 90%;
 
     display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    grid-column-gap: 6rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 3rem;
     grid-template-rows: 5fr 1fr;
     grid-template-areas:
         "box1 box2 box3"
@@ -174,12 +245,13 @@ import buttonnavigator from './buttonnavigator.vue';
 }
 
 .copyrright {
-    border: 1px solid blue;
+    
+    display: flex;
+    justify-content: center;
+    align-items: end;
 }
 
-.mainfooterinfoitem {
-    border: 1px solid red;
-}
+
 
 .description p {
     padding-left: 10px;
@@ -202,7 +274,7 @@ import buttonnavigator from './buttonnavigator.vue';
 
 .maincontentfooter {
     width: 100%;
-    height: 100vh;
+    height: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -257,11 +329,25 @@ import buttonnavigator from './buttonnavigator.vue';
 .mainfootercontianer {
     width: 100%;
     height: 18vh;
-   
+
 
 
 }
-
+@media (max-width:866px) {
+    .box1desciption{
+        display: none;
+    }
+    .adjustcontainer{
+        grid-template-columns:  1fr 1fr;
+    grid-column-gap: 3rem;
+    grid-template-rows: 5fr 1fr;
+    grid-template-areas:
+        " box2 box3"
+        " box4 box4"
+    ;
+    }
+    
+}
 @media (max-width: 1320px) {
     .infofooter {
         grid-template-columns: 2fr 1fr 1fr;

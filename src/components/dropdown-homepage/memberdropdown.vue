@@ -139,14 +139,14 @@ const handleLeave = () => {
 
 
   cursor: pointer;
-  font-size: 15px;
-  letter-spacing: 0.03em;
+  font-size: 1rem;
+
   display: flex;
   align-items: center;
   gap: 8px;
   transition: border-color 0.2s ease, background 0.2s ease,
     transform 0.15s ease;
-  color: #e5e7eb;
+  color: #fff;
 }
 
 .dropdown-trigger:hover {

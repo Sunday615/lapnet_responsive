@@ -184,7 +184,6 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
 
-  background: radial-gradient(circle at top, #061a3a 0%, #020616 55%, #00010a);
   perspective: 2200px;
   overflow: hidden;
 }

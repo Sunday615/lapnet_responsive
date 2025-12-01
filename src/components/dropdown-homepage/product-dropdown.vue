@@ -16,7 +16,8 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
+          <router-link to="/products_service/product1">       <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
+   
        
         </div>
         <div class="dropdown-divider"></div>
@@ -157,14 +158,14 @@ const handleLeave = () => {
 
 
   cursor: pointer;
-  font-size: 15px;
-  letter-spacing: 0.03em;
+  font-size: 1rem;
+ 
   display: flex;
   align-items: center;
   gap: 8px;
   transition: border-color 0.2s ease, background 0.2s ease,
     transform 0.15s ease;
-  color: #e5e7eb;
+  color: #fff;
 }
 
 .dropdown-trigger:hover {

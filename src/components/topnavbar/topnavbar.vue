@@ -46,7 +46,7 @@
 }
 .login{
     padding: 1rem;
-    border: 1px solid salmon;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +63,7 @@
     font-size: 1.5rem;
 }
 .register{
-    border: 1px solid red;
+
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -77,7 +77,7 @@
     margin-right: 20px;
 }
 .social{
-    border: 1px solid blue;
+
     padding: 1rem;
     font-size: 1.5rem;
     color: #fff;
@@ -125,9 +125,6 @@
 
 }
 
-.item {
-    border: 1px solid red;
-}
 
 .topsidecontent {
     width: 100%;
@@ -158,7 +155,7 @@
 .navbar {
     width: 100%;
     height: 4rem;
-    background-color: red;
+    
 }
 
 @media (max-width:640px) {
