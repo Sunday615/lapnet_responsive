@@ -79,6 +79,8 @@ const handleMouseMove = (event) => {
 
 const handleMouseEnter = () => {
   if (!card.value) return;
+
+  // subtle pop-in
   gsap.to(card.value, {
     scale: 1.04,
     duration: 0.4,
@@ -90,6 +92,7 @@ const handleMouseEnter = () => {
 
 const handleMouseLeave = () => {
   if (!card.value) return;
+
   gsap.to(card.value, {
     rotationX: 0,
     rotationY: 0,
@@ -113,18 +116,51 @@ onMounted(() => {
   }
 
   if (lightSweep.value) {
-    // 🔁 Same effect, just slower & with a small pause
-    sweepTimeline = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+    // smoother, layered sweep animation (always running)
+    sweepTimeline = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 1.2,
+      defaults: {
+        ease: "power2.inOut",
+      },
+    });
 
-    sweepTimeline.fromTo(
-      lightSweep.value,
-      { xPercent: -120 },
-      {
-        xPercent: 180,
-        duration: 5,   // ⬅️ slower sweep (was 1.4)
-        ease: "power2.out",
-      }
-    );
+    // initial state
+    gsap.set(lightSweep.value, {
+      xPercent: -130,
+      opacity: 0,
+      scaleX: 0.9,
+      filter: "blur(6px)",
+    });
+
+    sweepTimeline
+      // fade in & approach
+      .to(lightSweep.value, {
+        opacity: 0.4,
+        duration: 0.8,
+      })
+      // main smooth sweep across card
+      .to(
+        lightSweep.value,
+        {
+          xPercent: 160,
+          opacity: 0.9,
+          scaleX: 1.1,
+          duration: 3.6,
+          ease: "power1.inOut",
+        },
+        "<" // start at same time as previous
+      )
+      // soft fade-out / trail
+      .to(lightSweep.value, {
+        opacity: 0,
+        duration: 0.9,
+      })
+      // reset position off-screen left for next cycle
+      .set(lightSweep.value, {
+        xPercent: -130,
+        scaleX: 0.9,
+      });
   }
 });
 
@@ -232,16 +268,16 @@ onBeforeUnmount(() => {
   background: linear-gradient(
     110deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 30%,
-    rgba(255, 255, 255, 0.95) 50%,
-    rgba(255, 255, 255, 0.2) 70%,
+    rgba(255, 255, 255, 0.12) 30%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.12) 70%,
     rgba(255, 255, 255, 0) 100%
   );
 
   mix-blend-mode: screen;
-  filter: blur(4px);
+  filter: blur(6px);
   transform: skewX(-20deg);
-  opacity: 1;
+  opacity: 0;        /* GSAP animates this */
   z-index: 2;
   pointer-events: none;
 }

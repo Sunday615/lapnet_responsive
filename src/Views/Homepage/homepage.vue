@@ -12,6 +12,10 @@ import videobackgroundhomepage from '../../components/videobackground/homepagecr
 import TechPhoneMockup from '../../components/mobile/homepage_crossborder_mobilemockup.vue';
 import allproductswiper from '../../components/swiper/homepageswiper/allproductswiper.vue';
 import homepage_mobiletransfer_cardview from '../../components/mobile/homepage_mobiletransfer_cardview.vue';
+import techbox from '../../components/button/techbox.vue';
+import allmemberscrolling from '../../components/swiper/memberscrolling/allmemberscrolling.vue';
+import bloghomepage from '../../components/blog/hompage/bloghomepage.vue';
+import mainfooter from '../../components/footer/mainfooter/mainfooter.vue';
 const heroVideo = '/videos/homepagecrossborder.mp4'
 const mobile_transfer = '/videos/mobiletransfer.mp4'
 const sidebarRef = ref(null)
@@ -132,6 +136,13 @@ const openSidebarFromNavbar = () => {
                     <div class="titlecrossborderproduct">
                         <h1>ການຊຳລະເງິນຂ້າມແດນ<br>ໃນຮູບ QR CODE <br>ລະຫວ່າງປະເທດ</h1>
                     </div>
+                    <div class="countrycrossborder">
+                        <techbox label="Cambodia" sub-label="Bakong"  country-code="kh" />
+                        <techbox label="Thailand" sub-label="Thai QR Payment" country-code="th"/>
+                        <techbox label="Vietnam" sub-label="NAPAS" country-code="vn"/>
+                        <techbox label="China" sub-label="Unoipay" country-code="cn"/>
+               
+                    </div>
                     <div class="buttoncrossborder">
                         <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
                     </div>
@@ -150,7 +161,8 @@ const openSidebarFromNavbar = () => {
         <videobackgroundhomepage :src="mobile_transfer" poster="/images/tech-poster.jpg">
             <div class="mobiletransfercontainer">
                 <div class="mobile_transfer_mockup">
-                    <homepage_mobiletransfer_cardview image-src="/mobilemockup/homepagemobiletransfer/mobile_tranafer.jpeg"  />
+                    <homepage_mobiletransfer_cardview
+                        image-src="/mobilemockup/homepagemobiletransfer/mobile_tranafer.jpeg" />
                 </div>
                 <div class="mobiletransfer_title">
                     <div class="subtitle" style="border: 1px solid red">
@@ -172,10 +184,41 @@ const openSidebarFromNavbar = () => {
 
         </videobackgroundhomepage>
     </div>
+    <div class="allmemberscrolling">
+        <allmemberscrolling/>
+    </div>
+    <div class="blogcontainer">
+        <bloghomepage/>
+    </div>
+    
+    <mainfooter style="margin-top: 100px;"/>
+
 </template>
 
 
 <style scoped>
+.blogcontainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+}
+.allmemberscrolling{
+    width: 100%;
+    height: 60vh;
+   
+    border: 1px solid salmon;
+}
+.countrycrossborder {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid blue;
+}
+
 .subtext {
     display: grid;
     align-items: center;
@@ -189,7 +232,8 @@ const openSidebarFromNavbar = () => {
 .subtitle h1 {
     color: #fff;
     line-height: 1.4;
-    font-size: 5rem;
+        font-weight: 700;
+    font-size: clamp(2rem, 5.5vw, 5rem);
 }
 
 .mobiletransfer_title {
@@ -251,6 +295,7 @@ const openSidebarFromNavbar = () => {
     font-size: 5.5rem;
     color: #fff;
     line-height: 1.3;
+        font-weight: 700;
 }
 
 .imagecrossborder {
@@ -302,7 +347,7 @@ const openSidebarFromNavbar = () => {
 
 .number h2 {
     text-align: center;
-
+    font-weight: 700;
     padding: 25px 0px;
     font-size: 2rem;
     color: #fff;
@@ -335,6 +380,7 @@ const openSidebarFromNavbar = () => {
 
 .itemvision-title h1 {
     font-size: 4rem;
+        font-weight: 700;
     color: #0D02D4;
     background-image: linear-gradient(45deg, #372cff, #00beed 100%);
     background-clip: text;
@@ -410,7 +456,7 @@ const openSidebarFromNavbar = () => {
 
 .titleproduct5 h1 {
     font-size: 6.25rem;
-
+    font-weight: 700;
     color: #fff;
     font-family: "Noto Sans Lao", sans-serif;
 }
@@ -622,7 +668,7 @@ const openSidebarFromNavbar = () => {
     }
 
     .titlecrossborderproduct h1 {
-        font-size: 4rem;
+        font-size: 3.1rem;
     }
 
     .crossborderhomepage {
@@ -635,6 +681,16 @@ const openSidebarFromNavbar = () => {
 }
 
 @media (max-width: 778px) {
+    .subtitle h1{
+        font-size: 3.5rem;
+    }
+    .mobiletransfer_title{
+        width: 100%;
+    }
+    
+    .mobile_transfer_mockup{
+        display: none;
+    }
 
     .itemvisionimg {
         display: none;
