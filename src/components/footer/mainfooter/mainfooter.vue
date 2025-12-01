@@ -338,7 +338,7 @@ import dropdown_menu from './dropdown_menu.vue';
         display: none;
     }
     .adjustcontainer{
-        grid-template-columns:  1fr 1fr;
+        grid-template-columns:  2fr 1fr;
     grid-column-gap: 3rem;
     grid-template-rows: 5fr 1fr;
     grid-template-areas:
