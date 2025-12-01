@@ -42,10 +42,10 @@ import dropdown_menu from './dropdown_menu.vue';
         <div class="maincontentfooter ">
             <div class="adjustcontainer">
                 <div class="mainfooterinfoitem box1desciption" style="grid-area: box1;">
-                    <div class="titlemainfooter" >
+                    <div class="titlemainfooter">
                         <h1>ກ່ຽວກັບບໍລິສັດ</h1>
                     </div>
-                    <div class="desciptioninfofooter" >
+                    <div class="desciptioninfofooter">
                         <p>ບ້ານໂພນສະອາດ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ</p>
                         <p>ເບີໂທ: 021 417915</p>
                         <p>ອີເມວ: info@lapnet.com.la</p>
@@ -53,12 +53,12 @@ import dropdown_menu from './dropdown_menu.vue';
                                 target="_blank"><i class="fa-brands fa-facebook"></i>Lao National Payment Network</a>
                         </div>
                     </div>
-                    <div class="facebookbtn" >
+                    <div class="facebookbtn">
 
                     </div>
                 </div>
                 <div class="mainfooterinfoitem box2desciption" style="grid-area: box2;">
-                    <div class="titlemainfooter product_title"  >
+                    <div class="titlemainfooter product_title">
                         <h1>ຜະລິດຕະພັນ ແລະ ການບໍລີການ</h1>
                     </div>
                     <div class="navigatorfooterbox">
@@ -89,7 +89,7 @@ import dropdown_menu from './dropdown_menu.vue';
                 </div>
                 <div class="mainfooterinfoitem" style="grid-area: box3;">
 
-                    <div class="titlemainfooter" >
+                    <div class="titlemainfooter">
                         <h1>ເມນູ</h1>
                     </div>
                     <div class="navigatorfooterbox">
@@ -113,11 +113,12 @@ import dropdown_menu from './dropdown_menu.vue';
 
 
 <style scoped>
-.itemnavigatorlink:hover{
-     background: rgba(255, 255, 255, 0.08);
-     transition: 0.5s;
-     
+.itemnavigatorlink:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transition: 0.5s;
+
 }
+
 .itemnavigatorlink p {
     font-size: 1.2rem;
     padding-left: 20px;
@@ -129,8 +130,8 @@ import dropdown_menu from './dropdown_menu.vue';
 
 
 .itemnavigatorlink {
-  
-     border-bottom: 1px solid rgba(221, 221, 221, 0.754);
+
+    border-bottom: 1px solid rgba(221, 221, 221, 0.754);
     width: 80%;
     color: #fff;
     height: 100%;
@@ -174,7 +175,7 @@ import dropdown_menu from './dropdown_menu.vue';
     display: grid;
 
     grid-template-rows: repeat(6, 90px);
-  
+
 }
 
 
@@ -188,7 +189,7 @@ import dropdown_menu from './dropdown_menu.vue';
     cursor: pointer;
     width: 80%;
     height: 90px;
-  
+
 }
 
 .desciptioninfofooter a {
@@ -245,7 +246,7 @@ import dropdown_menu from './dropdown_menu.vue';
 }
 
 .copyrright {
-    
+
     display: flex;
     justify-content: center;
     align-items: end;
@@ -333,21 +334,24 @@ import dropdown_menu from './dropdown_menu.vue';
 
 
 }
+
 @media (max-width:866px) {
-    .box1desciption{
+    .box1desciption {
         display: none;
     }
-    .adjustcontainer{
-        grid-template-columns:  2fr 1fr;
-    grid-column-gap: 3rem;
-    grid-template-rows: 5fr 1fr;
-    grid-template-areas:
-        " box2 box3"
-        " box4 box4"
-    ;
+
+    .adjustcontainer {
+        grid-template-columns: 2fr 1fr;
+        grid-column-gap: 3rem;
+        grid-template-rows: 5fr 1fr;
+        grid-template-areas:
+            " box2 box3"
+            " box4 box4"
+        ;
     }
-    
+
 }
+
 @media (max-width: 1320px) {
     .infofooter {
         grid-template-columns: 2fr 1fr 1fr;

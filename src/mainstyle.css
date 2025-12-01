@@ -1,0 +1,15 @@
+:root{
+    --fs-xs: clamp(0.75rem , 1vw , 0.9rem);
+    --fs-sm: clamp(0.9rem , 1.2vw , 1.05rem);
+    --fs-base: clamp(1rem , 1.5vw , 1.2rem);
+    --fs-md: clamp(1.15rem , 2vw , 1.45rem);
+    --fs-lg: clamp(1.4rem , 3vw , 1.9rem);
+    --fs-xl: clamp(1.8rem , 4vw , 2.6rem);
+    --fs-xxl: clamp(2.4rem , 6vw , 3.5rem);
+    --fs-hero: clamp(3rem , 8vw , 5rem);
+
+    --color-second: #fff;
+}
+
+
+

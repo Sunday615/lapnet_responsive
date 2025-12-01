@@ -37,14 +37,19 @@ import memberdropdown from '../dropdown-homepage/memberdropdown.vue';
 }
 .listnav ul li{
     color: #fff;
+    border: 1px solid red;
     font-size: 1.2rem;
+    margin-left: 50px;
+    margin-right: 10px;
+  
+  
 }
 .listnav ul{
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    
+  
+
     border: 1px solid salmon;
 
 
@@ -57,7 +62,7 @@ import memberdropdown from '../dropdown-homepage/memberdropdown.vue';
  border: 1px solid blue;
 }
 .logolapnet img{
-    width: 30%;
+    width: 35%;
     height: auto;
 }
 .logolapnet{
@@ -71,6 +76,7 @@ import memberdropdown from '../dropdown-homepage/memberdropdown.vue';
 .navbarcontainerview{
     display: flex;
     width: 100%;
+   
     height: 15vh;
     border: 1px solid red;
     background-image: url(/navbar/navbar-bg.png);

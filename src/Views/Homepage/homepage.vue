@@ -440,7 +440,7 @@ const openSidebarFromNavbar = () => {
 }
 
 .descriptionproduct5 p {
-    font-size: 1.5rem;
+    font-size: var(--fs-base);
     color: #fff;
 
 }
@@ -455,7 +455,7 @@ const openSidebarFromNavbar = () => {
 }
 
 .titleproduct5 h1 {
-    font-size: 6.25rem;
+    font-size: var(--fs-hero);
     font-weight: 700;
     color: #fff;
     font-family: "Noto Sans Lao", sans-serif;
