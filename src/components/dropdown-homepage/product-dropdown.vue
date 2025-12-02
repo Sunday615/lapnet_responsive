@@ -175,7 +175,7 @@ const handleLeave = () => {
 
 .dropdown-trigger span.label {
 
-  font-weight: 500;
+ font-weight: 500;
   font-size: 1.2rem;
      font-family: "Noto Sans Lao", sans-serif;
 }
