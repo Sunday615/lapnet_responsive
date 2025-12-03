@@ -16,7 +16,7 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <router-link to="/products_service/product1">       <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
+          <router-link to="/products_service/atm-inquiry">       <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
    
        
         </div>
