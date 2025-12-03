@@ -1,11 +1,6 @@
 <template>
-  <div
-    class="dropdown-wrapper"
-    :class="{ open: isOpen }"
-    ref="dropdown"
-    @mouseenter="handleEnter"
-    @mouseleave="handleLeave"
-  >
+  <div class="dropdown-wrapper" :class="{ open: isOpen }" ref="dropdown" @mouseenter="handleEnter"
+    @mouseleave="handleLeave">
     <!-- Trigger -->
     <div class="dropdown-trigger">
       <span class="label" id="mainmenudropdown">ຜະລິດຕະພັນ ແລະ ການບໍລິການ</span>
@@ -16,37 +11,46 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <router-link to="/products_service/atm-inquiry">       <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
-   
-       
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item">
-          <span>ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
-         
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item">
-          <span>ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
-        
-        </div>
+          <router-link to="/products_service/atm-inquiry"> <span>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
 
-        <div class="dropdown-divider"></div>
-
-        <div class="dropdown-item">
-          <span>ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</span>
 
         </div>
         <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <router-link to="/products_service/atm-cash-withdraw">
+            <span>ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span>
+          </router-link>
+
+
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <router-link to="/products_service/atm-transfer"> <span>ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</span></router-link>
+
+
+        </div>
+
+        <div class="dropdown-divider"></div>
 
         <div class="dropdown-item">
-          <span>ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR</span>
+          <router-link to="/products_service/mobile-transfer"> <span>ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</span></router-link>
+
 
         </div>
         <div class="dropdown-divider"></div>
 
         <div class="dropdown-item">
-          <span>ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ</span>
+          <router-link to="/products_service/qr-payment">
+            <span>ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR</span>
+          </router-link>
+
+
+        </div>
+        <div class="dropdown-divider"></div>
+
+        <div class="dropdown-item">
+          <router-link to="/products_service/crossborder"> <span>ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ</span></router-link>
+
 
         </div>
       </div>
@@ -159,7 +163,7 @@ const handleLeave = () => {
 
   cursor: pointer;
   font-size: 1rem;
- 
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -175,9 +179,9 @@ const handleLeave = () => {
 
 .dropdown-trigger span.label {
 
- font-weight: 500;
+  font-weight: 500;
   font-size: 1.2rem;
-     font-family: "Noto Sans Lao", sans-serif;
+  font-family: "Noto Sans Lao", sans-serif;
 }
 
 .dropdown-trigger span.chevron {
@@ -218,7 +222,7 @@ const handleLeave = () => {
 }
 
 .dropdown-item {
-    font-family: "Noto Sans Lao", sans-serif;
+  font-family: "Noto Sans Lao", sans-serif;
   padding: 10px 10px;
   border-radius: 12px;
   font-size: 1.2rem;
@@ -244,24 +248,24 @@ const handleLeave = () => {
 .dropdown-divider {
   margin: 6px 4px;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(148, 163, 184, 0),
-    rgba(148, 163, 184, 0.7),
-    rgba(148, 163, 184, 0)
-  );
+  background: linear-gradient(to right,
+      rgba(148, 163, 184, 0),
+      rgba(148, 163, 184, 0.7),
+      rgba(148, 163, 184, 0));
 }
+
 @media (max-width : 1350px) {
-    #mainmenudropdown{
-      font-size: 1rem;
-    }
-    .dropdown-panel{
-      min-width: 250px;
+  #mainmenudropdown {
+    font-size: 1rem;
+  }
 
-    }
-    .dropdown-item{
-      font-size: 1rem;
-    }
+  .dropdown-panel {
+    min-width: 250px;
+
+  }
+
+  .dropdown-item {
+    font-size: 1rem;
+  }
 }
-
 </style>

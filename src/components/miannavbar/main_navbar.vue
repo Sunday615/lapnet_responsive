@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import sidebar from '../sidebar/sidebar.vue'
 import overlaynavbar from './overlaynavbar.vue'
 
-// ✅ Receive values from parent
+// ✅ รับค่า props จาก parent
 const props = defineProps({
   title: {
     type: String,
@@ -25,42 +25,70 @@ const logoWrapperRef = ref(null)
 const logoGlowRef = ref(null)
 const sidebarRef = ref(null)
 
-// --- DATA STRUCTURE FOR MENU (desktop nav only) ---
+// ✅ เมนู + route แยกแต่ละอันชัดเจน
 const menuItems = [
   {
     label: 'ຜະລິດຕະພັນ ແລະ ການບໍລິການ',
-    link: '#',
+    to: '/products',
     children: [
-      'ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM',
-      'ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM',
-      'ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື',
-      'ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR',
-      'ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ',
+      {
+        label: 'ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM',
+        to: '/products_service/atm-inquiry'
+      },
+      {
+        label: 'ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM',
+        to: '/products_service/atm-cash-withdraw'
+      },
+      {
+        label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM',
+        to: '/products_service/atm-transfer'
+      },
+      {
+        label: 'ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື',
+        to: '/products_service/mobile-transfer'
+      },
+      {
+        label: 'ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR',
+        to: '/products_service/qr-payment'
+      },
+      {
+        label: 'ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ',
+        to: '/products_service/crossborder'
+      }
     ]
   },
   {
     label: 'ສະມາຊິກ',
-    link: '#',
+    to: '/members',
     children: [
-      'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ',
-      'ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື',
-      'ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ'
+      {
+        label: 'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ',
+        to: '/members/card-system'
+      },
+      {
+        label: 'ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື',
+        to: '/members/mobile-system'
+      },
+      {
+        label: 'ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ',
+        to: '/members/crossborder-qr'
+      }
     ]
   },
-  { label: 'ຂ່າວ ແລະ ກິດຈະກຳ', link: '#' },
-  { label: 'ຮ່ວມງານກັບເຮົາ', link: '#' },
+  { label: 'ຂ່າວ ແລະ ກິດຈະກຳ', to: '/news' },
+  { label: 'ຮ່ວມງານກັບເຮົາ', to: '/partner' },
   {
     label: 'ກ່ຽວກັບພວກເຮົາ',
-    link: '#',
+    to: '/about',
     children: [
-      'ວິໄສທັດ ແລະ ພາລະກິດ',
-      'ພາລະບົດບາດ',
-      'ຄວາມເປັນມາ',
-      'ສະພາຜູ້ບໍລິຫານ',
-      'ໂຄງຮ່າງການຈັດຕັ້ງ'
+      { label: 'ວິໄສທັດ ແລະ ພາລະກິດ', to: '/about/vision' },
+      { label: 'ພາລະບົດບາດ', to: '/about/role' },
+      { label: 'ຄວາມເປັນມາ', to: '/about/history' },
+      { label: 'ສະພາຜູ້ບໍລິຫານ', to: '/about/board' },
+      { label: 'ໂຄງຮ່າງການຈັດຕັ້ງ', to: '/about/structure' }
     ]
   },
-  { label: 'ຕິດຕໍ່ພວກເຮົາ', link: '#', isCta: true }
+  { label: 'ຕິດຕໍ່ພວກເຮົາ', to: '/contact', isCta: true }
 ]
 
 const isDesktop = () => {
@@ -134,24 +162,25 @@ onMounted(() => {
 
 <template>
   <header ref="navbarRef" class="nav-root">
-    <!-- ... your existing nav layout ... -->
-    <div class="nav-left">
-      <div ref="logoGlowRef" class="logo-glow"></div>
-      <div ref="logoWrapperRef" class="logo-wrapper">
-        <img
-          src="/logolapnet/logolapnet.PNG"
-          alt="LapNet Logo"
-          class="logo-img"
-        />
-        <router-link to="/">
+    <!-- LEFT: LOGO -->
+    <RouterLink to="/">
+      <div class="nav-left">
+        <div ref="logoGlowRef" class="logo-glow"></div>
+        <div ref="logoWrapperRef" class="logo-wrapper">
+          <img
+            src="/logolapnet/logolapnet.PNG"
+            alt="LapNet Logo"
+            class="logo-img"
+          />
           <div class="logo-text-col">
             <span class="logo-text-main">LAPNET</span>
             <span class="logo-text-sub">Lao National Payment Network</span>
           </div>
-        </router-link>
+        </div>
       </div>
-    </div>
+    </RouterLink>
 
+    <!-- MOBILE TOGGLE -->
     <button
       class="nav-toggle"
       type="button"
@@ -163,31 +192,38 @@ onMounted(() => {
       <span class="nav-toggle-bar"></span>
     </button>
 
+    <!-- RIGHT: DESKTOP NAV -->
     <nav class="nav-right">
-      <div 
-        v-for="(item, index) in menuItems" 
+      <div
+        v-for="(item, index) in menuItems"
         :key="index"
         class="nav-group"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
       >
-        <button 
-          class="nav-item" 
+        <!-- ถ้ามี children = ปุ่ม dropdown -->
+        <button
+          v-if="item.children"
+          class="nav-item"
+          type="button"
           :class="{ 'nav-cta': item.isCta, 'has-dropdown': item.children }"
         >
           {{ item.label }}
-          <span
-            v-if="item.children"
-            class="dropdown-arrow"
-          >
-            ▼
-          </span>
+          <span class="dropdown-arrow">▼</span>
         </button>
-      
-        <div
-          v-if="item.children"
-          class="dropdown-menu"
+
+        <!-- ถ้าไม่มี children = router-link ปกติ -->
+        <RouterLink
+          v-else
+          class="nav-item"
+          :class="{ 'nav-cta': item.isCta }"
+          :to="item.to"
         >
+          {{ item.label }}
+        </RouterLink>
+
+        <!-- DROPDOWN MENU -->
+        <div v-if="item.children" class="dropdown-menu">
           <div class="dropdown-blur-bg"></div>
           <ul class="dropdown-list">
             <li
@@ -195,7 +231,12 @@ onMounted(() => {
               :key="cIndex"
               class="dropdown-item"
             >
-              <a href="#">{{ child }}</a>
+              <RouterLink
+                class="dropdown-link"
+                :to="child.to"
+              >
+                {{ child.label }}
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -206,7 +247,7 @@ onMounted(() => {
   <!-- MOBILE SIDEBAR -->
   <sidebar ref="sidebarRef" />
 
-  <!-- ✅ OVERLAY NAVBAR: get values from props -->
+  <!-- OVERLAY NAVBAR -->
   <overlaynavbar
     :title="props.title"
     :breadcrumb="props.breadcrumb"
@@ -255,7 +296,12 @@ onMounted(() => {
 .logo-glow {
   position: absolute;
   inset: -16px -26px;
-  background: conic-gradient(from 210deg, rgba(0,120,255,0.18), rgba(0,220,255,0.3), rgba(0,120,255,0.18));
+  background: conic-gradient(
+    from 210deg,
+    rgba(0, 120, 255, 0.18),
+    rgba(0, 220, 255, 0.3),
+    rgba(0, 120, 255, 0.18)
+  );
   filter: blur(14px);
   opacity: 0.9;
   pointer-events: none;
@@ -272,22 +318,32 @@ onMounted(() => {
   border-radius: 999px;
   background: linear-gradient(120deg, #050b1bdd, #050b1bcc);
   border: 1px solid rgba(80, 170, 255, 0.9);
-  box-shadow: 0 0 20px rgba(40, 140, 255, 0.45), inset 0 0 10px rgba(0, 110, 255, 0.3);
+  box-shadow: 0 0 20px rgba(40, 140, 255, 0.45),
+    inset 0 0 10px rgba(0, 110, 255, 0.3);
 }
 
 .logo-img {
-  width: 40px; height: 40px; object-fit: contain;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(90, 190, 255, 0.9));
 }
 
 .logo-text-main {
-  font-size: 1.1rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: #eef5ff; font-weight: 600; line-height: 1;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #eef5ff;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .logo-text-sub {
-  font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.25em;
-  color: rgba(158, 205, 255, 0.95); margin-top: 2px;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(158, 205, 255, 0.95);
+  margin-top: 2px;
 }
 
 /* RIGHT: NAV ITEMS (desktop only) */
@@ -297,7 +353,6 @@ onMounted(() => {
   gap: 1rem;
 }
 
-/* Nav Group handles the positioning of the Dropdown relative to the Button */
 .nav-group {
   position: relative;
   display: flex;
@@ -307,11 +362,17 @@ onMounted(() => {
 
 .nav-item {
   position: relative;
-  border: none; outline: none; background: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
   padding: 0.45rem 0.9rem;
-  font-size: 1rem; text-transform: uppercase;
-  color: #e5f0ff; cursor: pointer;
-  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #e5f0ff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
   gap: 6px;
   transition: all 0.2s ease;
@@ -330,12 +391,16 @@ onMounted(() => {
 
 /* Hover effects */
 .nav-item:hover {
-  background: radial-gradient(circle at top, rgba(40, 130, 255, 0.35), transparent 65%);
+  background: radial-gradient(
+    circle at top,
+    rgba(40, 130, 255, 0.35),
+    transparent 65%
+  );
   color: #ffffff;
   text-shadow: 0 0 8px rgba(120, 200, 255, 0.6);
 }
 
-/* --- DROPDOWN MENU STYLING --- */
+/* DROPDOWN MENU */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -343,7 +408,6 @@ onMounted(() => {
   transform: translateX(-50%);
   min-width: 240px;
   padding-top: 15px;
-
   visibility: hidden;
   opacity: 0;
 }
@@ -356,7 +420,8 @@ onMounted(() => {
   background: rgba(5, 11, 27, 0.95);
   border: 1px solid rgba(80, 170, 255, 0.5);
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 80, 200, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 80, 200, 0.3);
   backdrop-filter: blur(20px);
   overflow: hidden;
 }
@@ -369,7 +434,8 @@ onMounted(() => {
   border-bottom: none;
 }
 
-.dropdown-item a {
+/* ใช้กับ RouterLink */
+.dropdown-link {
   display: block;
   padding: 12px 20px;
   color: #b0d0ff;
@@ -382,15 +448,14 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* Dropdown Item Hover Effect */
-.dropdown-item a:hover {
+.dropdown-link:hover {
   background: linear-gradient(90deg, rgba(0, 60, 150, 0.4), transparent);
   color: #fff;
   padding-left: 28px;
   text-shadow: 0 0 5px rgba(0, 200, 255, 0.8);
 }
 
-.dropdown-item a::before {
+.dropdown-link::before {
   content: '';
   position: absolute;
   left: 0;
@@ -402,14 +467,15 @@ onMounted(() => {
   transition: opacity 0.2s;
 }
 
-.dropdown-item a:hover::before {
+.dropdown-link:hover::before {
   opacity: 1;
 }
 
-/* --- CTA BUTTON --- */
+/* CTA BUTTON */
 .nav-cta {
   background: linear-gradient(135deg, #3a9bff, #7ce3ff);
-  color: #021325; font-weight: 600;
+  color: #021325;
+  font-weight: 600;
   box-shadow: 0 0 22px rgba(100, 190, 255, 0.7);
 }
 .nav-cta:hover {
@@ -437,8 +503,12 @@ onMounted(() => {
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
-  .logo-text-sub { display: none; }
-  .nav-item { font-size: 0.8rem; }
+  .logo-text-sub {
+    display: none;
+  }
+  .nav-item {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -449,12 +519,10 @@ onMounted(() => {
     padding: 0.6rem 1.25rem;
   }
 
-  /* hide desktop nav on mobile */
   .nav-right {
     display: none;
   }
 
-  /* show hamburger on mobile */
   .nav-toggle {
     display: flex;
   }

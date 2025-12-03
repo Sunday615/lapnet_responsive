@@ -5,6 +5,7 @@ import homepagebutton from '../../components/button/homepagebutton.vue';
 import videobackgroundhomepage from '../../components/videobackground/productbackgroundvideo.vue'
 import tagproduct from '../../components/tagproduct/tagproduct.vue';
 import product1_footerlogomember from '../../components/footer/logomemberfooter/product1_footerlogomember.vue';
+import cardscrolling from './cardscrolling/cardscrolling.vue';
 
 
 const heroVideo = '/videos/productvdo-background.mp4'
@@ -84,7 +85,7 @@ const memberLogos = [
     :breadcrumb="[
       'ໜ້າຫຼັກ',
       'ຜະລິດຕະພັນ ແລະ ການບໍລິການ',
-      'ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM'
+      'ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM'
     ]"
     background-image="/overlaynav/product/navigatorcontent-bg.png"
   />
@@ -92,19 +93,19 @@ const memberLogos = [
     <div class="adjustmentcenter">
       <div class="description_left_container">
       
-         <h1>ກວດຍອດເງິນຂ້າມ<br>ທະນາຄານຜ່ານຕູ້ ATM</h1>
-         <p>ການກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM ແມ່ນນຳໃຊ້ລະບົບ
-              ແລັບໃນການເຊື່ອມໂຍງຕູ້ເອທີເອັມຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກ
-              ຂອງບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການກວດ
-              ຍອດເງິນຂ້າມທະນາຄານໄດ້.</p>
+         <h1>ຖອນເງິນສົດຂ້າມ<br>ທະນາຄານຜ່ານຕູ້ ATM</h1>
+         <p> ການຖອນເງິນສົດຜ່ານຕູ້ເອທີເອັມ ແມ່ນນຳໃຊ້ລະບົບແລັບໃນການ
+            ເຊື່ອມໂຍງຕູ້ເອທີເອັມຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກຂອງ
+            ບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການຖອນ
+            ເງິນຂ້າມທະນາຄານໄດ້.</p>
           <tagproduct label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ"/>
       </div>
       <div class="description_right_container">
          <div class="topimg">
-             <img src="/product/product1/pd1bg.webp" alt=""></img>
+             <img src="/product/product2/atmpd2.jpg" alt=""></img>
          </div>
          <div class="atmmockup">
-            <img src="/product/product1/atmpd1.webp" alt="">
+            <img src="/product/product2/ATMpd2.webp" alt="">
          </div>
       </div>
     
@@ -115,12 +116,14 @@ const memberLogos = [
            <div class="benetfitcontainer">
                <div class="benetfitcontent">
                   <h1>ຜົນປະໂຫຍດທີ່ໄດ້ຮັບ</h1>
+                  <h2>ດ້ານທະນາຄານສະມາຊິກ</h2>
                   <p>ປະຢັດ​ເວລາ, ສະດວກ ໂດຍລູກຄ້າບໍ່ຕ້ອງລໍຖ້າການໃຊ້ບໍລິການ ຫຼື ຊອກຫາຕູ້​ເອທີ​ເອັມຂອງທະນາຄານຜູ້ອອກບັດ
                     ກໍ່ສາມາດ
                     ກວດຍອດເງິນຜ່ານຕູ້​ເອທີ​ເອັມຂອງບັນດາທະນາຄານທຸກລະກິດທີ່ເຊື່ອມຕໍ່ກັບລະບົບແລັບ.</p>
                </div>
                <div class="condition">
                         <h1>ເງື່ອນໄຂການໃຊ້ບໍລິການ</h1>
+                          <h2>ດ້ານລູກຄ້າຂອງທະນາຄານ</h2>
                   <p>ລູກຄ້າ​ທີ່ມີ​ບັດ​ເອທີເອັມຂອງ​ທະນາຄານ​ທີ່​ເປັນ​ສະມາຊິກ​ຂອງ ແລັບເນັດ, ໂດຍສາມາດສັງເກດໄດ້ຈາກ
                     ສັນຍາ​ລັກແລັບເນັດທີ່
                     ຕິດຕາມຕູ້ເອທີເອັມ
@@ -129,16 +132,31 @@ const memberLogos = [
            </div>
       </videobackgroundhomepage>
      </div>
+       <div class="cardscrolling">
+
+         <cardscrolling/>
+       </div>
 <div class="footermemberproduct1">
 
 <product1_footerlogomember :logos="memberLogos"/>
    </div>
+ 
   <mainfooter/>
+  
 </template>
 
 
 <style scoped>
+.cardscrolling{
+   width: 100%;
+   height: auto;
+   border: 1px solid red;
 
+}
+.benetfitcontent h2{
+      font-size: var(--fs-md);
+   font-weight: bold;
+}
 .footermemberproduct1{ 
    width: 100%;
   
@@ -146,11 +164,15 @@ const memberLogos = [
 
 
 }
+.condition h2{
+   font-size: var(--fs-md);
+   font-weight: bold;
+}
 .condition p{
       width: 100%;
    padding-top: 40px;
    
-   width: 80%;
+  
    font-size: var(--fs-base);
    text-align: center;
 
@@ -176,7 +198,7 @@ const memberLogos = [
    width: 100%;
    padding-top: 40px;
 
-   width: 80%;
+
   
    font-size: var(--fs-base);
    text-align: center;
@@ -276,7 +298,7 @@ const memberLogos = [
 .productdiscription{
    width: 100%;
    height: 90vh;
-   background-image: url(/product/product1/bgpd1-1.png);
+   background-image: url(/product/product2/bgtemplete-2.png);
    background-position: left;
    background-size: cover;
    background-repeat: no-repeat;

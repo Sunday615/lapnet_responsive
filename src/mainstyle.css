@@ -11,6 +11,12 @@
     --fs-hero: clamp(3rem , 8vw , 5rem);
     --fs-heroxl: clamp(4rem , 10vw , 6rem);
 
+
+
+     --fs-biger: clamp(4rem , 15vw , 13rem);
+
+
+
     --color-second: #433bff;
 }
 

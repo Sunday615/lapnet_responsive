@@ -227,7 +227,7 @@ import menuresponsive from './menuresponsive.vue';
 
     display: grid;
     grid-template-rows: auto 1fr;
-    border: 1px solid red;
+
 }
 
 .adjustcontainer {
