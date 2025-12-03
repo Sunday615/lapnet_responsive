@@ -2,11 +2,28 @@
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import sidebar from '../sidebar/sidebar.vue'
+import overlaynavbar from './overlaynavbar.vue'
+
+// ✅ Receive values from parent
+const props = defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  breadcrumb: {
+    type: Array,
+    default: () => []
+  },
+  backgroundImage: {
+    type: String,
+    default: '/overlaynav/product/navigatorcontent-bg.png'
+  }
+})
 
 const navbarRef = ref(null)
 const logoWrapperRef = ref(null)
 const logoGlowRef = ref(null)
-const sidebarRef = ref(null) // ⬅️ ref to sidebar component
+const sidebarRef = ref(null)
 
 // --- DATA STRUCTURE FOR MENU (desktop nav only) ---
 const menuItems = [
@@ -51,16 +68,12 @@ const isDesktop = () => {
   return window.innerWidth > 768
 }
 
-// 🔔 Called by hamburger button on mobile
 const openSidebarFromNav = () => {
-  // sidebar.vue exposes toggleSidebar via defineExpose
   sidebarRef.value?.toggleSidebar()
 }
 
-// --- HOVER ANIMATIONS (DROPDOWN, desktop only) ---
 const handleMouseEnter = (event) => {
   if (!isDesktop()) return
-
   const el = event.currentTarget
   const dropdown = el.querySelector('.dropdown-menu')
   const items = el.querySelectorAll('.dropdown-item')
@@ -93,10 +106,9 @@ const handleMouseEnter = (event) => {
 
 const handleMouseLeave = (event) => {
   if (!isDesktop()) return
-
   const el = event.currentTarget
   const dropdown = el.querySelector('.dropdown-menu')
-  
+
   if (dropdown) {
     gsap.to(dropdown, {
       autoAlpha: 0,
@@ -108,7 +120,6 @@ const handleMouseLeave = (event) => {
   }
 }
 
-// --- INITIAL LOAD ANIMATION ---
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: { duration: 0.8, ease: 'power3.out' }
@@ -123,6 +134,7 @@ onMounted(() => {
 
 <template>
   <header ref="navbarRef" class="nav-root">
+    <!-- ... your existing nav layout ... -->
     <div class="nav-left">
       <div ref="logoGlowRef" class="logo-glow"></div>
       <div ref="logoWrapperRef" class="logo-wrapper">
@@ -131,14 +143,15 @@ onMounted(() => {
           alt="LapNet Logo"
           class="logo-img"
         />
-        <div class="logo-text-col">
-          <span class="logo-text-main">LAPNET</span>
-          <span class="logo-text-sub">Lao National Payment Network</span>
-        </div>
+        <router-link to="/">
+          <div class="logo-text-col">
+            <span class="logo-text-main">LAPNET</span>
+            <span class="logo-text-sub">Lao National Payment Network</span>
+          </div>
+        </router-link>
       </div>
     </div>
 
-    <!-- MOBILE TOGGLE BUTTON: now opens sidebar.vue -->
     <button
       class="nav-toggle"
       type="button"
@@ -150,7 +163,6 @@ onMounted(() => {
       <span class="nav-toggle-bar"></span>
     </button>
 
-    <!-- DESKTOP NAV ONLY (hidden on mobile by CSS) -->
     <nav class="nav-right">
       <div 
         v-for="(item, index) in menuItems" 
@@ -191,8 +203,15 @@ onMounted(() => {
     </nav>
   </header>
 
-  <!-- 🔥 GLOBAL SIDEBAR OVERLAY (mobile menu) -->
+  <!-- MOBILE SIDEBAR -->
   <sidebar ref="sidebarRef" />
+
+  <!-- ✅ OVERLAY NAVBAR: get values from props -->
+  <overlaynavbar
+    :title="props.title"
+    :breadcrumb="props.breadcrumb"
+    :background-image="props.backgroundImage"
+  />
 </template>
 
 <style scoped>

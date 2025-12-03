@@ -42,7 +42,7 @@
       v-if="openKey === 'product'"
       class="sidebar-subnav"
     >
-      <li class="sidebar-subitem" @click.stop>ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</li>
+      <li class="sidebar-subitem" @click.stop @click="goToProduct1()">ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</li>
       <li class="sidebar-subitem" @click.stop>ຖອນເງິນສົດຂ້າມທະນາຄາານຜ່ານຕູ້ ATM</li>
       <li class="sidebar-subitem" @click.stop>ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</li>
       <li class="sidebar-subitem" @click.stop>ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື</li>
@@ -127,6 +127,10 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
 import { defineExpose } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+
 
 const openKey = ref(null)
 
@@ -205,6 +209,14 @@ defineExpose({
   closeSidebar,
   toggleSidebar
 })
+
+function goToProduct1() {
+ 
+
+  // or by path:
+  router.push('/products_service/atm-inquiry')
+}
+
 </script>
 
 <style scoped>

@@ -16,6 +16,7 @@ import techbox from '../../components/button/techbox.vue';
 import allmemberscrolling from '../../components/swiper/memberscrolling/allmemberscrolling.vue';
 import bloghomepage from '../../components/blog/hompage/bloghomepage.vue';
 import mainfooter from '../../components/footer/mainfooter/mainfooter.vue';
+
 const heroVideo = '/videos/homepagecrossborder.mp4'
 const mobile_transfer = '/videos/mobiletransfer.mp4'
 const sidebarRef = ref(null)
@@ -787,9 +788,32 @@ const openSidebarFromNavbar = () => {
 @media (max-width : 617px) {
     .titleproduct5 h1 {
         font-size: 2.5rem;
+
+    }
+
+}
+@media (max-width: 502px) {
+        .titleproduct5 h1 {
+        font-size: 2rem;
         text-align: center;
     }
 
+}
+@media (max-width: 462px) {
+        .titlecrossborderproduct h1{
+            font-size: 2.5rem;
+        }
+        .countrycrossborder{
+            margin-bottom: 100px;
+        }
+    
+}
+@media (max-width: 447px) {
+     
+        .countrycrossborder{
+            margin-bottom: 100px;
+        }
+    
 }
 
 

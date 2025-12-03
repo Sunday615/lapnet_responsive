@@ -1,12 +1,10 @@
 <script setup>
 import footerinfocomponent from './footerinfocomponent.vue';
 import dropdown_menu from './dropdown_menu.vue';
+import menuresponsive from './menuresponsive.vue';
 </script>
 
-
 <template>
-
-
     <footer class="mainfootercontianer">
         <div class="infofooter">
             <div class="iteminfofooter logofooter">
@@ -21,7 +19,7 @@ import dropdown_menu from './dropdown_menu.vue';
                     <p>021 417915</p>
                 </div>
             </div>
-            <div class="iteminfofooter email ">
+            <div class="iteminfofooter email" >
                 <div class="iconinfofooter">
                     <i class="fa-solid fa-envelope"></i>
                 </div>
@@ -49,8 +47,10 @@ import dropdown_menu from './dropdown_menu.vue';
                         <p>ບ້ານໂພນສະອາດ, ໄຊເສດຖາ, ນະຄອນຫຼວງວຽງຈັນ</p>
                         <p>ເບີໂທ: 021 417915</p>
                         <p>ອີເມວ: info@lapnet.com.la</p>
-                        <div class="buttonlink"><a href="https://www.facebook.com/laonationalpaymentnetwork"
-                                target="_blank"><i class="fa-brands fa-facebook"></i>Lao National Payment Network</a>
+                        <div class="buttonlink">
+                            <a href="https://www.facebook.com/laonationalpaymentnetwork" target="_blank">
+                                <i class="fa-brands fa-facebook"></i>Lao National Payment Network
+                            </a>
                         </div>
                     </div>
                     <div class="facebookbtn">
@@ -93,8 +93,9 @@ import dropdown_menu from './dropdown_menu.vue';
                         <h1>ເມນູ</h1>
                     </div>
                     <div class="navigatorfooterbox">
-                        <dropdown_menu />
-
+                        <!-- Responsive menus -->
+                        <menuresponsive class="menu-responsive" />
+                        <dropdown_menu class="dropdown-desktop" />
                     </div>
                 </div>
                 <div class="copyrright" style="grid-area: box4;">
@@ -109,8 +110,6 @@ import dropdown_menu from './dropdown_menu.vue';
         </div>
     </footer>
 </template>
-
-
 
 <style scoped>
 .itemnavigatorlink:hover {
@@ -160,7 +159,9 @@ import dropdown_menu from './dropdown_menu.vue';
     height: 50%;
 
     display: flex;
+
     justify-content: center;
+
 
     border-top: 1px solid #ffffff43;
 }
@@ -226,6 +227,7 @@ import dropdown_menu from './dropdown_menu.vue';
 
     display: grid;
     grid-template-rows: auto 1fr;
+    border: 1px solid red;
 }
 
 .adjustcontainer {
@@ -236,6 +238,7 @@ import dropdown_menu from './dropdown_menu.vue';
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 3rem;
     grid-template-rows: 5fr 1fr;
+
     grid-template-areas:
         "box1 box2 box3"
         "box4 box4 box4"
@@ -275,7 +278,7 @@ import dropdown_menu from './dropdown_menu.vue';
 
 .maincontentfooter {
     width: 100%;
-    height: 1000px;
+    height: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -287,8 +290,9 @@ import dropdown_menu from './dropdown_menu.vue';
 }
 
 .logofooter img {
-    width: 23%;
+    width: 120px;
     height: auto;
+
 }
 
 .logofooter {
@@ -330,9 +334,16 @@ import dropdown_menu from './dropdown_menu.vue';
 .mainfootercontianer {
     width: 100%;
     height: 18vh;
+}
 
+/* ---- MENU RESPONSIVE / DROPDOWN TOGGLE ---- */
+/* Default: desktop view (>706px) */
+.menu-responsive {
+    display: none;
+}
 
-
+.dropdown-desktop {
+    display: block;
 }
 
 @media (max-width:866px) {
@@ -366,7 +377,9 @@ import dropdown_menu from './dropdown_menu.vue';
 @media (max-width: 939px) {
     .infofooter {
         grid-template-columns: 2fr 1fr;
+
     }
+
 
     .callus {
         display: none;
@@ -376,5 +389,47 @@ import dropdown_menu from './dropdown_menu.vue';
         justify-content: start;
     }
 
+}
+
+@media (max-width: 706px) {
+    .adjustcontainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 5fr 1fr;
+        grid-auto-columns: 90%;
+        grid-template-areas:
+            "box3 box3 "
+            "box4 box4"
+        ;
+        overflow: hidden;
+
+    }
+
+    .container_copyright {
+        display: none;
+    }
+
+    /* On small screens (≤706px): show menuresponsive, hide dropdown_menu */
+    .menu-responsive {
+        display: block;
+    }
+
+    .dropdown-desktop {
+        display: none;
+    }
+
+    .logofooter img {
+        width: 90px;
+        height: auto;
+
+    }
+
+    @media (max-width: 573px) {
+        .logofooter img {
+            width: 70px;
+            height: auto;
+
+        }
+    }
+ 
 }
 </style>

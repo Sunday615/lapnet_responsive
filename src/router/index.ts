@@ -11,8 +11,8 @@ const routes = [
     component: HomePage,
   },
   {
-    path: '/products_service/product1',
-    name: 'product1', // was "home" before – duplicated
+    path: '/products_service/atm-inquiry',
+    name: 'atm-inquiry', // was "home" before – duplicated
     component: Product1,
   },
    {
