@@ -8,12 +8,7 @@ import product4 from '../Views/products/product4.vue'
 import product5 from '../Views/products/product5.vue'
 import product6 from '../Views/products/product6.vue'
 import companystructure from '../Views/Aboutus/companystructure/companystructure.vue'
-import vdoproductcrossborderKH_LA from '../components/videoproductcrossborder/vdoproductcrossborderKH_LA.vue'
-import vdoproductcrossborderLA_KH from '../components/videoproductcrossborder/vdoproductcrossborderLA_KH.vue'
-import vdoproductcrossborderTH_LA from '../components/videoproductcrossborder/vdoproductcrossborderTH_LA.vue'
-import vdoproductcrossborderLA_TH from '../components/videoproductcrossborder/vdoproductcrossborderLA_TH.vue'
-import vdoproductcrossborderVN_LA from '../components/videoproductcrossborder/vdoproductcrossborderVN_LA.vue'
-import vdoproductcrossborderCN_LA from '../components/videoproductcrossborder/vdoproductcrossborderCN_LA.vue'
+
 const routes = [
   {
     path: '/',

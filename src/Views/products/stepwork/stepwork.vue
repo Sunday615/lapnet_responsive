@@ -1,80 +1,196 @@
+<template>
+  <section ref="sectionEl" class="hero-roadmap">
+    <div class="hero-inner">
+      <!-- Hero text -->
+      <header class="hero-copy">
+        <!-- LOGO instead of text eyebrow -->
+        <div class="eyebrow">
+          <img src="/logolapnet/logolapnet.PNG" alt="Logo" />
+          <img src="/logolapnet/textlogo.PNG" alt="">
+        </div>
+
+        <h1 class="hero-heading">ຂັ້ນຕອນການໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM</h1>
+        <p class="hero-subtitle">
+          ການໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM ສາມາດເຮັດທຸລະກຳການໂອນໄດ້ທີ່ຕູ້ ATM ດັ່ງລຸ່ມນີ້:
+        </p>
+      </header>
+
+      <!-- Timeline -->
+      <div class="timeline-wrapper">
+        <div class="timeline-line"></div>
+
+        <div
+          v-for="(item, index) in timeline"
+          :key="index"
+          class="timeline-item"
+          :class="item.side"
+        >
+          <article class="timeline-card">
+            <p class="timeline-period">{{ item.period }}</p>
+            <h3 class="timeline-title">{{ item.title }}</h3>
+            <p class="timeline-text">
+              {{ item.text }}
+            </p>
+          </article>
+
+          <span class="timeline-node"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const section = ref(null)
-let ctx = null // เก็บ context ของ gsap
+const sectionEl = ref(null)
+
+const timeline = [
+  {
+    period: 'ຂັ້ນຕອນທີ 1 ຈຸດໃຫ້ບໍລິການ',
+  
+    text: `1. ບັດ ATM ຂອງທະນາຄານ (A) ສາມາດນຳໃຊ້ຕູ້ຂອງທະນາຄານ (A) ເພື່ອໂອນຫາຜູ້ຮັບປາຍທາງທີ່ທະນາຄານ (B).
+
+2. ບັດທະນາຄານ (A) ສາມາດນຳໃຊ້ຕູ້ຂອງທະນາຄານ (B) ເພື່ອໂອນຫາຜູ້ຮັບປາຍທາງທີ່ທະນາຄານ (C).`,
+    side: 'left',
+  },
+  {
+    period: 'ຂັ້ນຕອນທີ 2 ສະມາຊິກທີ່ໃຫ້ບໍລິການ',
+    title:
+      'ສາມາດເລືອກໃຊ້ຕູ້ ATM ໃດກໍໄດ້ ພາຍໃນ 14 ທະນາຄານທີ່ເປັນສະມາຊິກຂອງບໍລິສັດ LAPNet.',
+    text: '',
+    side: 'right',
+  },
+  {
+    period: 'ຂັ້ນຕອນທີ 3 ການເຮັດທຸລະກຳ',
+    title: '',
+    text: `1. ນຳບັດເອທີເອັມປ່ອນເຂົ້າຕູ້ເອທີເອັມ ເຮັດຕາມຂັ້ນຕອນການໂອນເງິນ ແລະ
+ປ້ອນເລກໜ້າບັດ 16 ໂຕເລກຂອງຜູ້ຮັບປາຍທາງ ກົດຈຳນວນເງິນ ແລ້ວຢືນຢັນ.
+
+2. ຜູ້ຮັບປາຍທາງຈະໄດ້ຮັບເງິນໂອນທັນທີ ຫຼັງຈາກທຸລະກຳການໂອນເງິນສຳເລັດ.`,
+    side: 'left',
+  },
+]
+
+let ctx
 
 onMounted(() => {
   ctx = gsap.context(() => {
-    // TITLE
-    gsap.from('.hiw-title', {
+    /* -----------------------------
+     * Hero intro animations
+     * --------------------------- */
+    gsap.from('.eyebrow img', {
       opacity: 0,
-      y: -30,
-      duration: 0.8,
+      y: -20,
+      rotate: -8,
+      duration: 0.9,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: section.value,
-        start: 'top 80%',
-      },
+      stagger: 0.1,
     })
 
-    // TIMELINE LINE
-    gsap.from('.hiw-line', {
-      scaleY: 0,
-      transformOrigin: 'center top',
+    gsap.from('.hero-heading', {
+      opacity: 0,
+      y: 40,
       duration: 1,
+      delay: 0.2,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: section.value,
-        start: 'top 75%',
-      },
     })
 
-    // TIMELINE DOTS
-    gsap.from('.hiw-dot', {
-      scale: 0,
+    gsap.from('.hero-subtitle', {
       opacity: 0,
-      duration: 0.4,
-      stagger: 0.15,
-      ease: 'back.out(1.7)',
-      scrollTrigger: {
-        trigger: section.value,
-        start: 'top 70%',
-      },
+      y: 24,
+      duration: 1,
+      delay: 0.35,
+      ease: 'power3.out',
     })
 
-    // STEPS 1 → 2 → 3
-    const tlSteps = gsap.timeline({
-      scrollTrigger: {
-        trigger: section.value,
-        start: 'top 65%',
-      },
+    // subtle floating of the hero block
+    gsap.to('.hero-inner', {
+      y: -10,
+      duration: 6,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
     })
 
-    tlSteps
-      .from(['.hiw-step--1', '.hiw-icon-card--1'], {
+    /* -----------------------------
+     * Timeline line progress (ScrollTrigger)
+     * Fills from top to bottom while scrolling
+     * --------------------------- */
+    gsap.fromTo(
+      '.timeline-line',
+      {
+        scaleY: 0,
+        transformOrigin: 'top center',
+      },
+      {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.timeline-wrapper',
+          start: 'top 70%',
+          end: 'bottom 20%',
+          scrub: 0.5,
+        },
+      }
+    )
+
+    /* Breathing glow on nodes */
+    gsap.to('.timeline-node', {
+      boxShadow: '0 0 28px rgba(37, 99, 235, 1)',
+      duration: 1.6,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+      stagger: 0.2,
+    })
+
+    /* -----------------------------
+     * Cards & nodes reveal on scroll
+     * slide from side (left/right)
+     * --------------------------- */
+    gsap.utils.toArray('.timeline-item').forEach((el, idx) => {
+      const item = el
+      const isLeft = item.classList.contains('left')
+      const card = item.querySelector('.timeline-card')
+      const node = item.querySelector('.timeline-node')
+
+      // Card animation
+      gsap.from(card, {
         opacity: 0,
-        y: 40,
-        duration: 0.6,
+        y: 60,
+        x: isLeft ? 40 : -40,
+        duration: 1,
+        delay: idx * 0.05,
         ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
       })
-      .from('.hiw-step--2', {
-        opacity: 0,
-        y: 40,
-        duration: 0.6,
-        ease: 'power3.out',
-      })
-      .from(['.hiw-step--3', '.hiw-icon-card--3'], {
-        opacity: 0,
-        y: 40,
-        duration: 0.6,
-        ease: 'power3.out',
-      })
-  }, section)
+
+      // Node pop-in
+      if (node) {
+        gsap.from(node, {
+          scale: 0,
+          opacity: 0,
+          filter: 'blur(4px)',
+          duration: 0.6,
+          ease: 'back.out(1.8)',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        })
+      }
+    })
+  }, sectionEl)
 })
 
 onBeforeUnmount(() => {
@@ -82,324 +198,195 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<template>
-  <section class="hiw" ref="section">
-    <div class="hiw-inner">
-      <!-- TITLE -->
-      <h2 class="hiw-title">
-        ຂັ້ນຕອນການໂອນເງິນຂ້າມ
-        <br />
-        ທະນາຄານຜ່ານຕູ້ ATM
-      </h2>
-
-      <!-- GRID -->
-      <div class="hiw-layout">
-        <!-- LEFT COLUMN -->
-        <div class="hiw-col hiw-col--left">
-          <!-- STEP 1 -->
-          <div class="hiw-step hiw-step--1">
-            <h3>ຂັ້ນຕອນທີ 1 ຈຸດໃຫ້ບໍລິການ</h3>
-            <p>
-              ການໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM ສາມາດເຮັດທຸລະກຳການໂອນໄດ້ທີ່ຕູ້ ATM ດັ່ງລຸ່ມນີ້:
-              <br />
-              1. ບັດ ATM ຂອງທະນາຄານ (A) ສາມາດນຳໃຊ້ຕູ້ຂອງທະນາຄານ (A) ເພື່ອໂອນຫາຜູ້ຮັບປາຍທາງທີ່ທະນາຄານ (B)
-              <br />
-              2. ບັດທະນາຄານ (A) ສາມາດນຳໃຊ້ຕູ້ຂອງທະນາຄານ (B) ເພື່ອໂອນຫາຜູ້ຮັບປາຍທາງທີ່ທະນາຄານ (C)
-            </p>
-          </div>
-
-          <!-- SPACER (ตำแหน่ง icon step 2) -->
-          <div class="hiw-spacer"></div>
-
-          <!-- STEP 3 -->
-          <div class="hiw-step hiw-step--3">
-            <h3>ຂັ້ນຕອນທີ 3 ການເຮັດທຸລະກຳ</h3>
-            <p>
-              1. ນຳບັດເອທີເອັມປ່ອນເຂົ້າຕູ້ເອທີເອັມ ເຮັດຕາມຂັ້ນຕອນການໂອນເງິນ ແລະ
-              ປ້ອນເລກໜ້າບັດ 16 ໂຕເລກຂອງຜູ້ຮັບປາຍທາງ ກົດຈຳນວນເງິນ ແລ້ວຢືນຢັນ
-              <br />
-              2. ຜູ້ຮັບປາຍທາງຈະໄດ້ຮັບເງິນໂອນທັນທີ ຫຼັງຈາກທຸລະກຳການໂອນເງິນສຳເລັດ.
-            </p>
-          </div>
-        </div>
-
-        <!-- CENTER COLUMN (TIMELINE) -->
-        <div class="hiw-col hiw-col--center">
-          <div class="hiw-timeline">
-            <div class="hiw-line"></div>
-            <span class="hiw-dot hiw-dot--1"></span>
-            <span class="hiw-dot hiw-dot--2"></span>
-            <span class="hiw-dot hiw-dot--3"></span>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN -->
-        <div class="hiw-col hiw-col--right">
-          <!-- ICON STEP 1 -->
-          <div class="hiw-icon-card hiw-icon-card--1">
-            <div class="hiw-icon">
-              <img src="/logolapnet/logolapnet.PNG" alt="LAPNet logo" />
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="hiw-step hiw-step--2">
-            <h3>ຂັ້ນຕອນທີ 2 ສະມາຊິກທີ່ໃຫ້ບໍລິການ</h3>
-            <p>
-              ສາມາດເລືອກໃຊ້ຕູ້ ATM ໃດກໍໄດ້ ພາຍໃນ 16 ທະນາຄານທີ່ເປັນສະມາຊິກຂອງບໍລິສັດ LAPNet
-            </p>
-          </div>
-
-          <!-- ICON STEP 3 -->
-          <div class="hiw-icon-card hiw-icon-card--3">
-            <div class="hiw-icon">
-              <img src="/logolapnet/textlogo.PNG" alt="LAPNet text logo" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
 <style scoped>
-.hiw {
+.hero-roadmap {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100%; /* 🔄 was fixed 940px */
-  padding: 64px 0 80px;
+  min-height: 100vh;
+  padding: 5rem 8vw 5rem;
+  background: radial-gradient(circle at top left, #e0f2ff 0, #f5f7ff 45%, #e1e9ff 100%);
+  color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
+    sans-serif;
   overflow: hidden;
-  color: #e5e7eb;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #1871ff 0, #001261 55%, #000 100%);
-  box-sizing: border-box;
 }
 
-/* glow */
-.hiw::before {
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero text */
+.hero-copy {
+  max-width: 520px;
+}
+
+/* eyebrow now behaves as logo container */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.eyebrow img {
+  height: 52px; /* adjust size as you like */
+  width: auto;
+}
+
+/* Heading & subtitle */
+.hero-heading {
+  font-size: clamp(2.4rem, 4vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+  color: #0b1120;
+}
+
+.hero-subtitle {
+  font-size : 1.2rem;;
+  line-height: 1.7;
+  color: #1f1f1f;
+}
+
+/* Timeline layout */
+.timeline-wrapper {
+  position: relative;
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(59, 130, 246, 0.1),
+    rgba(37, 99, 235, 0.75),
+    rgba(59, 130, 246, 0.15)
+  );
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.4);
+  opacity: 0.7;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 3rem 0;
+}
+
+/* Cards */
+.timeline-card {
+  position: relative;
+  max-width: 540px;
+  padding: 1.3rem 1.6rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(239, 246, 255, 0.96));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.timeline-item.left .timeline-card {
+  margin-right: calc(50% + 3rem);
+  margin-left: auto;
+  text-align: right;
+}
+
+.timeline-item.right .timeline-card {
+  margin-left: calc(50% + 3rem);
+}
+
+.timeline-period {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #60a5fa;
+  margin-bottom: 0.45rem;
+}
+
+.timeline-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #0f172a;
+}
+
+/* text with new lines */
+.timeline-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #475569;
+  white-space: pre-line;
+}
+
+/* Node */
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #eff6ff, #3b82f6 40%, #1d4ed8 80%);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.85);
+}
+
+/* Performance hint for smoother animation */
+.timeline-card,
+.timeline-node,
+.timeline-line {
+  will-change: transform, opacity, box-shadow;
+}
+
+.timeline-node::after {
   content: '';
   position: absolute;
-  top: -140px;
-  left: 50%;
-  width: 460px;
-  height: 460px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: rgba(59, 130, 246, 0.7);
-  filter: blur(110px);
-  opacity: 0.7;
-  pointer-events: none;
+  inset: -7px;
+  border-radius: inherit;
+  border: 1px solid rgba(129, 140, 248, 0.5);
 }
 
-.hiw-inner {
-  position: relative;
-  width: 100%;
-  max-width: 1120px;
-  padding: 48px 32px;
-}
-
-/* TITLE */
-.hiw-title {
-  margin-bottom: 60px;
-  text-align: center;
-  font-size: clamp(2rem, 4vw, 3rem); /* 🔄 responsive font-size */
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-/* LAYOUT */
-.hiw-layout {
-  display: grid;
-  grid-template-columns: 1.4fr 0.2fr 1.4fr;
-  column-gap: 48px;
-  align-items: center;
-}
-
-/* COLUMNS */
-.hiw-col--left,
-.hiw-col--right {
-  display: grid;
-  grid-template-rows: repeat(3, minmax(0, auto));
-  row-gap: 64px;
-}
-
-/* spacer */
-.hiw-spacer {
-  min-height: 40px;
-}
-
-/* TIMELINE */
-.hiw-col--center {
-  display: flex;
-  justify-content: center;
-}
-
-.hiw-timeline {
-  position: relative;
-  width: 4px;
-  height: 360px;
-}
-
-.hiw-line {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 2px;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, #1d4ed8, #38bdf8);
-}
-
-.hiw-dot {
-  position: absolute;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 20%, #e0f2fe, #3b82f6);
-  box-shadow: 0 0 18px rgba(37, 99, 235, 0.9);
-}
-
-.hiw-dot--1 {
-  top: 0;
-}
-
-.hiw-dot--2 {
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.hiw-dot--3 {
-  bottom: 0;
-}
-
-/* STEPS TEXT */
-.hiw-step h3 {
-  margin-bottom: 6px;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff36f;
-}
-
-.hiw-step p {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #feffff;
-}
-
-/* ICON CARDS */
-.hiw-icon-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: flex-start;
-  width: 80px;
-  height: 80px;
-  border-radius: 24px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.7);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
-}
-
-.hiw-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  background: radial-gradient(circle at 30% 20%, #e5f2ff, #3b82f6);
-  font-size: 30px;
-  color: #020617;
-}
-
-.hiw-icon img {
-  max-width: 70%;
-  max-height: 70%;
-}
-
-/* align icons */
-.hiw-icon-card--1,
-.hiw-icon-card--3 {
-  justify-self: flex-end;
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-/* Medium screens – slightly tighter layout */
-@media (max-width: 1100px) {
-  .hiw-inner {
-    padding: 40px 24px;
-  }
-  .hiw-layout {
-    column-gap: 32px;
-  }
-  .hiw-step p {
-    font-size: 15px;
-  }
-}
-
-/* Tablet & down – stack columns */
+/* Responsive timeline */
 @media (max-width: 900px) {
-  .hiw {
-    padding: 48px 0 56px;
+  .hero-roadmap {
+    padding-inline: 1.5rem;
   }
 
-  .hiw-inner {
-    padding: 32px 20px;
+  .timeline-line {
+    left: 1.2rem;
+    transform: none;
   }
 
-  .hiw-title {
-    font-size: clamp(1.8rem, 5vw, 2.4rem);
-    margin-bottom: 40px;
+  .timeline-node {
+    left: 1.2rem;
+    transform: translate(-50%, -50%);
   }
 
-  .hiw-layout {
-    grid-template-columns: 1fr;
-    row-gap: 32px;
+  .timeline-item.left .timeline-card,
+  .timeline-item.right .timeline-card {
+    margin: 0;
+    margin-left: 3.5rem;
+    text-align: left;
   }
 
-  .hiw-col--left,
-  .hiw-col--right {
-    grid-template-rows: none;
-    row-gap: 32px;
-  }
-
-  .hiw-col--center {
-    order: -1; /* timeline on top */
-  }
-
-  .hiw-timeline {
-    height: 260px;
-  }
-
-  .hiw-icon-card {
-    justify-self: flex-start; /* icons align with text */
+  .timeline-card {
+    max-width: none;
   }
 }
 
-/* Small mobile tweaks */
 @media (max-width: 600px) {
-  .hiw-inner {
-    padding: 24px 16px;
+  .hero-roadmap {
+    padding-top: 4rem;
   }
 
-  .hiw-title {
-    margin-bottom: 32px;
-  }
-
-  .hiw-step h3 {
-    font-size: 18px;
-  }
-
-  .hiw-step p {
-    font-size: 14px;
-    line-height: 1.6;
+  .timeline-item {
+    margin: 2.4rem 0;
   }
 }
 </style>

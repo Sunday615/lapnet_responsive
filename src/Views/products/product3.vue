@@ -139,7 +139,7 @@ const memberLogos = [
       <tablefee/>
    </div>
    <div class="stepwork" style="margin-top: 70px;">
-     
+      <stepwork/>
    </div>
    <div class="footermemberproduct1">
 
@@ -165,8 +165,9 @@ const memberLogos = [
    
 }
 .stepwork{
+   overflow: hidden;
    width: 100%;
-   height: 100vh;
+   height: auto;
    border: 1px solid red;
 }
 .tablefee{

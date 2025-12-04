@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@barba/core": "^2.10.3",
     "@tailwindcss/vite": "^4.1.17",
     "aos": "^2.3.4",
     "gsap": "^3.13.0",
@@ -21,10 +22,12 @@
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^24.10.1",
     "@types/three": "^0.181.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "less": "^4.4.2",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
     "vue-tsc": "^3.1.4"
