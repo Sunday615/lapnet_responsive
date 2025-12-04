@@ -99,10 +99,13 @@ const memberLogos = [
               ຍອດເງິນຂ້າມທະນາຄານໄດ້.</p>
           <tagproduct label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ"/>
       </div>
+
       <div class="description_right_container">
-         <div class="topimg">
+
+         <div class="topimg" >
              <img src="/product/product1/pd1bg.webp" alt=""></img>
          </div>
+      
          <div class="atmmockup">
             <img src="/product/product1/atmpd1.webp" alt="">
          </div>

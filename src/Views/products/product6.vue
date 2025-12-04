@@ -1,196 +1,236 @@
-<script setup>
+<script setup lang="ts">
 import navbar from '../../components/miannavbar/main_navbar.vue';
 import mainfooter from '../../components/footer/mainfooter/mainfooter.vue';
-import homepagebutton from '../../components/button/homepagebutton.vue';
-import videobackgroundhomepage from '../../components/videobackground/productbackgroundvideo.vue'
+
+import videobackgroundhomepage from '../../components/videobackground/productbackgroundvideo.vue';
 import tagproduct from '../../components/tagproduct/tagproduct.vue';
-import product1_footerlogomember from '../../components/footer/logomemberfooter/product1_footerlogomember.vue';
 
+import product6swiper from '../../Views/products/swipper/product6swiper.vue';
+import crossborderbtn from '../../components/button/crossborderbtn.vue';
+import product6tech from '../techbenetfit/product6tech.vue';
 
-const heroVideo = '/videos/productvdo-background.mp4'
+import vdoproductcrossborderKH_LA from '../../components/videoproductcrossborder/vdoproductcrossborderKH_LA.vue';
+import vdoproductcrossborderLA_KH from '../../components/videoproductcrossborder/vdoproductcrossborderLA_KH.vue';
+import vdoproductcrossborderTH_LA from '../../components/videoproductcrossborder/vdoproductcrossborderTH_LA.vue';
+import vdoproductcrossborderLA_TH from '../../components/videoproductcrossborder/vdoproductcrossborderLA_TH.vue';
+import vdoproductcrossborderVN_LA from '../../components/videoproductcrossborder/vdoproductcrossborderVN_LA.vue';
+import vdoproductcrossborderCN_LA from '../../components/videoproductcrossborder/vdoproductcrossborderCN_LA.vue';
 
-const memberLogos = [
-  {
-    src: "/logoallmember/circle_scale/BCEL.png",
-    alt: "Space AI",
-  },
-  {
-    src: "/logoallmember/circle_scale/LDB.PNG",
-    alt: "Partner A",
-  },
-  {
-     src: "/logoallmember/circle_scale/APBB.PNG",
-    alt: "Partner B",
-  },
-  {
-    src: "/logoallmember/circle_scale/JDB.png",
-    alt: "Client X",
-  },
-  {
-     src: "/logoallmember/circle_scale/Maruhan.png",
-    alt: "Client Y",
-  },
-  {
-     src: "/logoallmember/circle_scale/lvb.PNG",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/ICBC.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/BOC.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/VTB.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/IB.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/ACLB.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/BIC.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/SACOM.PNG",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/STB.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/Kasikorn.png",
-    alt: "Client Z",
-  },
-  {
-     src: "/logoallmember/circle_scale/PUB.png",
-    alt: "Client Z",
-  },
-  // ...continue until you have 16 logos, all with their own paths
-];
+import { computed, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import { gsap } from 'gsap';
+
+const heroVideo = '/videos/productvdo-background.mp4';
+
+// ... memberLogos unchanged ...
+
+const route = useRoute();
+const videoBox = ref<HTMLElement | null>(null);
+
+// use only the param, not the whole path
+const pair = computed(() => (route.params.pair as string) || 'kh-la');
+
+const currentVideoComponent = computed(() => {
+   switch (pair.value) {
+      case 'kh-la':
+         return vdoproductcrossborderKH_LA;
+      case 'la-kh':
+         return vdoproductcrossborderLA_KH;
+      case 'th-la':
+         return vdoproductcrossborderTH_LA;
+      case 'la-th':
+         return vdoproductcrossborderLA_TH;
+      case 'vn-la':
+      case 'la-vn':
+         return vdoproductcrossborderVN_LA;
+      case 'cn-la':
+      case 'la-cn':
+         return vdoproductcrossborderCN_LA;
+      default:
+         return vdoproductcrossborderCN_LA;
+   }
+});
+
+// only animate the video box when pair changes
+watch(
+   pair,
+   () => {
+      if (!videoBox.value) return;
+
+      gsap.fromTo(
+         videoBox.value,
+         { opacity: 0, y: 40 },
+         {
+            opacity: 1,
+            y: 0,
+            duration: 2.0,
+            ease: 'power3.out',
+         },
+      );
+   },
+   { immediate: true },
+);
 </script>
 
+
+
+
 <template>
-  <navbar
-    title="ຜະລິດຕະພັນ ແລະ ການບໍລິການ"
-    :breadcrumb="[
+   <navbar title="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" :breadcrumb="[
       'ໜ້າຫຼັກ',
       'ຜະລິດຕະພັນ ແລະ ການບໍລິການ',
-      'ກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM'
-    ]"
-    background-image="/overlaynav/product/navigatorcontent-bg.png"
-  />
-  <div class="productdiscription">
-    <div class="adjustmentcenter">
-      <div class="description_left_container">
-      
-         <h1>ກວດຍອດເງິນຂ້າມ<br>ທະນາຄານຜ່ານຕູ້ ATM</h1>
-         <p>ການກວດຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM ແມ່ນນຳໃຊ້ລະບົບ
-              ແລັບໃນການເຊື່ອມໂຍງຕູ້ເອທີເອັມຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກ
-              ຂອງບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການກວດ
-              ຍອດເງິນຂ້າມທະນາຄານໄດ້.</p>
-          <tagproduct label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ"/>
-      </div>
-      <div class="description_right_container">
-         <div class="topimg">
-             <img src="/product/product1/pd1bg.webp" alt=""></img>
-         </div>
-         <div class="atmmockup">
-            <img src="/product/product1/atmpd1.webp" alt="">
-         </div>
-      </div>
-    
-    </div>
-  </div>
-     <div class="benetfix">
-       <videobackgroundhomepage :src="heroVideo" poster="/images/tech-poster.jpg">
-           <div class="benetfitcontainer">
-               <div class="benetfitcontent">
-                  <h1>ຜົນປະໂຫຍດທີ່ໄດ້ຮັບ</h1>
-                  <p>ປະຢັດ​ເວລາ, ສະດວກ ໂດຍລູກຄ້າບໍ່ຕ້ອງລໍຖ້າການໃຊ້ບໍລິການ ຫຼື ຊອກຫາຕູ້​ເອທີ​ເອັມຂອງທະນາຄານຜູ້ອອກບັດ
-                    ກໍ່ສາມາດ
-                    ກວດຍອດເງິນຜ່ານຕູ້​ເອທີ​ເອັມຂອງບັນດາທະນາຄານທຸກລະກິດທີ່ເຊື່ອມຕໍ່ກັບລະບົບແລັບ.</p>
-               </div>
-               <div class="condition">
-                        <h1>ເງື່ອນໄຂການໃຊ້ບໍລິການ</h1>
-                  <p>ລູກຄ້າ​ທີ່ມີ​ບັດ​ເອທີເອັມຂອງ​ທະນາຄານ​ທີ່​ເປັນ​ສະມາຊິກ​ຂອງ ແລັບເນັດ, ໂດຍສາມາດສັງເກດໄດ້ຈາກ
-                    ສັນຍາ​ລັກແລັບເນັດທີ່
-                    ຕິດຕາມຕູ້ເອທີເອັມ
-                    ກໍສາມາດໃຊ້ຮ່ວມກັນໄດ້. ເຊິ່ງການກວດຍອດເງິນຂ້າມຕູ້ເອທີເອັມນີ້ແມ່ນບໍ່ເສຍຄ່າທຳນຽມໃດໆທັງນັ້ນ.</p>
-               </div>
-           </div>
-      </videobackgroundhomepage>
-     </div>
-<div class="footermemberproduct1">
+      'ຊຳລະຂ້າມແດນໃນຮູບແບບ QR CODE ລະຫວ່າງປະເທດ'
+   ]" background-image="/overlaynav/product/navigatorcontent-bg.png" />
+   <div class="productdiscription">
+      <div class="adjustmentcenter">
+         <div class="description_left_container">
 
-<product1_footerlogomember :logos="memberLogos"/>
+            <h1>ຊຳລະຂ້າມແດນໃນຮູບແບບ <br>QR CODE ລະຫວ່າງປະເທດ</h1>
+            <p> ບໍລິສັດ LAPNet ໄດ້ຕໍ່ຍອດການພັດທະນາລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື
+               (LMPS) ເພື່ອຂະຫຍາຍຜະລິດຕະພັນ ຊຳລະຂ້າມທະນາຄານ ໃຫ້ສາມາດຮອງຮັບການ
+               ຊຳລະ ຄ່າສິນຄ້າ - ບໍລິການ ລະຫວ່າງປະເທດ, ໂດຍຜູ້ໃຊ້ Mobile banking ຂອງ
+               ທະນາຄານທີ່ເຂົ້າຮ່ວມໂຄງການ ໃນ ສປປ ລາວ ສາມາດເຮັດທຸລະກຳ
+               ຊຳລະຂ້າມແດນໄປຍັງປະເທດທີ່ເຮັດການເຊື່ອມໂຍງລະບົບຊຳລະຂ້າມແດນ
+               ລະຫວ່າງກັນ ແລະ ຮ້ານຄ້າທີ່ເປີດບັນຊີນຳທະນາຄານທີ່ເຂົ້າຮ່ວມໂຄງການໃນ ສປປ ລາວ ກໍ່ສາມາດຮັບການຊຳລະຄ່າສິນຄ້າ -
+               ບໍລິການ ຈາກນັກທ່ອງທ່ຽວຕ່າງປະເທດທີ່ເຂົ້າມາ ສ ປປ ລາວ, ປັດຈຸບັນ LAPNet ໄດ້ຮ່ວມໂຄງການກັບ 4 ປະເທດຄື:
+               ປະເທດກຳປູເຈຍ, ປະເທດໄທ, ປະເທດຈີນ ແລະ ປະເທດຫວຽດນາມ.</p>
+            <tagproduct label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
+         </div>
+         <div class="description_right_container">
+            <div class="topimg">
+               <img src="/product/product6/topimg.png" alt=""></img>
+            </div>
+            <div class="atmmockup">
+               <img src="/product/product6/mbmockup.png" alt="">
+            </div>
+         </div>
+
+      </div>
    </div>
-  <mainfooter/>
+   <div class="benetfix">
+      <videobackgroundhomepage :src="heroVideo" poster="/images/tech-poster.jpg">
+         <div class="benetfitcontainer">
+            <div class="benetfitcontent">
+               <h1>ຜົນປະໂຫຍດທີ່ໄດ້ຮັບ</h1>
+               <p>ການເຊື່ອມໂຍງ ລະບົບການຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ ຈະອຳນວຍຄວາມສະດວກໃຫ້ກັບລູກຄ້າຂອງ
+                  ທະນາຄານ ໃຫ້ສາມາດເຮັດທຸລະກຳຊຳລະຂ້າມແດນ ໄດ້ຢ່າງປອດໄພ ສະດວກສະບາຍ ວ່ອງໄວ ໂດຍສາມາດນຳໃຊ້ບັນຊີເງິນກີບໃນການ
+                  ຊຳລະ ແລະ ຮ້ານຄ້າໃນ ສ ປປ ລາວ ກໍ່ສາມາດຮັບການສະແກນຈາກນັກທ່ອງທ່ຽວຕ່າງປະເທດໄດ້ ໂດຍຈະອຳນວຍຄວາມສະດວກໃນການ
+                  ຮັບຊຳລະ ບໍ່ຫຍຸ້ງຍາກໃນການນຳໃຊ້ເງິນສົດ ແລະ ເງິນທອນຈາກຮ້ານຄ້າໃນເວລາຊຳລະເງິນ.</p>
+            </div>
+
+         </div>
+      </videobackgroundhomepage>
+   </div>
+   <div class="slidecontainer">
+      <product6swiper />
+   </div>
+   <div class="crossborderinfo">
+      <div class="titlecrossborder">
+         <h1 id="memberjoin">ທະນາຄານສະມາຊິກທີ່ເຂົ້າຮ່ວມ</h1>
+         <crossborderbtn />
+      </div>
+      <div class="videocontainer">
+         <div class="videocorssbordershow" ref="videoBox">
+            <component :is="currentVideoComponent" :key="pair" />
+         </div>
+      </div>
+
+
+   </div>
+   <div class="descriptionforcustomer">
+      <product6tech />
+   </div>
+   <mainfooter />
 </template>
 
 
 <style scoped>
-
-.footermemberproduct1{ 
+.descriptionforcustomer {
    width: 100%;
-  
+   height: auto;
+}
+
+.videocontainer {
+   width: 100%;
+   height: auto;
+}
+
+@media (max-width:518px) {
+
+   #memberjoin {
+      font-size: 2.3rem;
+   }
+}
+
+.titlecrossborder h1 {
+   font-size: var(--fs-hero);
+   font-weight: bold;
+   color: #0025B8;
+   background-image: linear-gradient(45deg, #312ba4, #0d1c9c 8%, #00A6FF 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   display: inline-block;
+}
+
+.titlecrossborder {
+   width: 100%;
+   height: 30%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   border: 1px solid red;
+}
+
+.crossborderinfo {
+   width: 100%;
+   height: 1330px;
+   border: 1px solid red;
+}
+
+@media (max-width: 768px) {
+   .slidecontainer {
+      display: none;
+   }
+
+}
+
+.slidecontainer {
+   width: 100%;
+   height: 54vh;
+   border: 1px solid red;
+}
+
+.footermemberproduct1 {
+   width: 100%;
+
    height: 100vh;
 
 
 }
-.condition p{
-      width: 100%;
-   padding-top: 40px;
-   
-   width: 80%;
-   font-size: var(--fs-base);
-   text-align: center;
 
-}
-.condition h1{
-  
-   text-align: center;
-
-   width: 100%;
-   font-size: var(--fs-xxl);
-   font-weight: bold;
-}
-.condition{
-   width: 100%;
-   height: 40%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-   color: #fff;
-}
-.benetfitcontent p{
+.benetfitcontent p {
    width: 100%;
    padding-top: 40px;
 
    width: 80%;
-  
+
    font-size: var(--fs-base);
    text-align: center;
 }
-.benetfitcontent h1{
+
+.benetfitcontent h1 {
 
    text-align: center;
 
    width: 100%;
    font-size: var(--fs-xxl);
    font-weight: bold;
-   
+
 }
-.benetfitcontent{
+
+.benetfitcontent {
    width: 100%;
    color: #fff;
 
@@ -199,11 +239,12 @@ const memberLogos = [
    justify-content: center;
    align-items: center;
    height: 40%;
- 
+
 
 
 }
-.benetfitcontainer{
+
+.benetfitcontainer {
    width: 80%;
    display: flex;
    justify-content: space-around;
@@ -211,72 +252,84 @@ const memberLogos = [
    height: 100%;
 
 }
-.benetfix{
+
+.benetfix {
    width: 100%;
-   height: 80vh;
+   height: 50vh;
+
 
 }
-.atmmockup img{
+
+.atmmockup img {
    width: 80%;
    position: relative;
    z-index: 1;
    left: -100px;
    bottom: -50px;
 }
-.description_right_container{
+
+.description_right_container {
    width: 50%;
    height: 100%;
 }
+
 .topimg img {
-      width: 30%;
+   width: 30%;
    right: 40px;
-   height:auto;
+   height: auto;
    object-fit: cover;
    border-radius: 10px;
    position: absolute;
    z-index: 0;
 
 }
-.description_left_container p{
+
+.description_left_container p {
    font-size: var(--fs-base);
 }
-.description_left_container h1{
-   font-size:   var( --fs-xxxl);
+
+.description_left_container h1 {
+   font-size: var(--fs-xxxl);
    font-weight: bold;
    line-height: 1.2;
 }
+
 .description_left_container h3 {
    color: var(--color-second);
    font-weight: bold;
    font-size: var(--fs-md);
 }
-.description_right_container{
+
+.description_right_container {
 
    width: 50%;
    height: 100%;
- 
+
 }
-.description_left_container{
+
+.description_left_container {
    width: 50%;
    display: flex;
    align-items: start;
    justify-content: space-evenly;
    flex-direction: column;
-   
+
    height: 100%;
 
 }
-.adjustmentcenter{
+
+.adjustmentcenter {
    width: 95%;
    height: 80%;
    display: flex;
- 
+
 
 }
-.productdiscription{
+
+.productdiscription {
    width: 100%;
    height: 90vh;
-   background-image: url(/product/product1/bgpd1-1.png);
+   background-image: url(/product/product6/product6bg.png);
    background-position: left;
    background-size: cover;
    background-repeat: no-repeat;

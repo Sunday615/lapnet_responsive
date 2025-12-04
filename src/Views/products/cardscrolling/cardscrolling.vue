@@ -3,30 +3,31 @@
     <div class="content">
       <!-- LEFT PANEL -->
       <section class="left-panel">
-        <h1 class="title">Modern ATM Card Slider</h1>
+        <h1 class="title">{{ title }}</h1>
+
         <p class="subtitle">
-          This panel is for your description. You can explain product features,
-          onboarding steps, or anything you want next to the animated ATM cards.
+          {{ subtitle }}
         </p>
 
         <ul class="feature-list">
-          <li>✔ Smooth GSAP vertical auto-scrolling</li>
-          <li>✔ 16 modern ATM-style cards</li>
-          <li>✔ Gradient blue & white theme</li>
-          <li>✔ Responsive two-column layout</li>
+          <li v-for="(item, index) in features" :key="index">
+            ✔ {{ item }}
+          </li>
         </ul>
 
         <button class="primary-btn">
-          Get Started
+          {{ primaryButtonLabel }}
         </button>
       </section>
 
       <!-- RIGHT PANEL -->
       <section class="right-panel">
         <div class="slider-header">
-          <span class="badge">Live Cards</span>
-          <h2>Active ATM Cards</h2>
-          <p>Auto-scrolling card stack with subtle 3D & glow effects.</p>
+          <span class="badge">{{ badgeLabel }}</span>
+
+          <p>
+            {{ badgeDescription }}
+          </p>
         </div>
 
         <div class="cards-window">
@@ -38,7 +39,15 @@
               class="atm-card"
             >
               <div class="card-top">
-                <span class="chip"></span>
+                <!-- CHIP WITH LOGO -->
+                <span class="chip">
+                  <img
+                    :src="card.logo"
+                    :alt="card.holder + ' logo'"
+                    class="chip-logo"
+                  />
+                </span>
+
                 <span class="network">{{ card.network }}</span>
               </div>
 
@@ -67,27 +76,179 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed, defineProps } from "vue";
 import gsap from "gsap";
+
+/**
+ * ✅ Props for dynamic content
+ * - title
+ * - subtitle
+ * - features (array of strings)
+ * - primaryButtonLabel
+ * - badgeLabel
+ * - badgeDescription
+ */
+const props = defineProps({
+  title: {
+    type: String,
+    default: "ເງື່ອນໄຂການບໍລິການ",
+  },
+  subtitle: {
+    type: String,
+    default:
+      "ລູກຄ້າທີ່ມີບັດ ATM ຂອງທະນາຄານທີ່ເປັນສະມາຊິກຂອງ LAPNet ສາມາດຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM ຂອງທະນາຄານສະມາຊິກ ໂດຍສາມາດສັງເກດໄດ້ຈາກສັນຍາລັກ LAPNet ວົງມົນສີຟ້າທີ່ຕິດຢູ່ໜ້າຕູ້ ATM.",
+  },
+  features: {
+    type: Array,
+    default: () => [
+      "ເຊິ່ງການຖອນເງິນສົດຂ້າມຕູ້ເອທີເອັມນີ້ແມ່ນຈະຕ້ອງໄດ້ເສຍຄ່າທຳນຽມ 2,000 ກີບ ຕໍ່ ຄັ້ງ.",
+    ],
+  },
+  primaryButtonLabel: {
+    type: String,
+    default: "Get Started",
+  },
+  badgeLabel: {
+    type: String,
+    default: "Member Cards",
+  },
+  badgeDescription: {
+    type: String,
+    default:
+      "ເຊິ່ງການຖອນເງິນສົດຂ້າມຕູ້ເອທີເອັມນີ້ແມ່ນຈະຕ້ອງໄດ້ເສຍຄ່າທຳນຽມ 2,000 ກີບ ຕໍ່ ຄັ້ງ.",
+  },
+});
 
 // 16 cards
 const cards = [
-  { id: 1, holder: "JOHN CARTER",   number: "**** **** **** 1024", expiry: "08/27", network: "UnionPay" },
-  { id: 2, holder: "EMILY STONE",   number: "**** **** **** 9834", expiry: "11/26", network: "UnionPay" },
-  { id: 3, holder: "MICHAEL LEE",   number: "**** **** **** 5532", expiry: "04/28", network: "UnionPay" },
-  { id: 4, holder: "SOPHIA KIM",    number: "**** **** **** 7789", expiry: "09/27", network: "UnionPay" },
-  { id: 5, holder: "DAVID BROWN",   number: "**** **** **** 1492", expiry: "02/29", network: "UnionPay" },
-  { id: 6, holder: "LISA CHEN",     number: "**** **** **** 6321", expiry: "06/27", network: "UnionPay" },
-  { id: 7, holder: "ALEX MORRIS",   number: "**** **** **** 8420", expiry: "12/26", network: "UnionPay" },
-  { id: 8, holder: "NATALIE WONG",  number: "**** **** **** 3901", expiry: "07/28", network: "UnionPay" },
-  { id: 9, holder: "JAMES TAYLOR",  number: "**** **** **** 4217", expiry: "03/27", network: "UnionPay" },
-  { id: 10, holder: "OLIVIA PARK",  number: "**** **** **** 7654", expiry: "10/26", network: "UnionPay" },
-  { id: 11, holder: "ROBERT KING",  number: "**** **** **** 2156", expiry: "05/28", network: "UnionPay" },
-  { id: 12, holder: "ZOE MARTIN",   number: "**** **** **** 9999", expiry: "01/29", network: "UnionPay" },
-  { id: 13, holder: "HENRY COLE",   number: "**** **** **** 3201", expiry: "09/28", network: "UnionPay" },
-  { id: 14, holder: "AVA JONES",    number: "**** **** **** 8044", expiry: "02/27", network: "UnionPay" },
-  { id: 15, holder: "CHRIS EVANS",  number: "**** **** **** 5678", expiry: "08/26", network: "UnionPay" },
-  { id: 16, holder: "MIA LOPEZ",    number: "**** **** **** 1111", expiry: "11/27", network: "UnionPay" },
+  {
+    id: 1,
+    holder: "Khamphanh ****vong",
+    number: "**** **** **** 1024",
+    expiry: "08/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/BCEL.png",
+  },
+  {
+    id: 2,
+    holder: "Noy Sou****sane",
+    number: "**** **** **** 9834",
+    expiry: "11/26",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/LDB.PNG",
+  },
+  {
+    id: 3,
+    holder: "Bounmy ****sone",
+    number: "**** **** **** 5532",
+    expiry: "04/28",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/APBB.PNG",
+  },
+  {
+    id: 4,
+    holder: "Chanthavy ****chanh",
+    number: "**** **** **** 7789",
+    expiry: "09/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/JDB.png",
+  },
+  {
+    id: 5,
+    holder: "Somphong ****vong",
+    number: "**** **** **** 1492",
+    expiry: "02/29",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/Maruhan.png",
+  },
+  {
+    id: 6,
+    holder: "Viengkham ****vong",
+    number: "**** **** **** 6321",
+    expiry: "06/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/lvb.PNG",
+  },
+  {
+    id: 7,
+    holder: "Anousone ****vang",
+    number: "**** **** **** 8420",
+    expiry: "12/26",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/ICBC.png",
+  },
+  {
+    id: 8,
+    holder: "Thidavanh ****lath",
+    number: "**** **** **** 3901",
+    expiry: "07/28",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/BOC.png",
+  },
+  {
+    id: 9,
+    holder: "Phoutthasone ****",
+    number: "**** **** **** 4217",
+    expiry: "03/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/VTB.png",
+  },
+  {
+    id: 10,
+    holder: "Soulivanh ****vang",
+    number: "**** **** **** 7654",
+    expiry: "10/26",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/IB.png",
+  },
+  {
+    id: 11,
+    holder: "Khounthavy ****phone",
+    number: "**** **** **** 2156",
+    expiry: "05/28",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/ACLB.png",
+  },
+  {
+    id: 12,
+    holder: "Bounthavy ****vong",
+    number: "**** **** **** 9999",
+    expiry: "01/29",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/BIC.png",
+  },
+  {
+    id: 13,
+    holder: "Viengmany ****vong",
+    number: "**** **** **** 3201",
+    expiry: "09/28",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/SACOM.PNG",
+  },
+  {
+    id: 14,
+    holder: "Ketsana ****vong",
+    number: "**** **** **** 8044",
+    expiry: "02/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/STB.png",
+  },
+  {
+    id: 15,
+    holder: "Sivilay ****na",
+    number: "**** **** **** 5678",
+    expiry: "08/26",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/Kasikorn.png",
+  },
+  {
+    id: 16,
+    holder: "Phailin ****vong",
+    number: "**** **** **** 1111",
+    expiry: "11/27",
+    network: "ATM Card",
+    logo: "/logoallmember/circle_scale/PUB.png",
+  },
 ];
 
 // duplicate to create seamless looping
@@ -124,7 +285,7 @@ const destroyAutoScroll = () => {
 };
 
 onMounted(() => {
-  initAutoScroll(); // 🔥 auto-scroll on all screen sizes
+  initAutoScroll(); // auto-scroll on all screen sizes
 
   // soft floating animation on all cards
   gsap.to(".atm-card", {
@@ -141,7 +302,6 @@ onBeforeUnmount(() => {
   destroyAutoScroll();
 });
 </script>
-
 
 <style scoped>
 .atm-page {
@@ -184,14 +344,14 @@ onBeforeUnmount(() => {
 }
 
 .title {
-  font-size: 2.1rem;
+  font-size: var(--fs-xl);
   font-weight: 700;
   letter-spacing: 0.03em;
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   color: rgba(240, 248, 255, 0.85);
   margin-bottom: 1.5rem;
 }
@@ -203,7 +363,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   color: rgba(240, 248, 255, 0.9);
 }
 
@@ -260,7 +420,7 @@ onBeforeUnmount(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.18rem 0.6rem;
+  padding: 0.3rem 1rem;
   border-radius: 999px;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -272,37 +432,43 @@ onBeforeUnmount(() => {
 /* Window for vertical slider */
 .cards-window {
   flex: 1;
-  overflow: hidden; /* desktop: ซ่อนส่วนเกิน ให้ GSAP เลื่อน */
+  overflow: hidden;
   position: relative;
-  border-radius: 1.2rem;
-  padding: 0.4rem;
-  background: linear-gradient(160deg, #1d4ed8, #0f265f);
+  border-radius: 1.4rem;
+  padding: 0.5rem;
+  background: radial-gradient(
+    circle at 0 0,
+    #3b82f6 0,
+    #0f265f 55%,
+    #020617 100%
+  );
 }
 
 /* Column that will be animated by GSAP */
 .cards-column {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  padding: 0.3rem 0.1rem 0.3rem;
+  gap: 1rem;
+  padding: 0.5rem 0.2rem 0.5rem;
 }
 
-/* Single ATM card */
+/* Single ATM card – bigger, more modern */
 .atm-card {
   position: relative;
   width: 100%;
-  min-height: 150px;
-  border-radius: 1.2rem;
-  padding: 1rem 1.2rem;
+  min-height: 200px; /* bigger */
+  border-radius: 1.4rem;
+  padding: 1.2rem 1.4rem;
   box-sizing: border-box;
   overflow: hidden;
-  background: linear-gradient(135deg, #1d4ed8, #60a5ff);
-  box-shadow: 0 14px 30px rgba(15, 40, 80, 0.8);
-  border: 1px solid rgba(191, 219, 254, 0.6);
+  background: linear-gradient(145deg, #1d4ed8, #3b82f6, #bfdbfe);
+  box-shadow: 0 16px 34px rgba(15, 40, 80, 0.85);
+  border: 1px solid rgba(191, 219, 254, 0.7);
   color: #f9fbff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backdrop-filter: blur(16px);
 }
 
 /* subtle glass highlight */
@@ -312,8 +478,8 @@ onBeforeUnmount(() => {
   inset: -40%;
   background: radial-gradient(
     circle at 0% 0%,
-    rgba(255, 255, 255, 0.25),
-    transparent 55%
+    rgba(255, 255, 255, 0.28),
+    transparent 60%
   );
   opacity: 0.9;
   pointer-events: none;
@@ -322,15 +488,15 @@ onBeforeUnmount(() => {
 /* decorative gradient loop line */
 .card-accent {
   position: absolute;
-  inset: 10% -30%;
+  inset: 12% -30%;
   background: linear-gradient(
     120deg,
-    rgba(191, 219, 254, 0.35),
+    rgba(191, 219, 254, 0.4),
     rgba(96, 165, 255, 0.95),
-    rgba(191, 219, 254, 0.2)
+    rgba(191, 219, 254, 0.25)
   );
-  filter: blur(18px);
-  opacity: 0.8;
+  filter: blur(20px);
+  opacity: 0.85;
   transform: skewX(-18deg);
   pointer-events: none;
 }
@@ -344,31 +510,43 @@ onBeforeUnmount(() => {
   z-index: 1;
 }
 
+/* BIGGER CHIP WITH LOGO */
 .chip {
-  width: 32px;
-  height: 24px;
-  border-radius: 0.5rem;
-  background: linear-gradient(135deg, #e0f2ff, #60a5ff);
-  box-shadow: 0 0 0 1px rgba(15, 46, 94, 0.7);
+  width: 60px;
+  height: 60px;
+  border-radius: 0.9rem;
+  box-shadow:
+    0 0 0 1px rgba(15, 46, 94, 0.25),
+    0 8px 16px rgba(15, 23, 42, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.chip-logo {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
 }
 
 .network {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 999px;
-  background: rgba(15, 35, 80, 0.45);
-  border: 1px solid rgba(219, 234, 254, 0.7);
+  background: rgba(15, 35, 80, 0.5);
+  border: 1px solid rgba(219, 234, 254, 0.8);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 /* Card number */
 .card-number {
   position: relative;
   z-index: 1;
-  font-size: 1.1rem;
-  letter-spacing: 0.18em;
-  margin: 0.8rem 0 0.5rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
+  margin: 1rem 0 0.7rem;
 }
 
 /* Bottom row: holder + expiry */
@@ -377,11 +555,11 @@ onBeforeUnmount(() => {
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.7rem;
+  gap: 1.5rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(239, 246, 255, 0.9);
+  color: rgba(239, 246, 255, 0.95);
 }
 
 .label {
@@ -390,11 +568,10 @@ onBeforeUnmount(() => {
 }
 
 .value {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-top: 0.1rem;
 }
 
-/* TABLET & MOBILE (1 column) */
 /* TABLET & MOBILE (1 column) */
 @media (max-width: 960px) {
   .content {
@@ -413,10 +590,15 @@ onBeforeUnmount(() => {
 
   /* show about 4 cards height, rest hidden but auto-scrolling */
   .cards-window {
-    max-height: calc(4 * 150px + 3 * 0.9rem + 1.2rem); /* 4 cards + gaps + padding */
-    overflow: hidden; /* 🔥 hide extra, GSAP moves them */
+    max-height: calc(4 * 200px + 3 * 1rem + 1.4rem); /* 4 cards + gaps + padding */
+    overflow: hidden;
     padding-right: 0.4rem;
-    background: linear-gradient(160deg, #1d4ed8, #0f265f);
+    background: radial-gradient(
+      circle at 0 0,
+      #3b82f6 0,
+      #0f265f 55%,
+      #020617 100%
+    );
   }
 }
 
@@ -425,5 +607,4 @@ onBeforeUnmount(() => {
     padding: 1rem;
   }
 }
-
 </style>

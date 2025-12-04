@@ -193,7 +193,7 @@ onMounted(() => {
     </button>
 
     <!-- RIGHT: DESKTOP NAV -->
-    <nav class="nav-right">
+    <nav class="nav-right" >
       <div
         v-for="(item, index) in menuItems"
         :key="index"
@@ -350,6 +350,7 @@ onMounted(() => {
 .nav-right {
   display: flex;
   align-items: center;
+  
   gap: 1rem;
 }
 
