@@ -63,7 +63,7 @@ const menuItems = [
     children: [
       {
         label: 'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ',
-        to: '/members/card-system'
+        to: '/member/membercardATM1'
       },
       {
         label: 'ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື',

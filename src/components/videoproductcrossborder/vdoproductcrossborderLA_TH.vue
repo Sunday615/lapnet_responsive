@@ -23,23 +23,23 @@
                     </div>
                     <div class="logomember">
                         <div class="row1">
-                            <img src="../../../assets/Logomember- retangle/BCEL.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LDBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BCEL.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/LDBnew.png" alt="" />
                             <img src="/Logomember/APB.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/jdbnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LVBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/jdbnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/LVBnew.png" alt="" />
 
 
                         </div>
                         <div class="row3" style="margin-top: 10px;">
 
-                            <img src="../../../assets/Logomember- retangle/ACL.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/STB.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/ACL.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/STB.jpg" alt="" />
 
 
-                            <img src="../../../assets/Logomember- retangle/sacom.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/sacom.png" alt="" />
                             <img src="/Logomember/psvbre.PNG" alt="" />
-                            <img src="../../../assets/Logomember- retangle/mjbl.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/mjbl.jpeg" alt="" />
 
 
 
@@ -51,18 +51,18 @@
                         <p style="font-size: 29px">
                             ເບື້ອງໄທ (ຮັບການຊຳລະ) : 05 ທະນາຄານຫຼັກ "ທຸກຮ້ານຄ້າທີ່ຮັບ Thai QR Payment" :
                         </p>
-                        <img src="../../../assets/Logomember- retangle/THAIQR.png" alt="">
+                        <img src="/logoallmember/retangle_scale/THAIQR.png" alt="">
                     </div>
                     <div class="logomember">
                         <div class="row2">
 
 
-                            <img src="../../../assets/Logomember- retangle/kbank.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/krungsi.jpeg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/Kringthai.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/BBL-Logo-TH.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/kbank.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/krungsi.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/Kringthai.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BBL-Logo-TH.jpg" alt="" />
 
-                            <img src="../../../assets/Logomember- retangle/SCB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/SCB.png" alt="" />
 
 
 

@@ -23,18 +23,18 @@
                     </div>
                     <div class="logomember">
                         <div class="row1">
-                            <img src="../../../assets/Logomember- retangle/BCEL.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BCEL.png" alt="" />
                           
-                            <img src="../../../assets/Logomember- retangle/APB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/APB.png" alt="" />
                      
                        
                           
-                            <img src="../../../assets/Logomember- retangle/ACL.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/ACL.jpg" alt="" />
             
-                            <img src="../../../assets/Logomember- retangle/sacom.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/STB.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/sacom.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/STB.jpg" alt="" />
                            
-                            <img src="../../../assets/Logomember- retangle/MB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/MB.png" alt="" />
                         </div>
                     </div>
                 </div>

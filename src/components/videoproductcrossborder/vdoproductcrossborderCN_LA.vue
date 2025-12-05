@@ -25,16 +25,16 @@
                     </div>
                     <div class="logomember">
                         <div class="row1">
-                            <img src="../../../assets/Logomember- retangle/BCEL.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LDBnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/jdbnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BCEL.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/LDBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/jdbnew.png" alt="" />
                             <img src="/Logomember/APB.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/STB.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/mjbl.jpeg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/ACL.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/psvb.PNG" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LVBnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/MB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/STB.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/mjbl.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/ACL.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/psvb.PNG" alt="" />
+                            <img src="/logoallmember/retangle_scale/LVBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/MB.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -49,8 +49,9 @@
 
                     <div class="logomember">
                         <div class="unoinpaycontainer">
-                            <img style="width:230px; height:150px;margin-right: 40px;" src="/Logomember/Unoin.png" alt="">
-                          <img src="/Logomember/UPI.webp" alt="">
+                            <img style="width:230px; height:150px;margin-right: 40px;" src="/Logomember/Unoin.png"
+                                alt="">
+                            <img src="/Logomember/UPI.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -129,15 +130,15 @@ watch(selectedCountry, async () => {
 </script>
 
 <style scoped>
-
-.unoinpaycontainer img{
+.unoinpaycontainer img {
     width: 150px;
     height: 150px;
 }
-.unoinpaycontainer{
+
+.unoinpaycontainer {
     width: 50%;
-    
-    margin:0 auto;
+
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     height: 200px;
@@ -290,19 +291,19 @@ watch(selectedCountry, async () => {
 
 .video-background-container {
     position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 1000px;
-  padding: 40px 0;
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  z-index: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 1000px;
+    padding: 40px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    z-index: 0;
 }
 
 .video-bg {

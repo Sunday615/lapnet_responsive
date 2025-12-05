@@ -16,7 +16,8 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <span>ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ</span>
+          <router-link to="/member/membercardATM1">
+          <span>ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ</span></router-link>
           
         </div>
            <div class="dropdown-divider"></div>

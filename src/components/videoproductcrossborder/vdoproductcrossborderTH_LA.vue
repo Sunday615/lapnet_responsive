@@ -23,11 +23,11 @@
                     </div>
                     <div class="logomember">
                         <div class="row1">
-                            <img src="../../../assets/Logomember- retangle/krungsi.jpeg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/Kringthai.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/BBL-Logo-TH.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/kbank.jpg" alt="" />
-                            <img  src="../../../assets/Logomember- retangle/SCB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/krungsi.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/Kringthai.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BBL-Logo-TH.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/kbank.jpg" alt="" />
+                            <img  src="/logoallmember/retangle_scale/SCB.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -39,22 +39,22 @@
                     </div>
                      <div class="logomember">
                         <div class="row2">
-                            <img src="../../../assets/Logomember- retangle/BCEL.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LDBnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/APB.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/jdbnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/LVBnew.png" alt="" />
-                            <img src="../../../assets/Logomember- retangle/BICnew.jpeg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/STB.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/BCEL.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/LDBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/APB.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/jdbnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/LVBnew.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/BICnew.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/STB.jpg" alt="" />
                         </div>
                         <div class="row3" style="margin-top: 10px;">
                             
-                            <img src="../../../assets/Logomember- retangle/IBbankk.JPG" alt="" />
-                            <img src="../../../assets/Logomember- retangle/ACL.jpg" alt="" />
-                             <img src="../../../assets/Logomember- retangle/kbank.jpg" alt="" />
-                            <img src="../../../assets/Logomember- retangle/sacom.png" alt="" />
+                            <img src="/logoallmember/retangle_scale/IBbankk.JPG" alt="" />
+                            <img src="/logoallmember/retangle_scale/ACL.jpg" alt="" />
+                             <img src="/logoallmember/retangle_scale/kbank.jpg" alt="" />
+                            <img src="/logoallmember/retangle_scale/sacom.png" alt="" />
                             <img src="/Logomember/psvbre.PNG" alt="" />
-                            <img src="../../../assets/Logomember- retangle/mjbl.jpeg" alt="" />
+                            <img src="/logoallmember/retangle_scale/mjbl.jpeg" alt="" />
                            
                         </div>
                     </div>

@@ -8,6 +8,7 @@ import product4 from '../Views/products/product4.vue'
 import product5 from '../Views/products/product5.vue'
 import product6 from '../Views/products/product6.vue'
 import companystructure from '../Views/Aboutus/companystructure/companystructure.vue'
+import MembercardATM1 from '../Views/member/membercard/membercardATM.vue'
 
 const routes = [
   {
@@ -50,37 +51,25 @@ const routes = [
     name: 'crossborder-product',
     component: () => import('../Views/products/product6.vue'),
   },
-  //    {
-  //   path: '/products_service/crossborder/kh-la',
-  //   name: 'crossborder/kh-la', // was "home" before – duplicated
-  //   component:vdoproductcrossborderKH_LA ,
-  // },
-  //    {
-  //   path: '/products_service/crossborder/la-kh',
-  //   name: 'crossborder/la-kh', // was "home" before – duplicated
-  //   component:vdoproductcrossborderLA_KH ,
-  // },
-  //    {
-  //   path: '/products_service/crossborder/th-la',
-  //   name: 'crossborder/th-la', // was "home" before – duplicated
-  //   component:vdoproductcrossborderTH_LA ,
-  // },
-  //    {
-  //   path: '/products_service/crossborder/la-th',
-  //   name: 'crossborder/la-th', // was "home" before – duplicated
-  //   component:vdoproductcrossborderLA_TH ,
-  // },
-  //    {
-  //   path: '/products_service/crossborder/vn-la',
-  //   name: 'crossborder/la-vn', // was "home" before – duplicated
-  //   component:vdoproductcrossborderVN_LA ,
-  // },
-  //    {
-  //   path: '/products_service/crossborder/ch-la',
-  //   name: 'crossborder/cn-la', // was "home" before – duplicated
-  //   component:vdoproductcrossborderCN_LA ,
-  // },
-  
+  // ############################### member path #####################################
+
+
+
+
+
+   {
+    path: '/member/membercardATM1',
+    name: 'membercardATM1', // was "home" before – duplicated
+    component: MembercardATM1,
+  },
+
+
+
+
+
+
+
+
 
   {
     path: '/aboutus/companystructure',
