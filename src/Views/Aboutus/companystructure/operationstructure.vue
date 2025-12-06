@@ -1,18 +1,26 @@
-<!-- LaoStyleOrgChart.vue -->
-
+<!-- LaoStyleOrgChart_Operation.vue -->
 
 <template>
- <main_navbar title="ໂຄງຮ່າງການຈັດຕັ້ງ" :breadcrumb="[
+  <main_navbar
+    title="ໂຄງຮ່າງການຈັດຕັ້ງ"
+    :breadcrumb="[
       'ໜ້າຫຼັກ',
       'ກ່ຽວກັບພວກເຮົາ',
       'ໂຄງຮ່າງການຈັດຕັ້ງ'
-   ]" background-image="/aboutus/navigatormission-bg.png" />
+    ]"
+    background-image="/aboutus/navigatormission-bg.png"
+  />
+  <div class="navbarcompany">
+    <cpn_navbar />
+  </div>
+
   <div class="org-page">
     <div class="org-container" ref="root">
       <!-- TOP HEADER BAR -->
       <header class="org-header">
         <div class="org-header-left">
-          <h1 class="org-title-lao">ພະແນກກຳກັບງານ</h1>
+          <!-- เปลี่ยนชื่อหัวข้อเป็น พະແນກດໍາເນີນງານ -->
+          <h1 class="org-title-lao">ພະແນກດໍາເນີນງານ</h1>
         </div>
         <div class="org-header-right">
           <div class="org-logo-circle">
@@ -25,7 +33,7 @@
         </div>
       </header>
 
-      <!-- DOTTED FRAME AROUND ORG CHART -->
+      <!-- ORG CHART FRAME -->
       <section class="org-frame">
         <!-- ROWS -->
         <div
@@ -38,18 +46,16 @@
             :key="person.id"
             class="org-card"
           >
-            <!-- MODERN AVATAR CONTAINER -->
+            <!-- AVATAR -->
             <div class="org-avatar-wrapper">
               <div class="org-avatar-ring">
                 <div class="org-avatar-inner">
-                  <!-- Real photo if provided -->
                   <img
                     v-if="person.photo"
                     :src="person.photo"
                     :alt="person.name"
                     class="org-avatar-img"
                   />
-                  <!-- Fallback initials if no photo -->
                   <span v-else class="org-avatar-placeholder">
                     {{ getInitials(person.name) }}
                   </span>
@@ -57,7 +63,7 @@
               </div>
             </div>
 
-            <!-- CARD CONTENT -->
+            <!-- TEXT -->
             <div class="org-card-body">
               <h2 class="org-card-name">
                 {{ person.name }}
@@ -71,146 +77,178 @@
       </section>
     </div>
   </div>
-  <mainfooter/>
+
+  <mainfooter />
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import { gsap } from "gsap";
-import main_navbar from '../../../components/miannavbar/main_navbar.vue';
-import mainfooter from '../../../components/footer/mainfooter/mainfooter.vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { gsap } from 'gsap'
+import main_navbar from '../../../components/miannavbar/main_navbar.vue'
+import mainfooter from '../../../components/footer/mainfooter/mainfooter.vue'
+import cpn_navbar from './navbarcompany/cpn_navbar.vue'
 
-const root = ref(null);
+const root = ref(null)
 
-// ✅ Put your real photo at /public/test.jpg (or change path below)
+/**
+ * โครงสร้างตามภาพ Operation:
+ *  row 0: 1 คน  (หัวหน้า)
+ *  row 1: 2 คน
+ *  row 2: 3 คน
+ *  row 3: 2 คน
+ *  รวม 8 box
+ *  👉 เปลี่ยนชื่อ / role / photo ตามจริงได้เลย
+ */
 const rows = [
+  // row 0 – หัวหน้าแผนก
   [
     {
       id: 1,
-      name: "ທ່ານ ເດດີໄຊ ວັນມະໄຊ",
-      role: "ຫົວໜ້າພະແນກກຳກັບງານ",
-      photo: "/test.jpg", // your real avatar
-    },
+      name: 'ທ່ານ ເດດິໄຊ ວັນມະຈິດ',
+      role: 'ຫົວໜ້າພະແນກດໍາເນີນງານ',
+      photo: '/operation/head.png'
+    }
   ],
+  // row 1 – 2 คน
   [
     {
       id: 2,
-      name: "ທ່ານ ນາງ ປິດາ ສິງຫາອາດ",
-      role: "ພາກສະໜາມ",
-            photo: "/test.jpeg", // your real avatar
+      name: 'ນາງ ປິດາ ສີຫາອາດ',
+      role: 'ພາກສະໜາມ',
+      photo: '/operation/field.png'
     },
     {
       id: 3,
-      name: "ທ່ານ ນາງ ວາຈີຣິ ວົງວິນທາ",
-      role: "ຕຳແໜ່ງ–ສະໜັບສະໜູນ",
-    },
+      name: 'ນາງ ວອຍສີ ຈົວວິນດາ',
+      role: 'ດໍາເນີນງານ–ລະບົບຊຳລະເງິນ',
+      photo: '' // placeholder
+    }
   ],
+  // row 2 – 3 คน
   [
     {
       id: 4,
-      name: "ທ່ານ ນາງ ວິລະວັດ ແກ້ວວົງ",
-      role: "ຕຳແໜ່ງ–ໂຄງການ ແລະ ທະນາຄານ",
+      name: 'ນາງ ວິລະດາ ທ່ານວົງ',
+      role: 'ດໍາເນີນງານ–ໂຕລະບຽບ ແລະ ຄ່າທໍານຽມ',
+      photo: '/operation/op-1.png'
     },
     {
       id: 5,
-      name: "ທ່ານ ອານຸໄຊ ສີຣິໂລ",
-      role: "ຕຳແໜ່ງ–ສະໜັບສະໜູນ",
+      name: 'ທ່ານ ອານຸໄຊ ສີຣິໂລ',
+      role: 'ດໍາເນີນງານ–ລະບົບຊຳລະເງິນ',
+      photo: '/operation/op-2.png'
     },
     {
       id: 6,
-      name: "ທ່ານ ສົມສະໄຫມ ສັນຕະວົງ",
-      role: "ຕຳແໜ່ງ–ສະໜັບສະໜູນ",
-    },
+      name: 'ທ່ານ ສົມພອນ ສັນຕະວົງ',
+      role: 'ດໍາເນີນງານ–ລະບົບຊຳລະເງິນ',
+      photo: '/operation/op-3.png'
+    }
   ],
+  // row 3 – 2 คน
   [
     {
       id: 7,
-      name: "ທ່ານ ນາງ ສຸກສິດາ ມະນິດ",
-      role: "ຕຳແໜ່ງ–ໂຄງການ ແລະ ທະນາຄານ",
+      name: 'ນາງ ສຸກສິດາ ມະນິດ',
+      role: 'ດໍາເນີນງານ–ໂຕລະບຽບ ແລະ ຄ່າທໍານຽມ',
+      photo: '' // placeholder
     },
-  
-  ],
-];
+    {
+      id: 8,
+      name: 'ທ່ານ ໂພດີ ເກດປິນຍະ',
+      role: 'ດໍາເນີນງານ–ຂໍ້ມູນສະຫຼຸບ',
+      photo: '' // placeholder
+    }
+  ]
+]
 
-// Simple initials fallback (first 2 chars)
-const getInitials = (name) => (name || "").trim().slice(0, 2) || "?";
+// initials fallback
+const getInitials = (name) => (name || '').trim().slice(0, 2) || '?'
 
-let gsapCtx;
+let gsapCtx
 
 onMounted(() => {
   gsapCtx = gsap.context(() => {
     const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-    });
+      defaults: { ease: 'power3.out' }
+    })
 
-    tl.from(".org-container", {
+    tl.from('.org-container', {
       opacity: 0,
       y: 48,
       scale: 0.97,
-      duration: 0.8,
+      duration: 0.8
     })
       .from(
-        ".org-header-left",
+        '.org-header-left',
         { x: -40, opacity: 0, duration: 0.6 },
-        "-=0.4",
+        '-=0.4'
       )
       .from(
-        ".org-header-right",
+        '.org-header-right',
         { x: 40, opacity: 0, duration: 0.6 },
-        "-=0.5",
+        '-=0.5'
       )
       .from(
-        ".org-frame",
+        '.org-frame',
         { opacity: 0, y: 24, duration: 0.7 },
-        "-=0.25",
+        '-=0.25'
       )
       .from(
-        ".org-row",
+        '.org-row',
         { opacity: 0, y: 40, duration: 0.7, stagger: 0.12 },
-        "-=0.2",
+        '-=0.2'
       )
       .from(
-        ".org-card",
+        '.org-card',
         {
           opacity: 0,
           y: 30,
           rotateX: -14,
-          transformOrigin: "50% 100%",
+          transformOrigin: '50% 100%',
           duration: 0.8,
-          stagger: { each: 0.06, from: "center" },
+          stagger: { each: 0.06, from: 'center' }
         },
-        "-=0.6",
+        '-=0.6'
       )
       .from(
-        ".org-avatar-ring",
+        '.org-avatar-ring',
         {
           scale: 0.5,
           opacity: 0,
           duration: 0.55,
-          stagger: { each: 0.07, from: "center" },
+          stagger: { each: 0.07, from: 'center' }
         },
-        "-=0.55",
-      );
+        '-=0.55'
+      )
 
-
-    // card glow pulse
-    gsap.to(".org-card", {
-      boxShadow: "0 22px 48px rgba(15, 23, 42, 0.45)",
+    // glow pulse
+    gsap.to('.org-card', {
+      boxShadow: '0 22px 48px rgba(15, 23, 42, 0.45)',
       duration: 3.2,
-      ease: "sine.inOut",
+      ease: 'sine.inOut',
       repeat: -1,
-      yoyo: true,
-    });
-  }, root.value);
-});
+      yoyo: true
+    })
+  }, root.value)
+})
 
 onBeforeUnmount(() => {
-  if (gsapCtx) gsapCtx.revert();
-});
+  if (gsapCtx) gsapCtx.revert()
+})
 </script>
 
 <style scoped>
-/* PAGE BACKGROUND */
+.navbarcompany {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #f5f7fb;
+}
+
 .org-page {
   min-height: 100vh;
   padding: 56px 24px;
@@ -221,7 +259,6 @@ onBeforeUnmount(() => {
   box-sizing: border-box;
 }
 
-/* MAIN CARD */
 .org-container {
   width: 100%;
   max-width: 1380px;
@@ -231,7 +268,7 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 
-/* TOP HEADER BAR */
+/* HEADER */
 .org-header {
   display: flex;
   justify-content: space-between;
@@ -283,7 +320,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
-/* DOTTED FRAME */
+/* FRAME */
 .org-frame {
   margin: 34px 44px 42px;
   padding: 60px 32px 46px;
@@ -298,18 +335,18 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: center;
   gap: 42px;
-  margin-bottom: 46px;
+   margin-bottom: 76px;
 }
 
 .org-row--0 {
-  margin-bottom: 60px;
+   margin-bottom: 76px;
 }
 
 .org-row--3 {
   margin-bottom: 0;
 }
 
-/* ORG CARD */
+/* CARD */
 .org-card {
   position: relative;
   width: 310px;
@@ -325,13 +362,12 @@ onBeforeUnmount(() => {
     box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* modern 3D hover */
 .org-card:hover {
   transform: translateY(-8px) rotateX(3deg);
   box-shadow: 0 26px 60px rgba(15, 23, 42, 0.48);
 }
 
-/* AVATAR CONTAINER – NEW MODERN STYLE */
+/* AVATAR */
 .org-avatar-wrapper {
   position: absolute;
   top: -50px;
@@ -345,7 +381,6 @@ onBeforeUnmount(() => {
   border-radius: 999px;
   padding: 9px;
   background: #123765;
-
 }
 
 .org-avatar-inner {
@@ -359,24 +394,22 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 
-/* real photo fills the circle */
 .org-avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* fallback initials */
 .org-avatar-placeholder {
   font-size: 1.4rem;
   font-weight: 600;
   color: #e5edff;
 }
 
-/* CARD TEXT */
+/* TEXT */
 .org-card-name {
   margin: 12px 0 6px;
-  font-size:var(--fs-md);
+  font-size: var(--fs-base);
   font-weight: 600;
 }
 
@@ -396,6 +429,12 @@ onBeforeUnmount(() => {
   .org-row {
     flex-wrap: wrap;
   }
+   .org-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;        /* ระยะห่างแนวตั้งระหว่างการ์ดใน row เดียวกัน */
+    margin-bottom: 76px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -414,6 +453,13 @@ onBeforeUnmount(() => {
   .org-frame {
     margin: 22px 16px 30px;
     padding: 48px 16px 34px;
+  }
+
+  .org-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;       
+    margin-bottom: 76px;
   }
 }
 </style>

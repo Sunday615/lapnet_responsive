@@ -18,6 +18,13 @@ import Role from '../Views/Aboutus/role/role.vue'
 import Vision from '../Views/Aboutus/vision/vision.vue'
 import History from '../Views/Aboutus/history/history.vue'
 import Contactus from '../Views/contact/contactus.vue'
+import Operationstructure from '../Views/Aboutus/companystructure/operationstructure.vue'
+import It from '../Views/Aboutus/companystructure/it.vue'
+import Ceo from '../Views/Aboutus/companystructure/ceo.vue'
+
+import Finance from '../Views/Aboutus/companystructure/finance.vue'
+import Office from '../Views/Aboutus/companystructure/office.vue'
+import Audit from '../Views/Aboutus/companystructure/audit.vue'
 
 const routes = [
   {
@@ -103,16 +110,57 @@ const routes = [
 
     // ######################### About us  ##########################
 
+      // ######################### Companystructure ##########################
   {
     path: '/aboutus/companystructure',
     name: 'companystructure', // was "home" before – duplicated
     component: companystructure,
   },
   {
+    path: '/company/operation',
+    name: 'operation', // was "home" before – duplicated
+    component: Operationstructure,
+  },
+  {
+    path: '/company/it',
+    name: 'it', // was "home" before – duplicated
+    component: It,
+  },
+  {
+    path: '/company/ceo-cfo',
+    name: 'ceo', // was "home" before – duplicated
+    component: Ceo,
+  },
+  {
+    path: '/company/finance',
+    name: 'finance', // was "home" before – duplicated
+    component: Finance,
+  },
+  {
+    path: '/company/office',
+    name: 'office', // was "home" before – duplicated
+    component: Office,
+  },
+  {
+    path: '/company/audit',
+    name: 'audit', // was "home" before – duplicated
+    component: Audit,
+  },
+
+
+
+// ########################### Board director ###########################
+
+  {
     path: '/aboutus/board_director',
     name: 'board_director', // was "home" before – duplicated
     component: Board_director,
   },
+
+
+
+
+
     {
     path: '/aboutus/role',
     name: 'role', // was "home" before – duplicated
