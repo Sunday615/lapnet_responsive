@@ -63,32 +63,32 @@ const menuItems = [
     children: [
       {
         label: 'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ',
-        to: '/member/membercardATM1'
+        to: '/member/membercardATM'
       },
       {
         label: 'ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື',
-        to: '/members/mobile-system'
+        to: '/member/mobile_banking'
       },
       {
         label: 'ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ',
-        to: '/members/crossborder-qr'
+        to: '/member/crossborder'
       }
     ]
   },
-  { label: 'ຂ່າວ ແລະ ກິດຈະກຳ', to: '/news' },
-  { label: 'ຮ່ວມງານກັບເຮົາ', to: '/partner' },
+  { label: 'ຂ່າວ ແລະ ກິດຈະກຳ', to: '/bloggrid' },
+  { label: 'ຮ່ວມງານກັບເຮົາ', to: '/joinus' },
   {
     label: 'ກ່ຽວກັບພວກເຮົາ',
     to: '/about',
     children: [
-      { label: 'ວິໄສທັດ ແລະ ພາລະກິດ', to: '/about/vision' },
-      { label: 'ພາລະບົດບາດ', to: '/about/role' },
-      { label: 'ຄວາມເປັນມາ', to: '/about/history' },
-      { label: 'ສະພາຜູ້ບໍລິຫານ', to: '/about/board' },
-      { label: 'ໂຄງຮ່າງການຈັດຕັ້ງ', to: '/about/structure' }
+      { label: 'ວິໄສທັດ ແລະ ພາລະກິດ', to: '/aboutus/vision' },
+      { label: 'ພາລະບົດບາດ', to: '/aboutus/role' },
+      { label: 'ຄວາມເປັນມາ', to: '/aboutus/history' },
+      { label: 'ສະພາຜູ້ບໍລິຫານ', to: '/aboutus/board_director' },
+      { label: 'ໂຄງຮ່າງການຈັດຕັ້ງ', to: '/aboutus/companystructure' }
     ]
   },
-  { label: 'ຕິດຕໍ່ພວກເຮົາ', to: '/contact', isCta: true }
+  { label: 'ຕິດຕໍ່ພວກເຮົາ', to: '/contactus', isCta: true }
 ]
 
 const isDesktop = () => {

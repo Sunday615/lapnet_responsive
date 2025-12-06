@@ -1,11 +1,6 @@
 <template>
-  <div
-    class="dropdown-wrapper"
-    :class="{ open: isOpen }"
-    ref="dropdown"
-    @mouseenter="handleEnter"
-    @mouseleave="handleLeave"
-  >
+  <div class="dropdown-wrapper" :class="{ open: isOpen }" ref="dropdown" @mouseenter="handleEnter"
+    @mouseleave="handleLeave">
     <!-- Trigger -->
     <div class="dropdown-trigger">
       <span class="label" id="mainmenudropdown">ສະມາຊິກ</span>
@@ -16,19 +11,21 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <router-link to="/member/membercardATM1">
-          <span>ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ</span></router-link>
-          
+          <router-link to="/member/membercardATM">
+            <span>ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ</span></router-link>
+
         </div>
-           <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div>
         <div class="dropdown-item">
-          <span>ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື</span>
-          
+          <router-link to="/member/mobile_banking">
+            <span>ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື</span></router-link>
+
         </div>
-           <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div>
         <div class="dropdown-item">
-          <span>ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ</span>
-         
+          <router-link to="/member/crossborder">
+            <span>ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ</span></router-link>
+
         </div>
 
       </div>
@@ -159,7 +156,7 @@ const handleLeave = () => {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.2rem;
-     font-family: "Noto Sans Lao", sans-serif;
+  font-family: "Noto Sans Lao", sans-serif;
 }
 
 .dropdown-trigger span.chevron {
@@ -181,7 +178,7 @@ const handleLeave = () => {
   padding: 10px;
   border-radius: 18px;
   margin-top: 8px;
-    
+
   background: rgba(15, 23, 42, 0.98);
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow:
@@ -202,7 +199,7 @@ const handleLeave = () => {
 .dropdown-item {
   padding: 10px 10px;
   border-radius: 12px;
-   font-family: "Noto Sans Lao", sans-serif;
+  font-family: "Noto Sans Lao", sans-serif;
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -226,17 +223,15 @@ const handleLeave = () => {
 .dropdown-divider {
   margin: 6px 4px;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(148, 163, 184, 0),
-    rgba(148, 163, 184, 0.7),
-    rgba(148, 163, 184, 0)
-  );
-}
-@media (max-width : 1350px) {
-    #mainmenudropdown{
-      font-size: 1rem;
-    }
+  background: linear-gradient(to right,
+      rgba(148, 163, 184, 0),
+      rgba(148, 163, 184, 0.7),
+      rgba(148, 163, 184, 0));
 }
 
+@media (max-width : 1350px) {
+  #mainmenudropdown {
+    font-size: 1rem;
+  }
+}
 </style>

@@ -5,74 +5,89 @@ import { gsap } from 'gsap';
 import main_navbar from '../../../components/miannavbar/main_navbar.vue';
 import mainfooter from '../../../components/footer/mainfooter/mainfooter.vue';
 import membercard from '../../../components/membercard/membercard.vue';
-import logofootermembercardatm from '../../../components/footer/logomemberfooter/logofootermembercardatm.vue'
-
+import logofootermembercardmobilebanking from '../../../components/footer/logomemberfooter/logofootermembercardmobilebanking.vue'
 const memberLogos = [
-   {
-      src: "/logoallmember/circle_scale/BCEL.png",
-      alt: "Space AI",
-   },
-   {
-      src: "/logoallmember/circle_scale/LDB.PNG",
-      alt: "Partner A",
-   },
-   {
-      src: "/logoallmember/circle_scale/APBB.PNG",
-      alt: "Partner B",
-   },
-   {
-      src: "/logoallmember/circle_scale/JDB.png",
-      alt: "Client X",
-   },
-   {
-      src: "/logoallmember/circle_scale/Maruhan.png",
-      alt: "Client Y",
-   },
-   {
-      src: "/logoallmember/circle_scale/lvb.PNG",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/ICBC.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/BOC.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/VTB.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/IB.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/ACLB.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/BIC.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/SACOM.PNG",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/STB.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/Kasikorn.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/PUB.png",
-      alt: "Client Z",
-   },
-   // ...continue until you have 16 logos, all with their own paths
+    {
+        src: "/logoallmember/circle_scale/BCEL.png",
+        alt: "Space AI",
+    },
+    {
+        src: "/logoallmember/circle_scale/LDB.PNG",
+        alt: "Partner A",
+    },
+    {
+        src: "/logoallmember/circle_scale/APBB.PNG",
+        alt: "Partner B",
+    },
+    {
+        src: "/logoallmember/circle_scale/JDB.png",
+        alt: "Client X",
+    },
+    {
+        src: "/logoallmember/circle_scale/Maruhan.png",
+        alt: "Client Y",
+    },
+    {
+        src: "/logoallmember/circle_scale/lvb.PNG",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/ICBC.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/BOC.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/VTB.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/IB.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/ACLB.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/BIC.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/SACOM.PNG",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/STB.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/Kasikorn.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/BFL.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/PSVB.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/mb.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/mmoney.png",
+        alt: "Client Z",
+    },
+    {
+        src: "/logoallmember/circle_scale/umoney.png",
+        alt: "Client Z",
+    },
+    // ...continue until you have 16 logos, all with their own paths
 ];
 const itemsPerPage = 5;
 const currentPage = ref(1);
@@ -82,11 +97,11 @@ const searchQuery = ref('');
 const selectedFilters = ref([]);
 
 const filterOptions = [
-  { label: 'ເລືອກທັງໝົດ', value: 'lao' },
-  { label: 'ກວດສອບຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'foreign' },
-  { label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'fb' },
-  { label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານໂທລະສັບດ້ວຍເລກໜ້າບັດ', value: 'web' },
-  { label: 'ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'partner' },
+    { label: 'ເລືອກທັງໝົດ', value: 'lao' },
+    { label: 'ໂອນເງິນຂ້າມທະນາຄານເທິງມືຖືນຳໃຊ້ເລກບັນຊີ', value: 'foreign' },
+    { label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານ QR Code', value: 'fb' },
+    { label: 'ການຊຳລະເງິນຂ້າມທະນາຄານຜ່ານ QR', value: 'web' },
+
 ];
 
 const members = ref([
@@ -271,12 +286,62 @@ const members = ref([
         layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
     },
     {
-        image: "/logoallmember/retangle_scale/public-bank.svg",
-        title: "ທະນາຄານ ພາບລິກ",
-        subtitle: "PUBLIC Bank",
-        link1: "https://www.facebook.com/p/Public-Bank-Lao-61566020099587/",
-        link2: "https://www.publicbank.com.la",
-        layer1: "linear-gradient(#f32b24, #c32c2c) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        image: "/logoallmember/retangle_scale/bflbank.png",
+        title: "ທະນາຄານ ລາວ-ຝລັ່ງ ຈຳກັດ",
+        subtitle: "Banque Franco-Lao",
+        link1: "https://www.facebook.com/bflbank",
+        link2: "https://bfl-bred.com",
+        layer1: "linear-gradient(#006dbd, #183a67) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/psvb.PNG",
+        title: "ທະນາຄານ ພົງສະຫວັນ ຈໍາກັດ",
+        subtitle: "Phongsavanh Bank",
+        link1: "https://www.facebook.com/phongsavanhbankltd",
+        link2: "https://www.phongsavanhbank.com",
+        layer1: "linear-gradient(#04ca63, #0b9444) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/MB.png",
+        title: "ທະນາຄານ ຫຸ້ນສ່ວນການຄ້າທະຫານ ສາຂາລາວ",
+        subtitle: "Military Commercial Joint Stock Bank",
+        link1: "https://www.facebook.com/MBBANKLAOS",
+        link2: "https://mbbank.com.la",
+        layer1: "linear-gradient(#3b46fb, #141fd3) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+
+    {
+        image: "/logoallmember/retangle_scale/mmoney.png",
+        title: "ບໍລິສັດ ລາວໂມບາຍມັນນີ ຈຳກັດຜູ້ດຽວ",
+        subtitle: "MmoneyX",
+        link1: "https://www.facebook.com/laomobilemoney",
+        link2: "https://www.mmoney.la",
+        layer1: "linear-gradient(#ef3327, #a20000) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+
+    {
+        image: "/logoallmember/retangle_scale/umoney.png",
+        title: "ບໍລິສັດ ສະຕາຟິນເທັກ ຈຳກັດຜູ້ດຽວ",
+        subtitle: "Umoney",
+        link1: "https://www.facebook.com/umoney.unitel.la",
+        link2: "https://u-money.com.la",
+        layer1: "linear-gradient(#f7ad29, #e93e38) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
         layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
         layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
         layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
@@ -388,34 +453,19 @@ watch(filteredMembers, async () => {
 </script>
 
 <template>
-    <main_navbar
-        title="ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ"
-        :breadcrumb="[
-            'ໜ້າຫຼັກ',
-            'ສະມາຊິກ',
-            'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ'
-        ]"
-        background-image="/member/membercard/membercrd-2.png"
-    />
+    <main_navbar title="ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື" :breadcrumb="[
+        'ໜ້າຫຼັກ',
+        'ສະມາຊິກ',
+        'ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື'
+    ]" background-image="/member/membercard/membercrd-2.png" />
     <div class="boxmargin" style="width: 100%; height:20vh"></div>
     <div class="membercardcontainer">
         <div class="leftsection">
             <!-- attach ref here so GSAP can target all cards -->
             <div class="cardsgrid" ref="cardsGridEl">
-                <membercard
-                    v-for="(m, idx) in paginatedMembers"
-                    :key="`${m.title}-${idx}`"
-                    :image="m.image"
-                    :title="m.title"
-                    :subtitle="m.subtitle"
-                    :link1="m.link1"
-                    :link2="m.link2"
-                    :layer1="m.layer1"
-                    :layer2="m.layer2"
-                    :layer3="m.layer3"
-                    :layer4="m.layer4"
-                    :layer5="m.layer5"
-                />
+                <membercard v-for="(m, idx) in paginatedMembers" :key="`${m.title}-${idx}`" :image="m.image"
+                    :title="m.title" :subtitle="m.subtitle" :link1="m.link1" :link2="m.link2" :layer1="m.layer1"
+                    :layer2="m.layer2" :layer3="m.layer3" :layer4="m.layer4" :layer5="m.layer5" />
             </div>
         </div>
 
@@ -425,23 +475,19 @@ watch(filteredMembers, async () => {
                     <div>
                         <h2 class="filterTitle">ຄົ້ນຫາທະນາຄານສະມາຊິກ</h2>
                         <p class="filterSubtitle">
-                            ຄົ້ນຫາທະນາຄານສະມາຊິກລະບົບບັດຮ່ວມກັນ
+                            ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື
                         </p>
                     </div>
 
                     <span class="filterBadge">LAPNet </span>
-                    
+
                 </div>
 
                 <!-- Search box -->
                 <div class="searchBox">
                     <span class="searchIcon">🔍</span>
-                    <input
-                        v-model="searchQuery"
-                        type="text"
-                        class="searchInput"
-                        placeholder="ຄົ້ນຫາທະນາຄານສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ..."
-                    />
+                    <input v-model="searchQuery" type="text" class="searchInput"
+                        placeholder="ຄົ້ນຫາທະນາຄານສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ..." />
                 </div>
 
                 <div class="filterDivider"></div>
@@ -450,20 +496,12 @@ watch(filteredMembers, async () => {
                 <div class="filterGroup">
                     <div class="filterGroupHeader">
                         <span class="filterGroupTitle">ຄົ້ນໝວດໝູ່ທະນາຄານສະມາຊິກ</span>
-                        <span class="filterGroupHint">5 ຕົວເລືອກ</span>
+                        <span class="filterGroupHint">4 ຕົວເລືອກ</span>
                     </div>
 
                     <div class="filterChecks">
-                        <label
-                            v-for="opt in filterOptions"
-                            :key="opt.value"
-                            class="filterCheck"
-                        >
-                            <input
-                                type="checkbox"
-                                :value="opt.value"
-                                v-model="selectedFilters"
-                            />
+                        <label v-for="opt in filterOptions" :key="opt.value" class="filterCheck">
+                            <input type="checkbox" :value="opt.value" v-model="selectedFilters" />
                             <span class="checkFake">
                                 <span class="checkTick">✓</span>
                             </span>
@@ -474,13 +512,13 @@ watch(filteredMembers, async () => {
 
                 <div class="filterFooter">
                     <p class="filterFooterText">
-                        ຄົ້ນຫາພົບ : 
+                        ຄົ້ນຫາພົບ :
                         <span class="filterFooterHighlight">
                             {{ filteredMembers.length }}
                         </span>
-                        ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ
+                       ສະມາຊິກລະບົບຊຳລະຂ້າມທະນາຄານເທິງມືຖື
                     </p>
-                  
+
                 </div>
             </div>
         </aside>
@@ -488,36 +526,20 @@ watch(filteredMembers, async () => {
 
     <div class="paginationcontainer">
         <div class="pagerWrap" aria-label="Pagination">
-            <button
-                class="pagerBtn"
-                :disabled="currentPage === 1"
-                @click="prevPage"
-                aria-label="Previous page"
-            >
+            <button class="pagerBtn" :disabled="currentPage === 1" @click="prevPage" aria-label="Previous page">
                 <span class="chev">‹</span>
                 <span class="txt">Prev</span>
             </button>
 
             <div class="pagerPills" role="navigation" aria-label="Page numbers">
-                <button
-                    v-for="p in totalPages"
-                    :key="p"
-                    class="pagePill"
-                    :class="{ active: p === currentPage }"
-                    @click="goToPage(p)"
-                    :aria-current="p === currentPage ? 'page' : undefined"
-                    :aria-label="`Go to page ${p}`"
-                >
+                <button v-for="p in totalPages" :key="p" class="pagePill" :class="{ active: p === currentPage }"
+                    @click="goToPage(p)" :aria-current="p === currentPage ? 'page' : undefined"
+                    :aria-label="`Go to page ${p}`">
                     {{ p }}
                 </button>
             </div>
 
-            <button
-                class="pagerBtn"
-                :disabled="currentPage === totalPages"
-                @click="nextPage"
-                aria-label="Next page"
-            >
+            <button class="pagerBtn" :disabled="currentPage === totalPages" @click="nextPage" aria-label="Next page">
                 <span class="txt">Next</span>
                 <span class="chev">›</span>
             </button>
@@ -525,7 +547,7 @@ watch(filteredMembers, async () => {
     </div>
 
     <div class="boxmargin" style="width: 100%; height: 15vh"></div>
-    <logofootermembercardatm :logos="memberLogos"/>
+    <logofootermembercardmobilebanking :logos="memberLogos" />
     <mainfooter />
 </template>
 
@@ -551,7 +573,7 @@ watch(filteredMembers, async () => {
 .rightcontainer {
     width: 42%;
     border: 1px solid red;
-   height: 700px;
+    height: 700px;
     /* make aside content stretch full container */
     display: flex;
     align-items: stretch;
@@ -584,7 +606,7 @@ watch(filteredMembers, async () => {
 }
 
 .filterTitle {
-    font-size: var( --fs-lg);
+    font-size: var(--fs-lg);
     font-weight: 700;
     color: #0a1f55;
     margin: 0;
@@ -594,13 +616,14 @@ watch(filteredMembers, async () => {
     margin: 3px 0 0;
     font-size: var(--fs-sm);
     color: #5a6f9f;
-    
+
 }
 
-.filterBadge img{
+.filterBadge img {
     width: 30px;
     height: auto;
 }
+
 .filterBadge {
     font-size: 11px;
     padding: 6px 10px;
@@ -633,7 +656,7 @@ watch(filteredMembers, async () => {
 }
 
 .searchIcon {
-    font-size: var( --fs-md);
+    font-size: var(--fs-md);
 }
 
 .searchInput {
@@ -654,13 +677,11 @@ watch(filteredMembers, async () => {
     height: 1px;
     width: 100%;
     border-radius: 999px;
-    background: linear-gradient(
-        90deg,
-        rgba(46, 94, 255, 0) 0%,
-        rgba(46, 94, 255, 0.7) 35%,
-        rgba(46, 94, 255, 0.7) 65%,
-        rgba(46, 94, 255, 0) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(46, 94, 255, 0) 0%,
+            rgba(46, 94, 255, 0.7) 35%,
+            rgba(46, 94, 255, 0.7) 65%,
+            rgba(46, 94, 255, 0) 100%);
 }
 
 /* Checkbox group */
@@ -677,7 +698,7 @@ watch(filteredMembers, async () => {
 }
 
 .filterGroupTitle {
-    font-size: var( --fs-md);
+    font-size: var(--fs-md);
     font-weight: 600;
     color: #12306a;
 }
@@ -689,7 +710,7 @@ watch(filteredMembers, async () => {
 
 .filterChecks {
     display: flex;
-  
+
     flex-direction: column;
     gap: 25px;
     margin-top: 30px;
@@ -737,11 +758,11 @@ watch(filteredMembers, async () => {
     transition:
         opacity 0.12s ease,
         transform 0.12s ease;
-        
+
 }
 
 /* checked state */
-.filterCheck input:checked + .checkFake {
+.filterCheck input:checked+.checkFake {
     background: linear-gradient(135deg, #1a57ff, #47b3ff);
     border-color: #ffffff;
     box-shadow:
@@ -750,16 +771,16 @@ watch(filteredMembers, async () => {
     transform: translateY(-1px);
 }
 
-.filterCheck input:checked + .checkFake .checkTick {
+.filterCheck input:checked+.checkFake .checkTick {
     opacity: 1;
     transform: scale(1);
     color: #ffffff;
 }
 
 .checkLabel {
-  
-    
-    font-size: var(  --fs-sm);
+
+
+    font-size: var(--fs-sm);
 }
 
 /* Footer info */
@@ -816,12 +837,10 @@ watch(filteredMembers, async () => {
     border-radius: 999px;
 
     background: #00123d;
-    background: linear-gradient(
-        95deg,
-        rgba(0, 18, 61, 1) 0%,
-        rgba(0, 51, 171, 1) 35%,
-        rgba(6, 0, 120, 1) 100%
-    );
+    background: linear-gradient(95deg,
+            rgba(0, 18, 61, 1) 0%,
+            rgba(0, 51, 171, 1) 35%,
+            rgba(6, 0, 120, 1) 100%);
     border: 1px solid rgba(152, 189, 255, 0.8);
     box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.45),
@@ -927,21 +946,25 @@ watch(filteredMembers, async () => {
 
 /* Responsive tweak */
 @media (max-width: 900px) {
-   .membercardcontainer {
-        flex-direction: column;   /* stack vertically */
+    .membercardcontainer {
+        flex-direction: column;
+        /* stack vertically */
         width: 95%;
     }
 
     /* aside first, cards second */
     .rightcontainer {
         width: 100%;
-        height: auto;            /* don’t force 700px on small screens */
-        order: 1;                /* show first */
+        height: auto;
+        /* don’t force 700px on small screens */
+        order: 1;
+        /* show first */
     }
 
     .leftsection {
         width: 100%;
-        order: 2;                /* show after aside */
+        order: 2;
+        /* show after aside */
     }
 
     .paginationcontainer {

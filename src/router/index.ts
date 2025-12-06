@@ -8,7 +8,16 @@ import product4 from '../Views/products/product4.vue'
 import product5 from '../Views/products/product5.vue'
 import product6 from '../Views/products/product6.vue'
 import companystructure from '../Views/Aboutus/companystructure/companystructure.vue'
-import MembercardATM1 from '../Views/member/membercard/membercardATM.vue'
+import membercardATM from '../Views/member/membercard/membercardATM.vue'
+import membermobile_banking from '../Views/member/membercard/membermobile_banking.vue'
+import membercrossborder from '../Views/member/membercard/membercrossborder.vue'
+import Joinus from '../Views/joinus/joinus.vue'
+import bloggrid from '../Views/blog/bloggrid/bloggrid.vue'
+import Board_director from '../Views/Aboutus/board_director/board_director.vue'
+import Role from '../Views/Aboutus/role/role.vue'
+import Vision from '../Views/Aboutus/vision/vision.vue'
+import History from '../Views/Aboutus/history/history.vue'
+import Contactus from '../Views/contact/contactus.vue'
 
 const routes = [
   {
@@ -58,23 +67,74 @@ const routes = [
 
 
    {
-    path: '/member/membercardATM1',
-    name: 'membercardATM1', // was "home" before – duplicated
-    component: MembercardATM1,
+    path: '/member/membercardATM',
+    name: 'membercardATM', // was "home" before – duplicated
+    component: membercardATM,
+  },
+
+    {
+    path: '/member/mobile_banking',
+    name: 'mobile_banking', // was "home" before – duplicated
+    component: membermobile_banking,
+  },
+
+     {
+    path: '/member/crossborder',
+    name: 'crossborder', // was "home" before – duplicated
+    component:membercrossborder,
   },
 
 
+  // ######################### Joinus ##########################
 
+     {
+    path: '/joinus',
+    name: 'joinus', // was "home" before – duplicated
+    component:Joinus,
+  },
 
+  // ######################### Blog and news ##########################
 
+ {
+    path: '/bloggrid',
+    name: 'bloggrid', // was "home" before – duplicated
+    component:bloggrid,
+  },
 
-
-
+    // ######################### About us  ##########################
 
   {
     path: '/aboutus/companystructure',
     name: 'companystructure', // was "home" before – duplicated
     component: companystructure,
+  },
+  {
+    path: '/aboutus/board_director',
+    name: 'board_director', // was "home" before – duplicated
+    component: Board_director,
+  },
+    {
+    path: '/aboutus/role',
+    name: 'role', // was "home" before – duplicated
+    component: Role,
+  },
+     {
+    path: '/aboutus/vision',
+    name: 'vision', // was "home" before – duplicated
+    component: Vision,
+  },
+     {
+    path: '/aboutus/history',
+    name: 'history', // was "home" before – duplicated
+    component: History,
+  },
+
+   // ######################### Contact us  ##########################
+
+  {
+    path: '/contactus',
+    name: 'contactus', // was "home" before – duplicated
+    component: Contactus,
   },
 
 

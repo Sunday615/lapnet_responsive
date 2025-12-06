@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import main_navbar from '../../../components/miannavbar/main_navbar.vue';
 import mainfooter from '../../../components/footer/mainfooter/mainfooter.vue';
 import membercard from '../../../components/membercard/membercard.vue';
-import logofootermembercardatm from '../../../components/footer/logomemberfooter/logofootermembercardatm.vue'
+import footermembercrossborder from '../../../components/footer/logomemberfooter/logofootermembercrossborder.vue'
 
 const memberLogos = [
    {
@@ -30,14 +30,6 @@ const memberLogos = [
    },
    {
       src: "/logoallmember/circle_scale/lvb.PNG",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/ICBC.png",
-      alt: "Client Z",
-   },
-   {
-      src: "/logoallmember/circle_scale/BOC.png",
       alt: "Client Z",
    },
    {
@@ -69,11 +61,15 @@ const memberLogos = [
       alt: "Client Z",
    },
    {
-      src: "/logoallmember/circle_scale/PUB.png",
+      src: "/logoallmember/circle_scale/PSVB.png",
       alt: "Client Z",
    },
-   // ...continue until you have 16 logos, all with their own paths
+   {
+      src: "/logoallmember/circle_scale/mb.png",
+      alt: "Client Z",
+   },
 ];
+
 const itemsPerPage = 5;
 const currentPage = ref(1);
 
@@ -81,13 +77,64 @@ const currentPage = ref(1);
 const searchQuery = ref('');
 const selectedFilters = ref([]);
 
+// ใส่ธงของแต่ละประเทศด้วย flagcdn
+// ใส่ธงของแต่ละประเทศด้วย flagcdn
 const filterOptions = [
-  { label: 'ເລືອກທັງໝົດ', value: 'lao' },
-  { label: 'ກວດສອບຍອດເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'foreign' },
-  { label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'fb' },
-  { label: 'ໂອນເງິນຂ້າມທະນາຄານຜ່ານໂທລະສັບດ້ວຍເລກໜ້າບັດ', value: 'web' },
-  { label: 'ຖອນເງິນສົດຂ້າມທະນາຄານຜ່ານຕູ້ ATM', value: 'partner' },
+  {
+    label: 'ເລືອກທັງໝົດ',
+    value: 'all',          // เดิม 'lao' ก็ได้ แต่ให้ไม่ชนกับตัวอื่น
+    flags: [],
+  },
+  {
+    label: 'ກຳປູເຈຍ ສະແກນຊຳລະ ລາວ ',
+    value: 'kh-la',        // Cambodia -> Laos
+    flags: [
+      { code: 'kh', alt: 'Cambodia flag' },
+      { code: 'la', alt: 'Laos flag' },
+    ],
+  },
+  {
+    label: 'ລາວ ສະແກນຊຳລະ ກຳປູເຈຍ ',
+    value: 'la-kh',        // Laos -> Cambodia
+    flags: [
+      { code: 'la', alt: 'Laos flag' },
+      { code: 'kh', alt: 'Cambodia flag' },
+    ],
+  },
+  {
+    label: 'ໄທ ສະແກນຊຳລະ ລາວ ',
+    value: 'th-la',        // Thailand -> Laos
+    flags: [
+      { code: 'th', alt: 'Thailand flag' },
+      { code: 'la', alt: 'Laos flag' },
+    ],
+  },
+  {
+    label: 'ລາວ ສະແກນຊຳລະ ໄທ ',
+    value: 'la-th',        // Laos -> Thailand
+    flags: [
+      { code: 'la', alt: 'Laos flag' },
+      { code: 'th', alt: 'Thailand flag' },
+    ],
+  },
+  {
+    label: 'ຫວຽດນາມ ສະແກນຊຳລະ ລາວ ',
+    value: 'vn-la',        // Vietnam -> Laos
+    flags: [
+      { code: 'vn', alt: 'Vietnam flag' },
+      { code: 'la', alt: 'Laos flag' },
+    ],
+  },
+  {
+    label: 'ຈີນ ສະແກນຊຳລະ ລາວ ',
+    value: 'cn-la',        // China -> Laos
+    flags: [
+      { code: 'cn', alt: 'China flag' },
+      { code: 'la', alt: 'Laos flag' },
+    ],
+  },
 ];
+
 
 const members = ref([
     {
@@ -271,12 +318,60 @@ const members = ref([
         layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
     },
     {
-        image: "/logoallmember/retangle_scale/public-bank.svg",
-        title: "ທະນາຄານ ພາບລິກ",
-        subtitle: "PUBLIC Bank",
-        link1: "https://www.facebook.com/p/Public-Bank-Lao-61566020099587/",
-        link2: "https://www.publicbank.com.la",
-        layer1: "linear-gradient(#f32b24, #c32c2c) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        image: "/logoallmember/retangle_scale/bflbank.png",
+        title: "ທະນາຄານ ລາວ-ຝລັ່ງ ຈຳກັດ",
+        subtitle: "Banque Franco-Lao",
+        link1: "https://www.facebook.com/bflbank",
+        link2: "https://bfl-bred.com",
+        layer1: "linear-gradient(#006dbd, #183a67) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/psvb.PNG",
+        title: "ທະນາຄານ ພົງສະຫວັນ ຈໍາກັດ",
+        subtitle: "Phongsavanh Bank",
+        link1: "https://www.facebook.com/phongsavanhbankltd",
+        link2: "https://www.phongsavanhbank.com",
+        layer1: "linear-gradient(#04ca63, #0b9444) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/MB.png",
+        title: "ທະນາຄານ ຫຸ້ນສ່ວນການຄ້າທະຫານ ສາຂາລາວ",
+        subtitle: "Military Commercial Joint Stock Bank",
+        link1: "https://www.facebook.com/MBBANKLAOS",
+        link2: "https://mbbank.com.la",
+        layer1: "linear-gradient(#3b46fb, #141fd3) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/mmoney.png",
+        title: "ບໍລິສັດ ລາວໂມບາຍມັນນີ ຈຳກັດຜູ້ດຽວ",
+        subtitle: "MmoneyX",
+        link1: "https://www.facebook.com/laomobilemoney",
+        link2: "https://www.mmoney.la",
+        layer1: "linear-gradient(#ef3327, #a20000) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
+        layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
+        layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
+        layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
+        layer5: "linear-gradient(270deg, transparent 0%, #f9f295 100%)",
+    },
+    {
+        image: "/logoallmember/retangle_scale/umoney.png",
+        title: "ບໍລິສັດ ສະຕາຟິນເທັກ ຈຳກັດຜູ້ດຽວ",
+        subtitle: "Umoney",
+        link1: "https://www.facebook.com/umoney.unitel.la",
+        link2: "https://u-money.com.la",
+        layer1: "linear-gradient(#f7ad29, #e93e38) 50% 50%/calc(100% - 15px) calc(100% - 15px) no-repeat",
         layer2: "linear-gradient(321deg, transparent 0%, #b88a44 100%)",
         layer3: "linear-gradient(26deg, transparent 0%, #faf398 100%)",
         layer4: "linear-gradient(172deg, transparent 0%, #e0aa4e 100%)",
@@ -298,9 +393,7 @@ const filteredMembers = computed(() => {
         });
     }
 
-    // NOTE:
-    // You can also apply selectedFilters.value here
-    // when you decide real filter rules.
+    // NOTE: You can also apply selectedFilters.value here later
     return result;
 });
 
@@ -346,7 +439,7 @@ const animateCards = () => {
 
 function goToPage(p) {
     const next = Math.min(Math.max(1, p), totalPages.value);
-    if (next === currentPage.value) return; // avoid re-animating same page
+    if (next === currentPage.value) return;
     currentPage.value = next;
 }
 
@@ -389,11 +482,11 @@ watch(filteredMembers, async () => {
 
 <template>
     <main_navbar
-        title="ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ"
+        title="ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ"
         :breadcrumb="[
             'ໜ້າຫຼັກ',
             'ສະມາຊິກ',
-            'ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ'
+            'ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ'
         ]"
         background-image="/member/membercard/membercrd-2.png"
     />
@@ -425,7 +518,7 @@ watch(filteredMembers, async () => {
                     <div>
                         <h2 class="filterTitle">ຄົ້ນຫາທະນາຄານສະມາຊິກ</h2>
                         <p class="filterSubtitle">
-                            ຄົ້ນຫາທະນາຄານສະມາຊິກລະບົບບັດຮ່ວມກັນ
+                           ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ
                         </p>
                     </div>
 
@@ -450,25 +543,57 @@ watch(filteredMembers, async () => {
                 <div class="filterGroup">
                     <div class="filterGroupHeader">
                         <span class="filterGroupTitle">ຄົ້ນໝວດໝູ່ທະນາຄານສະມາຊິກ</span>
-                        <span class="filterGroupHint">5 ຕົວເລືອກ</span>
+                        <span class="filterGroupHint">7 ຕົວເລືອກ</span>
                     </div>
 
                     <div class="filterChecks">
                         <label
-                            v-for="opt in filterOptions"
-                            :key="opt.value"
-                            class="filterCheck"
-                        >
-                            <input
-                                type="checkbox"
-                                :value="opt.value"
-                                v-model="selectedFilters"
-                            />
-                            <span class="checkFake">
-                                <span class="checkTick">✓</span>
-                            </span>
-                            <span class="checkLabel">{{ opt.label }}</span>
-                        </label>
+    v-for="opt in filterOptions"
+    :key="opt.value"
+    class="filterCheck"
+>
+    <input
+        type="checkbox"
+        :value="opt.value"
+        v-model="selectedFilters"
+    />
+    <span class="checkFake">
+        <span class="checkTick">✓</span>
+    </span>
+
+    <span class="checkLabel">
+        <!-- flags + arrow: from -> to -->
+        <span
+            v-if="opt.flags && opt.flags.length === 2"
+            class="flagWrap"
+        >
+            <!-- from -->
+            <img
+                class="flagIcon"
+                :src="`https://flagcdn.com/w20/${opt.flags[0].code}.png`"
+                :srcset="`https://flagcdn.com/w40/${opt.flags[0].code}.png 2x`"
+                :alt="opt.flags[0].alt"
+                loading="lazy"
+            />
+            <!-- arrow -->
+            <i class="fa-solid fa-arrow-right flagArrow"></i>
+            <!-- to -->
+            <img
+                class="flagIcon"
+                :src="`https://flagcdn.com/w20/${opt.flags[1].code}.png`"
+                :srcset="`https://flagcdn.com/w40/${opt.flags[1].code}.png 2x`"
+                :alt="opt.flags[1].alt"
+                loading="lazy"
+            />
+        </span>
+
+        <!-- no flags (e.g. "ເລືອກທັງໝົດ") -->
+        <span v-else class="flagWrap"></span>
+
+        {{ opt.label }}
+    </span>
+</label>
+
                     </div>
                 </div>
 
@@ -478,7 +603,7 @@ watch(filteredMembers, async () => {
                         <span class="filterFooterHighlight">
                             {{ filteredMembers.length }}
                         </span>
-                        ສະມາຊິກລະບົບບັດທະນາຄານຮ່ວມກັນ
+                      ສະມາຊິກລະບົບຊຳລະຂ້າມແດນໃນຮູບແບບ QR Code ລະຫວ່າງປະເທດ
                     </p>
                   
                 </div>
@@ -525,11 +650,31 @@ watch(filteredMembers, async () => {
     </div>
 
     <div class="boxmargin" style="width: 100%; height: 15vh"></div>
-    <logofootermembercardatm :logos="memberLogos"/>
+    <footermembercrossborder :logos="memberLogos"/>
     <mainfooter />
 </template>
 
 <style scoped>
+.flagArrow {
+    font-size: 12px;
+    margin: 0 4px;
+    opacity: 0.85;
+}
+.flagWrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 8px;
+}
+
+.flagIcon {
+    width: 20px;
+    height: 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
 .membercardcontainer {
     width: 90%;
     margin: 0 auto;
@@ -544,15 +689,13 @@ watch(filteredMembers, async () => {
 .leftsection {
     width: 55%;
     height: auto;
-    /* border: 1px solid blue; */
 }
 
 /* Right aside container (42% of parent, full height) */
 .rightcontainer {
     width: 42%;
     border: 1px solid red;
-   height: 700px;
-    /* make aside content stretch full container */
+    height: 750px;
     display: flex;
     align-items: stretch;
 }
@@ -594,7 +737,6 @@ watch(filteredMembers, async () => {
     margin: 3px 0 0;
     font-size: var(--fs-sm);
     color: #5a6f9f;
-    
 }
 
 .filterBadge img{
@@ -689,7 +831,6 @@ watch(filteredMembers, async () => {
 
 .filterChecks {
     display: flex;
-  
     flex-direction: column;
     gap: 25px;
     margin-top: 30px;
@@ -737,7 +878,6 @@ watch(filteredMembers, async () => {
     transition:
         opacity 0.12s ease,
         transform 0.12s ease;
-        
 }
 
 /* checked state */
@@ -757,9 +897,25 @@ watch(filteredMembers, async () => {
 }
 
 .checkLabel {
-  
-    
     font-size: var(  --fs-sm);
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Flags */
+.flagWrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 8px;
+}
+
+.flagIcon {
+    width: 20px;
+    height: 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
 }
 
 /* Footer info */
@@ -786,17 +942,16 @@ watch(filteredMembers, async () => {
     margin: 2px 0 0;
 }
 
-/* Grid membercard 6 ใบต่อหน้า (2 คอลัมน์ x 3 แถว) */
+/* Grid membercard */
 .cardsgrid {
     display: grid;
     gap: 18px;
     grid-template-columns: 1fr;
     align-items: stretch;
-    /* help hide slide-in y overflow */
     overflow: hidden;
 }
 
-/* ---------- Futuristic Blue Gradient Pagination ---------- */
+/* Pagination */
 .paginationcontainer {
     width: 40%;
     margin: 0 auto;
@@ -928,20 +1083,19 @@ watch(filteredMembers, async () => {
 /* Responsive tweak */
 @media (max-width: 900px) {
    .membercardcontainer {
-        flex-direction: column;   /* stack vertically */
+        flex-direction: column;
         width: 95%;
     }
 
-    /* aside first, cards second */
     .rightcontainer {
         width: 100%;
-        height: auto;            /* don’t force 700px on small screens */
-        order: 1;                /* show first */
+        height: auto;
+        order: 1;
     }
 
     .leftsection {
         width: 100%;
-        order: 2;                /* show after aside */
+        order: 2;
     }
 
     .paginationcontainer {

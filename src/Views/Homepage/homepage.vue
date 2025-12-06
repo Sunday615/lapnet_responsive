@@ -36,13 +36,13 @@ const openSidebarFromNavbar = () => {
     <div class="homepage-laddingpagecontainer">
         <div class="mainhomepagecontainer">
             <div class="item navbar">
-                <div class="homepagelogolapnet" >
+                <div class="homepagelogolapnet">
                     <img src="/logolapnet/logolapnet.PNG" alt="">
                 </div>
                 <sidebar class="sidebar-lapnet" ref="sidebarRef" />
 
 
-                <navbar class="navbar-list" >
+                <navbar class="navbar-list">
                     <div class="hamberger" @click="openSidebarFromNavbar">
                         <i class="fa-solid fa-bars"></i>
                     </div>
@@ -53,16 +53,20 @@ const openSidebarFromNavbar = () => {
                         <li>
                             <memberdropdown />
                         </li>
-                        <li style="padding-right: 20px;">ຂ່າວ ແລະ ກີດຈະກຳ</li>
-                        <li>ຮ່ວມງານກັບເຮົາ</li>
+                        <router-link to="/bloggrid"> <li style="padding-right: 20px;">ຂ່າວ ແລະ ກີດຈະກຳ</li></router-link>
+                       
+                        <router-link to="/joinus">
+                            <li>ຮ່ວມງານກັບເຮົາ</li>
+                        </router-link>
                         <li>
                             <aboutusdropdown />
                         </li>
-                        <li>ຕິດຕໍ່ພວກເຮົາ</li>
+                        <router-link to="/contactus">
+                        <li>ຕິດຕໍ່ພວກເຮົາ</li></router-link>
                     </ul>
                 </navbar>
 
-                <div class="search" >
+                <div class="search">
                     <a href="#">EN /</a>
 
                     <a href="#" style="margin-right: 20px;"> LA </a>
@@ -96,7 +100,7 @@ const openSidebarFromNavbar = () => {
                 <img src="/homepage/newmission-2.png" alt="">
             </div>
             <div class="itemvision-title">
-                <h1 >
+                <h1>
                     ວິໄສທັດຂອງພວກເຮົາ
                 </h1>
                 <div class="visioncontentbox1">
@@ -138,11 +142,11 @@ const openSidebarFromNavbar = () => {
                         <h1>ການຊຳລະເງິນຂ້າມແດນ<br>ໃນຮູບ QR CODE <br>ລະຫວ່າງປະເທດ</h1>
                     </div>
                     <div class="countrycrossborder">
-                        <techbox label="Cambodia" sub-label="Bakong"  country-code="kh" />
-                        <techbox label="Thailand" sub-label="Thai QR Payment" country-code="th"/>
-                        <techbox label="Vietnam" sub-label="NAPAS" country-code="vn"/>
-                        <techbox label="China" sub-label="Unoipay" country-code="cn"/>
-               
+                        <techbox label="Cambodia" sub-label="Bakong" country-code="kh" />
+                        <techbox label="Thailand" sub-label="Thai QR Payment" country-code="th" />
+                        <techbox label="Vietnam" sub-label="NAPAS" country-code="vn" />
+                        <techbox label="China" sub-label="Unoipay" country-code="cn" />
+
                     </div>
                     <div class="buttoncrossborder">
                         <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
@@ -166,16 +170,16 @@ const openSidebarFromNavbar = () => {
                         image-src="/mobilemockup/homepagemobiletransfer/mobile_tranafer.jpeg" />
                 </div>
                 <div class="mobiletransfer_title">
-                    <div class="subtitle" >
+                    <div class="subtitle">
                         <h1>ໂອນເງິນຂ້າມທະນາຄານ<br>ເທິງມືຖືຜ່ານແອັບ</h1>
                     </div>
-                    <div class="subtext" >
+                    <div class="subtext">
                         <p>ການໂອນເງິນຂ້າມທະນາຄານເທິງມືຖື (Fund Transfer via Mobile Application) ໂດຍນຳໃຊ້ລະບົບ LMPS
                             ໃນການເຊື່ອມໂຍງຜ່ານ
                             Applications ຂອງແຕ່ລະທະນາຄານທີ່ເປັນສະມາຊິກຂອງບໍລິສັດລາວ ເນເຊີນນໍເພເມັ້ນ ເນັດເວີກ
                             ໃຫ້ສາມາດໃຊ້ຟັງຊັ່ນການດຳເນີນທຸລະກຳໂອນເງິນຂ້າມທະນາຄານໄດ້.</p>
                     </div>
-                    <div class="subbutton" >
+                    <div class="subbutton">
                         <homepagebutton label="ຜະລິດຕະພັນ ແລະ ການບໍລິການ" />
                     </div>
 
@@ -186,31 +190,33 @@ const openSidebarFromNavbar = () => {
         </videobackgroundhomepage>
     </div>
     <div class="allmemberscrolling">
-        <allmemberscrolling/>
+        <allmemberscrolling />
     </div>
     <div class="blogcontainer">
-        <bloghomepage/>
+        <bloghomepage />
     </div>
-    
-    <mainfooter style="margin-top: 100px;"/>
+
+    <mainfooter style="margin-top: 100px;" />
 
 </template>
 
 
 <style scoped>
-.blogcontainer{
+.blogcontainer {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
-    
-}
-.allmemberscrolling{
-    width: 100%;
-    height: 60vh;
-   
 
 }
+
+.allmemberscrolling {
+    width: 100%;
+    height: 60vh;
+
+
+}
+
 .countrycrossborder {
     width: 100%;
     height: 30vh;
@@ -233,7 +239,7 @@ const openSidebarFromNavbar = () => {
 .subtitle h1 {
     color: #fff;
     line-height: 1.4;
-        font-weight: 700;
+    font-weight: 700;
     font-size: clamp(2rem, 5.5vw, 5rem);
 }
 
@@ -257,26 +263,26 @@ const openSidebarFromNavbar = () => {
 .mobile_transfer_mockup {
     width: 50%;
     height: 100%;
-   
+
 }
 
 .mobiletransfercontainer {
     width: 90%;
     height: 90%;
     display: flex;
-    
+
 }
 
 .mobile_transfer_homepage {
     width: 100%;
     height: 90vh;
-   
+
 }
 
 .allproductswiper {
     width: 100%;
     height: 85vh;
-   
+
 }
 
 .buttoncrossborder {
@@ -288,7 +294,7 @@ const openSidebarFromNavbar = () => {
 .titlecrossborderproduct {
     width: 100%;
     height: 65%;
-   
+
 
 }
 
@@ -296,13 +302,13 @@ const openSidebarFromNavbar = () => {
     font-size: 5.5rem;
     color: #fff;
     line-height: 1.3;
-        font-weight: 700;
+    font-weight: 700;
 }
 
 .imagecrossborder {
     width: 40%;
     height: 100%;
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -314,7 +320,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: center;
     flex-direction: column;
- 
+
 }
 
 .crossborderhomepage {
@@ -328,7 +334,7 @@ const openSidebarFromNavbar = () => {
 .videocrossborder {
     width: 100%;
     height: 80vh;
-    
+
 }
 
 .hamberger i {
@@ -343,7 +349,7 @@ const openSidebarFromNavbar = () => {
 .description-vision {
     width: 83%;
     height: 100%;
-  
+
 }
 
 .number h2 {
@@ -359,7 +365,7 @@ const openSidebarFromNavbar = () => {
 .number {
     width: 13%;
     height: 100%;
- 
+
 }
 
 .visioncontentbox2 {
@@ -375,13 +381,13 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: space-between;
     height: 30%;
-   
+
 
 }
 
 .itemvision-title h1 {
     font-size: 4rem;
-        font-weight: 700;
+    font-weight: 700;
     color: #0D02D4;
     background-image: linear-gradient(45deg, #372cff, #00beed 100%);
     background-clip: text;
@@ -397,7 +403,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
- 
+
 
 }
 
@@ -413,7 +419,7 @@ const openSidebarFromNavbar = () => {
     height: 100%;
     display: flex;
     align-items: center;
-   
+
 }
 
 .contentvision {
@@ -421,7 +427,7 @@ const openSidebarFromNavbar = () => {
     width: 100%;
     display: flex;
     align-items: center;
-  
+
 
 }
 
@@ -468,7 +474,7 @@ const openSidebarFromNavbar = () => {
     display: flex;
     align-items: center;
     line-height: 1.3;
-   
+
 
 
 }
@@ -490,7 +496,7 @@ const openSidebarFromNavbar = () => {
     height: 100%;
     display: flex;
     align-items: center;
-   
+
 
 
 }
@@ -680,14 +686,15 @@ const openSidebarFromNavbar = () => {
 }
 
 @media (max-width: 778px) {
-    .subtitle h1{
+    .subtitle h1 {
         font-size: 3.5rem;
     }
-    .mobiletransfer_title{
+
+    .mobiletransfer_title {
         width: 100%;
     }
-    
-    .mobile_transfer_mockup{
+
+    .mobile_transfer_mockup {
         display: none;
     }
 
@@ -792,28 +799,32 @@ const openSidebarFromNavbar = () => {
     }
 
 }
+
 @media (max-width: 502px) {
-        .titleproduct5 h1 {
+    .titleproduct5 h1 {
         font-size: 2rem;
         text-align: center;
     }
 
 }
+
 @media (max-width: 462px) {
-        .titlecrossborderproduct h1{
-            font-size: 2.5rem;
-        }
-        .countrycrossborder{
-            margin-bottom: 100px;
-        }
-    
+    .titlecrossborderproduct h1 {
+        font-size: 2.5rem;
+    }
+
+    .countrycrossborder {
+        margin-bottom: 100px;
+    }
+
 }
+
 @media (max-width: 447px) {
-     
-        .countrycrossborder{
-            margin-bottom: 100px;
-        }
-    
+
+    .countrycrossborder {
+        margin-bottom: 100px;
+    }
+
 }
 
 

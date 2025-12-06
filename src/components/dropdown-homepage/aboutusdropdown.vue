@@ -16,30 +16,35 @@
     <div class="dropdown-panel" ref="panel">
       <div class="dropdown-container">
         <div class="dropdown-item">
-          <span>ວິໄສທັດ ແລະ ພາລະກິດ</span>
+          <router-link to="/aboutus/vision"><span>ວິໄສທັດ ແລະ ພາລະກິດ</span></router-link>
+          
         
         </div>
                 <div class="dropdown-divider"></div>
         <div class="dropdown-item">
-          <span>ພາລະບົດບາດ</span>
+          <router-link to="/aboutus/role">
+          <span>ພາລະບົດບາດ</span></router-link>
       
         </div>
                 <div class="dropdown-divider"></div>
         <div class="dropdown-item">
-          <span>ຄວາມເປັນມາ </span>
+          <router-link to="/aboutus/history">
+          <span>ຄວາມເປັນມາ </span></router-link>
          
         </div>
 
         <div class="dropdown-divider"></div>
 
         <div class="dropdown-item">
-          <span>ສະພາຜູ້ບໍລິຫານ</span>
+          <router-link to="/aboutus/board_director">
+          <span>ສະພາຜູ້ບໍລິຫານ</span></router-link>
         
         </div>
          <div class="dropdown-divider"></div>
 
         <div class="dropdown-item">
-          <span>ໂຄງຮ່າງການຈັດຕັ້ງ</span>
+          <router-link to="/aboutus/companystructure">
+          <span>ໂຄງຮ່າງການຈັດຕັ້ງ</span></router-link>
         
         </div>
       </div>
